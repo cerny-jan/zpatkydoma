@@ -1,0 +1,15 @@
+
+
+{% load wagtailcore_tags wagtailimages_tags%}
+
+
+
+{% block content %}
+
+  {% for post in blogpages %}
+        {% with post=post.specific %}
+            <h3><a href="{% pageurl post %}">{{ post.title }}</a></h3>
+        {% endwith %}
+    {% endfor %}
+
+{% endblock %}

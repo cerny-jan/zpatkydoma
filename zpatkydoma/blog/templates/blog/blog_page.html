@@ -19,7 +19,11 @@
                 <h2 class="white-text"><span>{{ page.title }}</span></h2>
                 <!-- end post title  -->
                 <!-- post date and categories  -->
-                <div class="blog-date posted-by">{{ page.date_published }} | <a href="blog-masonry-3columns.html" class="white-text">Design</a>, <a href="blog-masonry-3columns.html" class="white-text">Branding</a></div>
+                <div class="blog-date posted-by">{{ page.date_published }} |
+                  {% for tag in page.tags.all %}
+                  <a href="{% slugurl 'tags' %}?tag={{ tag }}" class="white-text">{{ tag }}</a>{% if not forloop.last %}, {% endif %}
+                  {% endfor %}
+                  </div>
                 <!-- end post date and categories  -->
             </div>
 
@@ -75,11 +79,7 @@
 </section>
 
 
-{% for item in page.related_pages.all %}
-    {{ item.specific }}
-{% endfor %}
-
-
+{% if page.related_pages_columns %}
 <section class="wow fadeIn border-top">
     <div class="container">
         <div class="row">
@@ -88,48 +88,28 @@
             </div>
         </div>
         <div class="row blog-grid-listing">
-            <!-- related blogs #1 -->
-            <div class="col-md-4 col-sm-4 col-xs-6 blog-listing no-margin-bottom xs-margin-bottom-ten wow fadeInUp" data-wow-duration="300ms">
-                <div class="blog-image"><a href="blog-single-right-sidebar.html"><img src="http://placehold.it/599x449" alt=""/></a></div>
-                <div class="blog-details no-padding-left-right no-padding-bottom">
-                    <div class="blog-date">Posted by <a href="blog-masonry-2columns.html">Paul Scrivens</a> | 02 January 2015</div>
-                    <div class="blog-title"><a href="blog-single-right-sidebar.html">Minimum Usable Design</a></div>
-                    <div class="blog-short-description">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</div>
-                    <div class="separator-line bg-black no-margin-lr"></div>
-                    <div><a href="#" class="blog-like"><i class="fa fa-heart-o"></i>Likes</a><a href="#" class="blog-share"><i class="fa fa-share-alt"></i>Share</a><a href="#" class="comment"><i class="fa fa-comment-o"></i>3 comment(s)</a></div>
-                </div>
-            </div>
-            <!-- end related blogs #1 -->
-            <!-- related blogs #2 -->
-            <div class="col-md-4 col-sm-4 col-xs-6 blog-listing no-margin-bottom xs-margin-bottom-ten wow fadeInUp" data-wow-duration="600ms">
-                <div class="blog-image"><a href="blog-single-right-sidebar.html"><img src="http://placehold.it/599x449" alt=""/></a></div>
-                <div class="blog-details no-padding-left-right no-padding-bottom">
-                    <div class="blog-date">Posted by <a href="blog-masonry-2columns.html">Paul Scrivens</a> | 02 January 2015</div>
-                    <div class="blog-title"><a href="blog-single-right-sidebar.html">You Design It, They Do It</a></div>
-                    <div class="blog-short-description">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</div>
-                    <div class="separator-line bg-black no-margin-lr"></div>
-                    <div><a href="#" class="blog-like"><i class="fa fa-heart-o"></i>Likes</a><a href="#" class="blog-share"><i class="fa fa-share-alt"></i>Share</a><a href="#" class="comment"><i class="fa fa-comment-o"></i>3 comment(s)</a></div>
-                </div>
-            </div>
-            <!-- end related blogs #2 -->
-            <!-- related blogs #3 -->
-            <div class="col-md-4 col-sm-4 col-xs-6 blog-listing no-margin-bottom wow fadeInUp" data-wow-duration="900ms">
-                <div class="blog-image"><a href="blog-single-right-sidebar.html"><img src="http://placehold.it/599x449" alt=""/></a></div>
-                <div class="blog-details no-padding-left-right no-padding-bottom">
-                    <div class="blog-date">Posted by <a href="blog-masonry-2columns.html">Nathan Ford</a> | 02 January 2015</div>
-                    <div class="blog-title"><a href="blog-single-right-sidebar.html">For A More Readable Web Page</a></div>
-                    <div class="blog-short-description">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</div>
-                    <div class="separator-line bg-black no-margin-lr"></div>
-                    <div><a href="#" class="blog-like"><i class="fa fa-heart-o"></i>Likes</a><a href="#" class="blog-share"><i class="fa fa-share-alt"></i>Share</a><a href="#" class="comment"><i class="fa fa-comment-o"></i>3 comment(s)</a></div>
-                </div>
-            </div>
-            <!-- end related blogs #3 -->
+          {% for item in page.related_pages.all %}
+            {% with item.related_page.specific as related_page %}
+              <div class="col-md-{{page.related_pages_columns}} col-sm-{{page.related_pages_columns}} col-xs-6 blog-listing no-margin-bottom xs-margin-bottom-ten wow fadeInUp" data-wow-duration="300ms">
+                  <div class="blog-image"><a href="{% pageurl related_page %}"><img src="http://placehold.it/599x449" alt=""/></a></div>
+                  <div class="blog-details no-padding-left-right no-padding-bottom">
+                      <div class="blog-date">Posted at {{ related_page.date_published }}</div>
+                      <div class="blog-title"><a href="blog-single-right-sidebar.html">{{ related_page.title }}</a></div>
+                      <div class="blog-short-description">{{ related_page.intro }}</div>
+                      <div class="separator-line bg-black no-margin-lr"></div>
+                      <div><a href="#" class="blog-like"><i class="fa fa-heart-o"></i>Likes</a><a href="#" class="blog-share"><i class="fa fa-share-alt"></i>Share</a><a href="#" class="comment"><i class="fa fa-comment-o"></i>3 comment(s)</a></div>
+                  </div>
+              </div>
+            {% endwith %}
+          {% endfor %}
         </div>
     </div>
 </section>
+{% endif %}
+
 <div class="next-previous-project-style2">
     <!-- next-previous post -->
-    <a class="text-uppercase border-right previous-project" href="blog-single-left-sidebar.html"><i class="fa fa-angle-left"></i><span>Previous Post</span></a><a class="border-right text-uppercase back-project" href="blog-grid-4columns.html"><span>Back</span><i class="fa fa-th-large"></i></a><a class="text-uppercase next-project" href="blog-single-full-width-with-image-slider.html"><span>Next Post</span><i class="fa fa-angle-right"></i></a>
+    <a class="text-uppercase border-right {% if not page.get_prev_sibling.live %} disabled {% endif%} previous-project" href={{page.get_prev_sibling.url}}><i class="fa fa-angle-left"></i><span>Previous Post</span></a><a class="border-right text-uppercase back-project" href="{{ page.get_parent.url }}"><span>Back</span><i class="fa fa-th-large"></i></a><a class="text-uppercase {% if not page.get_next_sibling.live %} disabled {% endif%} next-project" href={{page.get_next_sibling.url}}><span>Next Post</span><i class="fa fa-angle-right"></i></a>
     <!-- end next-previous post -->
 </div>
 <!-- end content section -->
