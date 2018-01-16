@@ -12,10 +12,6 @@ from wagtail.wagtailcore.blocks import (
 
 
 class ImageBlock(StructBlock):
-    """
-    Custom `StructBlock` for utilizing images with associated caption and
-    attribution data
-    """
     image = ImageChooserBlock(required=False)
     caption = CharBlock(required=False)
     attribution = CharBlock(required=False)
@@ -26,9 +22,6 @@ class ImageBlock(StructBlock):
 
 
 class BlockQuote(StructBlock):
-    """
-    Custom `StructBlock` that allows the user to attribute a quote to the author
-    """
     text = TextBlock(required=False)
     author = CharBlock(
         blank=True, required=False, label='e.g. Mary Berry')
@@ -38,11 +31,7 @@ class BlockQuote(StructBlock):
         template = "blocks/blockquote.html"
 
 
-# StreamBlocks
 class BaseStreamBlock(StreamBlock):
-    """
-    Define the custom blocks that `StreamField` will utilize
-    """
     paragraph_block = RichTextBlock(
         icon="fa-paragraph",
         template="blocks/paragraph_block.html",

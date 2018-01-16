@@ -43,18 +43,6 @@
     </div>
 </section>
 
-<section id="blog-slider-main" class="blog-slider wow fadeIn no-padding clearfix">
-    <!-- post images slider -->
-    <div id="blog-slider" class="owl-carousel owl-theme dark-pagination">
-        <div class="item"><img src="http://placehold.it/1200x800" alt=""/></div>
-        <div class="item"><img src="http://placehold.it/1200x800" alt=""/></div>
-        <div class="item"><img src="http://placehold.it/1200x800" alt=""/></div>
-        <div class="item"><img src="http://placehold.it/1200x800" alt=""/></div>
-        <div class="item"><img src="http://placehold.it/1200x800" alt=""/></div>
-        <div class="item"><img src="http://placehold.it/1200x800" alt=""/></div>
-    </div>
-    <!-- end post images slider -->
-</section>
 <section class="wow fadeIn blog-details-text">
     <div class="container">
         <div class="row">
@@ -78,7 +66,6 @@
     </div>
 </section>
 
-
 {% if page.related_pages_columns %}
 <section class="wow fadeIn border-top">
     <div class="container">
@@ -91,13 +78,21 @@
           {% for item in page.related_pages.all %}
             {% with item.related_page.specific as related_page %}
               <div class="col-md-{{page.related_pages_columns}} col-sm-{{page.related_pages_columns}} col-xs-6 blog-listing no-margin-bottom xs-margin-bottom-ten wow fadeInUp" data-wow-duration="300ms">
-                  <div class="blog-image"><a href="{% pageurl related_page %}"><img src="http://placehold.it/599x449" alt=""/></a></div>
+                  <div class="blog-image"><a href="{% pageurl related_page %}">
+                    {% if related_page.image %}
+                    {% image related_page.image fill-599x449 as thumbnail %}
+                    <img src="{{ thumbnail.url }}"
+                         alt="{{ thumbnail.alt }}"  />
+                    {% else %}
+                    <img src="http://placehold.it/599x449" alt=""/>
+                    {% endif %}
+                  </a></div>
                   <div class="blog-details no-padding-left-right no-padding-bottom">
                       <div class="blog-date">Posted at {{ related_page.date_published }}</div>
-                      <div class="blog-title"><a href="blog-single-right-sidebar.html">{{ related_page.title }}</a></div>
+                      <div class="blog-title"><a href="{% pageurl related_page %}">{{ related_page.title }}</a></div>
                       <div class="blog-short-description">{{ related_page.intro }}</div>
                       <div class="separator-line bg-black no-margin-lr"></div>
-                      <div><a href="#" class="blog-like"><i class="fa fa-heart-o"></i>Likes</a><a href="#" class="blog-share"><i class="fa fa-share-alt"></i>Share</a><a href="#" class="comment"><i class="fa fa-comment-o"></i>3 comment(s)</a></div>
+                      <!-- <div><a href="#" class="blog-like"><i class="fa fa-heart-o"></i>Likes</a><a href="#" class="blog-share"><i class="fa fa-share-alt"></i>Share</a><a href="#" class="comment"><i class="fa fa-comment-o"></i>3 comment(s)</a></div> -->
                   </div>
               </div>
             {% endwith %}

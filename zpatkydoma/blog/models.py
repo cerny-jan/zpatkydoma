@@ -16,7 +16,8 @@ from wagtail.wagtailadmin.edit_handlers import (
     StreamFieldPanel,
 )
 from wagtail.wagtailimages.edit_handlers import ImageChooserPanel
-from wagtail.wagtailcore.fields import StreamField
+from wagtail.wagtailcore.fields import StreamField, RichTextField
+from wagtail.wagtailcore.blocks import RichTextBlock
 
 from zpatkydoma.base.blocks import BaseStreamBlock
 
@@ -38,6 +39,7 @@ class RelatedPage(models.Model):
         PageChooserPanel('related_page', 'blog.BlogPage'),
     ]
 
+
 class BlogPage(Page):
     image = models.ForeignKey(
         'wagtailimages.Image',
@@ -49,23 +51,28 @@ class BlogPage(Page):
     )
     date_published = models.DateField(
         'Published date', default=datetime.date.today)
-    intro = models.CharField(
-        max_length=250, help_text='Text to describe the page',)
-    body = StreamField(BaseStreamBlock(required=False),
+
+    intro = StreamField([
+            ('paragraph', RichTextBlock(
+            template="blocks/intro_paragraph_block.html",
+            features=['bold', 'italic', 'hr', 'link']))
+    ])
+
+    body = StreamField(
+    BaseStreamBlock(required=False),
                        verbose_name='Page body', blank=True)
     tags = ClusterTaggableManager(through=BlogPageTag, blank=True)
 
     content_panels = Page.content_panels + [
         ImageChooserPanel('image'),
-        FieldPanel('intro', classname="full"),
+        StreamFieldPanel('intro'),
         StreamFieldPanel('body'),
         MultiFieldPanel([
             FieldPanel('date_published'),
             FieldPanel('tags'),
         ], heading='Blog information'),
-        InlinePanel('related_pages', label='Related Pages',max_num=3)
+        InlinePanel('related_pages', label='Related Pages', max_num=3)
     ]
-
 
     def related_pages_columns(self):
         related_pages_count = self.related_pages.all().count()
@@ -109,4 +116,3 @@ class BlogIndexPage(Page):
     content_panels = Page.content_panels + [
         PageChooserPanel('promo_page', 'blog.BlogPage'),
     ]
-    subpage_types = ['blog.BlogPage']
