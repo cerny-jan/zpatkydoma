@@ -6,7 +6,4 @@ __pycache__
 *.swp
 *.retry
 .env
-media/*
 zpatkydoma/settings/local.py
-zpatkydoma/base/migrations/*
-zpatkydoma/blog/migrations/*
