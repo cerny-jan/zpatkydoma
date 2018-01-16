@@ -1,0 +1,12 @@
+.DS_Store
+__pycache__
+*.sqlite3
+*.pyc
+*.log
+*.swp
+*.retry
+.env
+media/*
+zpatkydoma/settings/local.py
+zpatkydoma/base/migrations/*
+zpatkydoma/blog/migrations/*

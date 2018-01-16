@@ -1,0 +1,89 @@
+{% load static wagtailuserbar %}
+<!doctype html>
+<html class="no-js" lang="en">
+    <head>
+        <title> {% block title %}
+                        {% if self.seo_title %}{{ self.seo_title }}{% else %}{{ self.title }}{% endif %}
+                  {% endblock %}
+        </title>
+        <meta name="description" content="H-Code - A premium portfolio template from ThemeZaa">
+        <meta name="keywords" content="">
+        <meta charset="utf-8">
+        <meta name="author" content="ThemeZaa">
+        <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1" />
+        <!-- favicon -->
+        <link rel="shortcut icon" href="{% static 'images/favicon.png' %}">
+        <link rel="apple-touch-icon" href="{% static 'images/apple-touch-icon-57x57.png' %}">
+        <link rel="apple-touch-icon" sizes="72x72" href="{% static 'images/apple-touch-icon-72x72.png' %}">
+        <link rel="apple-touch-icon" sizes="114x114" href="{% static 'images/apple-touch-icon-114x114.png' %}">
+        <!-- animation -->
+        <link rel="stylesheet" href="{% static 'css/animate.css' %}" />
+        <!-- bootstrap -->
+        <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}" />
+        <!-- et line icon -->
+        <link rel="stylesheet" href="{% static 'css/et-line-icons.css' %}" />
+        <!-- font-awesome icon -->
+        <link rel="stylesheet" href="{% static 'css/font-awesome.min.css' %}" />
+        <!-- owl carousel -->
+        <link rel="stylesheet" href="{% static 'css/owl.carousel.css' %}" />
+        <link rel="stylesheet" href="{% static 'css/owl.transitions.css' %}" />
+        <link rel="stylesheet" href="{% static 'css/full-slider.css' %}" />
+        <!-- hamburger menu  -->
+        <link rel="stylesheet" href="{% static 'css/menu-hamburger.css' %}" />
+        <!-- common -->
+        <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+        <!-- responsive -->
+        <link rel="stylesheet" href="{% static 'css/responsive.css' %}" />
+        <!--[if IE]>
+            <link rel="stylesheet" href="css/style-ie.css" />
+        <![endif]-->
+        <!--[if IE]>
+            <script src="js/html5shiv.js"></script>
+        <![endif]-->
+        {% block extra_css %}
+            {# Override this in templates to add extra stylesheets #}
+        {% endblock %}
+    </head>
+    <body>
+      {% wagtailuserbar %}
+      <!-- navigation-->
+      {% include "includes/navigation.html" %}
+      <!--end of navigation-->
+        <!-- content section -->
+
+        {% block content %}
+        {% endblock %}
+
+
+
+
+        <!-- footer -->
+        {% include "includes/footer.html" %}
+        <!-- end footer -->
+
+        <!-- javascript libraries / javascript files set #1 -->
+        <script type="text/javascript" src="{% static 'js/jquery.min.js' %}"></script>
+        <script type="text/javascript" src="{% static 'js/modernizr.js' %}"></script>
+        <script type="text/javascript" src="{% static 'js/bootstrap.js' %}"></script>
+        <script type="text/javascript" src="{% static 'js/bootstrap-hover-dropdown.js' %}"></script>
+        <script type="text/javascript" src="{% static 'js/jquery.easing.1.3.js' %}"></script>
+        <script type="text/javascript" src="{% static 'js/skrollr.min.js' %}"></script>
+        <script type="text/javascript" src="{% static 'js/smooth-scroll.js' %}"></script>
+        <!-- animation -->
+        <script type="text/javascript" src="{% static 'js/wow.min.js' %}"></script>
+        <!-- parallax -->
+        <script type="text/javascript" src="{% static 'js/jquery.parallax-1.1.3.js' %}"></script>
+        <!-- owl slider  -->
+        <script type="text/javascript" src="{% static 'js/owl.carousel.min.js' %}"></script>
+        <!-- imagesloaded  -->
+        <script type="text/javascript" src="{% static 'js/imagesloaded.pkgd.min.js' %}"></script>
+        <!-- hamburger menu-->
+        <script type="text/javascript" src="{% static 'js/classie.js' %}"></script>
+        <script type="text/javascript" src="{% static 'js/hamburger-menu.js' %}"></script>
+        <!-- setting -->
+        <script type="text/javascript" src="{% static 'js/main.js' %}"></script>
+        {% block extra_js %}
+            {# Override this in templates to add extra javascript #}
+        {% endblock %}
+    </body>
+</html>
