@@ -1,6 +1,15 @@
 {% load wagtailimages_tags %}
 
-<figure>
-    {% image self.image fill-600x600 %}
-    <figcaption>{{ self.caption }} - {{ self.attribution }}</figcaption>
-</figure>
+{% image self.image fill-1920x1200 as big_image %}
+
+<section class="wow fadeIn blog-details-text no-padding">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8 col-sm-10 center-col text-center">
+        <div class="blog-image margin-eight-bottom">
+          <img src="{{ big_image.url }}" alt="{{ big_image.alt }}" />
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

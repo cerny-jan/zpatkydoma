@@ -1,12 +1,9 @@
-{% load wagtailcore_tags %}
-
+{% load wagtailimages_tags %}
 <section class="wow fadeIn blog-details-text no-padding">
   <div class="container">
     <div class="row">
       <div class="col-md-8 col-sm-10 center-col text-center">
-        <span class="text-extra-large">
-        {{ self|richtext }}
-      </span>
+        <p class="{{ self.size }}">{{ self.heading_text }}</p>
       </div>
     </div>
   </div>

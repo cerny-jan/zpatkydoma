@@ -8,42 +8,72 @@ from wagtail.wagtailcore.blocks import (
     StructBlock,
     TextBlock,
     RawHTMLBlock,
+    ListBlock
 )
 
 
 class ImageBlock(StructBlock):
     image = ImageChooserBlock(required=False)
-    caption = CharBlock(required=False)
-    attribution = CharBlock(required=False)
 
     class Meta:
         icon = 'image'
-        template = "blocks/image_block.html"
+        template = 'blocks/image_block.html'
+        label = 'Image'
 
 
-class BlockQuote(StructBlock):
+class ImageSliderBlock(StructBlock):
+    image = ImageChooserBlock(required=False)
+
+    class Meta:
+        icon = 'image'
+
+
+class QuoteBlock(StructBlock):
     text = TextBlock(required=False)
     author = CharBlock(
         blank=True, required=False, label='e.g. Mary Berry')
 
     class Meta:
-        icon = "fa-quote-left"
-        template = "blocks/blockquote.html"
+        icon = 'fa-quote-left'
+        template = 'blocks/quote_block.html'
+        label = 'Quote'
+
+
+class HeadingBlock(StructBlock):
+    heading_text = CharBlock(required=True)
+    size = ChoiceBlock(choices=[
+        ('', 'Select a header size'),
+        ('title-small', 'Small'),
+        ('title-med', 'Medium'),
+        ('title-large', 'Large'),
+        ('title-extra-large', 'Extra Large')
+    ], blank=True, required=False)
+
+    class Meta:
+        icon = 'title'
+        template = 'blocks/heading_block.html'
+        label = 'Heading'
+
 
 
 class BaseStreamBlock(StreamBlock):
+    heading_block = HeadingBlock()
     paragraph_block = RichTextBlock(
         icon="fa-paragraph",
         template="blocks/paragraph_block.html",
-        features=['h2', 'h3', 'h4', 'h5', 'h6', 'ol',
-                  'ul', 'bold', 'italic', 'hr', 'link']
+        features=['ol', 'ul', 'bold', 'italic', 'hr', 'link'],
+        label='Text'
     )
     image_block = ImageBlock()
-    block_quote = BlockQuote()
-    embed_block = EmbedBlock(
-        help_text='Insert an embed URL e.g https://www.youtube.com/embed/SGJFWirQ3ks',
-        icon="fa-s15",
-        template="blocks/embed_block.html")
-    raw_html = RawHTMLBlock(
-        required=False,
-        help_text='A text area for entering raw HTML which will be rendered unescaped')
+    image_slider_block = ListBlock(ImageSliderBlock(),
+        label='Image Slider', icon='image', template='blocks/image_slider_block.html', help_text='Full width image slider, select at least 4 images')
+    block_quote=QuoteBlock()
+    embed_block=EmbedBlock(
+        help_text = 'Insert an embed URL e.g https://www.youtube.com/embed/SGJFWirQ3ks',
+        icon = 'fa-s15',
+        template = 'blocks/embed_block.html')
+    raw_html=RawHTMLBlock(
+        required = False,
+        template = 'blocks/raw_html_block.html',
+        label = 'Raw HTML',
+        help_text = 'A text area for entering raw HTML which will be rendered unescaped')

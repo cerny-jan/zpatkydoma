@@ -52,11 +52,7 @@ class BlogPage(Page):
     date_published = models.DateField(
         'Published date', default=datetime.date.today)
 
-    intro = StreamField([
-            ('paragraph', RichTextBlock(
-            template="blocks/intro_paragraph_block.html",
-            features=['bold', 'italic', 'hr', 'link']))
-    ])
+    intro = RichTextField( features=['bold', 'italic', 'hr', 'link'])
 
     body = StreamField(
     BaseStreamBlock(required=False),
@@ -65,7 +61,7 @@ class BlogPage(Page):
 
     content_panels = Page.content_panels + [
         ImageChooserPanel('image'),
-        StreamFieldPanel('intro'),
+        FieldPanel('intro', classname='full'),
         StreamFieldPanel('body'),
         MultiFieldPanel([
             FieldPanel('date_published'),

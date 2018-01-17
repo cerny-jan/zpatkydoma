@@ -1,0 +1,14 @@
+{% load wagtailimages_tags %}
+
+<section class="wow fadeIn blog-details-text no-padding">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8 col-sm-10 blog-image center-col text-center margin-four-top bg-white margin-eight">
+        <blockquote class="bg-gray no-margin">
+          <p>{{ self.text }}</p>
+          <footer>{{ self.author}}</footer>
+        </blockquote>
+      </div>
+    </div>
+  </div>
+</section>
