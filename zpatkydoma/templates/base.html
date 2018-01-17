@@ -3,7 +3,7 @@
 <html class="no-js" lang="en">
     <head>
         <title> {% block title %}
-                        {% if self.seo_title %}{{ self.seo_title }}{% else %}{{ self.title }}{% endif %}
+                        {% if self.seo_title %}{{ self.seo_title }}{% else %}{{ self.title }}{% endif %} {% if request.GET.tag|length %} | {{ request.GET.tag }}{% endif %}
                   {% endblock %}
         </title>
         <meta name="description" content="H-Code - A premium portfolio template from ThemeZaa">
@@ -46,9 +46,7 @@
     </head>
     <body>
       {% wagtailuserbar %}
-      <!-- navigation-->
-      {% include "includes/navigation.html" %}
-      <!--end of navigation-->
+
         <!-- content section -->
 
         {% block content %}
