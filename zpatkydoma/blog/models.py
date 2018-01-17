@@ -141,6 +141,6 @@ class BlogTagPage(Page):
     settings_panels = []
 
     edit_handler = TabbedInterface([
-        ObjectList(content_panels, heading='Content'),
+        ObjectList(Page.content_panels, heading='Content'),
         ObjectList(Page.promote_panels, heading='Page Configuration'),
     ])
