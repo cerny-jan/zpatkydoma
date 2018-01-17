@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+
+{% load wagtailcore_tags wagtailimages_tags%}
+
+{% block content %}
+<!-- navigation-->
+{% include "includes/navigation.html" with nav_kind="bg-white" %}
+<!--end of navigation-->
+
+        <!-- head section -->
+<section class="content-top-margin page-title bg-gray">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-md-7 col-sm-12 wow fadeInUp" data-wow-duration="300ms">
+                <!-- page title -->
+                <h1 class="black-text">Tag{% if request.GET.tag|length %} - {{ request.GET.tag }}{% endif %}</h1>
+                <!-- end page title -->
+                <!-- page title tagline -->
+                <span class="xs-display-none">Lorem Ipsum is simply dummy text of the printing.</span>
+                <!-- end title tagline -->
+                <div class="separator-line margin-three bg-black no-margin-lr sm-margin-top-three sm-margin-bottom-three no-margin-bottom xs-display-none"></div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- end head section -->
+
+<!-- content section -->
+<section class="wow fadeIn">
+    <div class="container">
+        <div class="row blog-4col">
+          {% for blogpage in blogpages %}
+            <!-- post item -->
+            <div class="col-md-3 col-sm-6 col-xs-6 blog-listing wow fadeInUp" data-wow-duration="300ms">
+                <div class="blog-image"><a href="{% pageurl blogpage %}">
+                  {% if blogpage.image %}
+                  {% image blogpage.image fill-599x449 as thumbnail %}
+                  <img src="{{ thumbnail.url }}" alt="{{ thumbnail.alt }}" />
+                  {% else %}
+                  <img src="http://placehold.it/599x449" alt=""/>
+                  {% endif %}
+                </a></div>
+                <div class="blog-details">
+                    <div class="blog-date">Posted at {{ blogpage.date_published }}</div>
+                    <div class="blog-title"><a href="{% pageurl blogpage %}">{{ blogpage.title }}</a></div>
+                    <div class="blog-short-description">{{ blogpage.intro|truncatewords_html:40|richtext }}</div>
+                </div>
+            </div>
+            <!-- end post item -->
+            {% empty %}
+              <div class="title-large text-center">No pages found with that tag.</div>
+            {% endfor %}
+
+        </div>
+    </div>
+</section>
+<!-- end content section -->
+
+
+{% endblock %}

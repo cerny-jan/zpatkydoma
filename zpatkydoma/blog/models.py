@@ -7,17 +7,19 @@ from modelcluster.contrib.taggit import ClusterTaggableManager
 
 from taggit.models import TaggedItemBase
 
-from wagtail.wagtailcore.models import Page, Orderable
+from wagtail.wagtailcore.models import Page
+from wagtail.wagtailcore.fields import StreamField, RichTextField
 from wagtail.wagtailadmin.edit_handlers import (
     FieldPanel,
     InlinePanel,
     MultiFieldPanel,
     PageChooserPanel,
     StreamFieldPanel,
+    TabbedInterface,
+    ObjectList
 )
 from wagtail.wagtailimages.edit_handlers import ImageChooserPanel
-from wagtail.wagtailcore.fields import StreamField, RichTextField
-from wagtail.wagtailcore.blocks import RichTextBlock
+
 
 from zpatkydoma.base.blocks import BaseStreamBlock
 
@@ -49,26 +51,17 @@ class BlogPage(Page):
         related_name='+',
         help_text='Landscape mode only'
     )
+
+    intro = RichTextField(features=['bold', 'italic', 'hr', 'link'])
+
+    body = StreamField(
+        BaseStreamBlock(required=False),
+        verbose_name='Page body', blank=True)
+
     date_published = models.DateField(
         'Published date', default=datetime.date.today)
 
-    intro = RichTextField( features=['bold', 'italic', 'hr', 'link'])
-
-    body = StreamField(
-    BaseStreamBlock(required=False),
-                       verbose_name='Page body', blank=True)
     tags = ClusterTaggableManager(through=BlogPageTag, blank=True)
-
-    content_panels = Page.content_panels + [
-        ImageChooserPanel('image'),
-        FieldPanel('intro', classname='full'),
-        StreamFieldPanel('body'),
-        MultiFieldPanel([
-            FieldPanel('date_published'),
-            FieldPanel('tags'),
-        ], heading='Blog information'),
-        InlinePanel('related_pages', label='Related Pages', max_num=3)
-    ]
 
     def related_pages_columns(self):
         related_pages_count = self.related_pages.all().count()
@@ -79,12 +72,27 @@ class BlogPage(Page):
         else:
             return None
 
-    # def get_context(self, request):
-    #     # Update context to include only published posts, ordered by reverse-chron
-    #     context = super(BlogPage, self).get_context(request)
-    #
-    #
-    #     return context
+    content_panels = Page.content_panels + [
+        ImageChooserPanel('image'),
+        FieldPanel('intro', classname='full'),
+        StreamFieldPanel('body')
+    ]
+
+    cofiguration_panels = Page.promote_panels + [
+        MultiFieldPanel([
+            FieldPanel('date_published'),
+            FieldPanel('tags'),
+            InlinePanel('related_pages',
+                        label='Related Pages', max_num=3)
+        ], heading='Blog Page Configuration')
+    ]
+
+    settings_panels = []
+
+    edit_handler = TabbedInterface([
+        ObjectList(content_panels, heading='Content'),
+        ObjectList(cofiguration_panels, heading='Page Configuration'),
+    ])
 
 
 class BlogIndexPage(Page):
@@ -112,3 +120,27 @@ class BlogIndexPage(Page):
     content_panels = Page.content_panels + [
         PageChooserPanel('promo_page', 'blog.BlogPage'),
     ]
+
+    settings_panels = []
+
+    edit_handler = TabbedInterface([
+        ObjectList(content_panels, heading='Content'),
+        ObjectList(Page.promote_panels, heading='Page Configuration'),
+    ])
+
+
+class BlogTagPage(Page):
+
+    def get_context(self, request):
+        tag = request.GET.get('tag')
+        blogpages = BlogPage.objects.filter(tags__name=tag)
+        context = super(BlogTagPage, self).get_context(request)
+        context['blogpages'] = blogpages
+        return context
+
+    settings_panels = []
+
+    edit_handler = TabbedInterface([
+        ObjectList(content_panels, heading='Content'),
+        ObjectList(Page.promote_panels, heading='Page Configuration'),
+    ])
