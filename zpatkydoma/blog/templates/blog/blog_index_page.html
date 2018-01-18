@@ -1,4 +1,4 @@
-
+{% extends "base.html" %}
 
 {% load wagtailcore_tags wagtailimages_tags%}
 
@@ -6,10 +6,91 @@
 
 {% block content %}
 
-  {% for post in blogpages %}
-        {% with post=post.specific %}
-            <h3><a href="{% pageurl post %}">{{ post.title }}</a></h3>
-        {% endwith %}
-    {% endfor %}
+{% include "includes/navigation.html" with nav_kind="bg-gray static-sticky" %}
+
+    <section class="bg-gray no-padding below-header">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8 wow fadeInUp" data-wow-duration="300ms">
+                  {% with promo_page=page.promo_page.specific %}
+                            <div class="blog-slider-grid">
+                                <figure>
+                                    <a href="blog-single-right-sidebar.html">
+                                      {% if promo_page.image %}
+                                      {% image promo_page.image fill-1200x840 as thumbnail %}
+                                      <img src="{{ thumbnail.url }}" alt="{{ thumbnail.alt }}" />
+                                      {% else %}
+                                      <img src="http://placehold.it/1200x840" alt=""/>
+                                      {% endif %}
+                                    </a>
+                                    <figcaption>
+                                        <h3><a href="{% pageurl promo_page %}">{{ promo_page.title }}</a></h3>
+                                        <span>Posted at  {{ promo_page.date_published }}</span>
+                                    </figcaption>
+                                </figure>
+                            </div>
+                    {% endwith %}
+                </div>
+
+                <div class="col-md-4">
+                    <div class="row">
+                      {% for blogpage in blogpages|slice:":2"%}
+                        {% with blogpage=blogpage.specific %}
+                        <div class="blog-slider-right col-md-12 col-sm-6 col-xs-12 wow fadeInUp" data-wow-duration="600ms">
+
+                            <div class="blog-slider-grid">
+                                <figure>
+                                    <a href="{% pageurl blogpage %}">
+                                      {% if blogpage.image %}
+                                      {% image blogpage.image fill-1200x828 as thumbnail %}
+                                      <img src="{{ thumbnail.url }}" alt="{{ thumbnail.alt }}" />
+                                      {% else %}
+                                      <img src="http://placehold.it/1200x828" alt=""/>
+                                      {% endif %}
+                                    </a>
+                                    <figcaption>
+                                        <h3><a href="blog-single-full-width-with-image-slider.html">{{ blogpage.title }}</a></h3>
+                                        <!-- <span>Posted by <a href="blog-masonry-2columns.html">Justin Mifsud</a></span> -->
+                                    </figcaption>
+                                </figure>
+                            </div>
+                        </div>
+                        {% endwith %}
+                      {% endfor %}
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="blog" class="bg-gray no-padding-top">
+        <div class="container" >
+            <div class="row blog-grid-listing">
+              {% for blogpage in blogpages|slice:"3:"%}
+                {% with blogpage=blogpage.specific %}
+              <div class="col-md-4 col-sm-6 col-xs-6 blog-listing wow fadeInUp" data-wow-duration="300ms">
+                  <div class="blog-image"><a href="blog-single-right-sidebar.html">
+                    {% if blogpage.image %}
+                    {% image blogpage.image fill-599x449 as thumbnail %}
+                    <img src="{{ thumbnail.url }}" alt="{{ thumbnail.alt }}" />
+                    {% else %}
+                    <img src="http://placehold.it/599x449" alt=""/>
+                    {% endif %}
+                  </a></div>
+                  <div class="blog-details" >
+                      <div class="blog-date">Posted at {{ blogpage.date_published }}</div>
+                      <div class="blog-title"><a href="blog-single-right-sidebar.html">{{ blogpage.title }}</a></div>
+                      <div class="blog-short-description height-100">{{ blogpage.intro|truncatewords_html:40|richtext }}</div>
+                      <div class="separator-line bg-black no-margin-lr"></div>
+                      <div><a href="#" class="blog-like"><i class="fa fa-heart-o"></i>Likes</a><a href="#" class="blog-share"><i class="fa fa-share-alt"></i>Share</a><a href="#" class="comment"><i class="fa fa-comment-o"></i>3 comment(s)</a></div>
+                  </div>
+              </div>
+              {% endwith %}
+            {% endfor %}
+            </div>
+    </section>
+
 
 {% endblock %}

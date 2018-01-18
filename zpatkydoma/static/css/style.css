@@ -1075,10 +1075,12 @@ footer ul.list-inline li:first-child {padding-left: 6px}
 .blog-grid-listing .blog-short-description { width: 95%}
 .blog-grid-listing .blog-listing { margin-bottom: 30px;}
 
+
 /* blog - 4col */
 .blog-4col .blog-title { min-height:60px;}
 .blog-4col .blog-title a { margin-bottom: 0}
 .blog-4col .blog-short-description { width: 100% }
+
 
 /* blog - masonry 4col */
 .blog-masonry-4col .blog-short-description {width: 100%}

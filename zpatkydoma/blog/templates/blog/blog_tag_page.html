@@ -43,7 +43,7 @@
                 <div class="blog-details">
                     <div class="blog-date">Posted at {{ blogpage.date_published }}</div>
                     <div class="blog-title"><a href="{% pageurl blogpage %}">{{ blogpage.title }}</a></div>
-                    <div class="blog-short-description">{{ blogpage.intro|truncatewords_html:40|richtext }}</div>
+                    <div class="blog-short-description">{{ blogpage.intro|truncatewords_html:30|richtext }}</div>
                 </div>
             </div>
             <!-- end post item -->

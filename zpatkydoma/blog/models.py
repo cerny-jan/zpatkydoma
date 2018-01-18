@@ -110,9 +110,9 @@ class BlogIndexPage(Page):
         # Update context to include only published posts, ordered by reverse-chron
         context = super(BlogIndexPage, self).get_context(request)
         blogpages = self.get_children().live().order_by('-first_published_at')
-        # if not self.promo_page:
-        #     self.promo_page = blogpages.first()
-        # blogpages = blogpages.not_page(self.promo_page)
+        if not self.promo_page:
+            self.promo_page = blogpages.first()
+        blogpages = blogpages.not_page(self.promo_page)
         context['blogpages'] = blogpages
 
         return context
