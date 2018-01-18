@@ -94,39 +94,26 @@ class BlogPage(Page):
         ObjectList(cofiguration_panels, heading='Page Configuration'),
     ])
 
+    parent_page_types = ['blog.BlogIndexPage']
+
 
 class BlogIndexPage(Page):
-    promo_page = models.ForeignKey(
-        'wagtailcore.Page',
-        null=True,
-        blank=True,
-        on_delete=models.SET_NULL,
-        related_name='+',
-        help_text='Promo page that should be on the top',
-        verbose_name='Promoted Page'
-    )
 
     def get_context(self, request):
         # Update context to include only published posts, ordered by reverse-chron
         context = super(BlogIndexPage, self).get_context(request)
         blogpages = self.get_children().live().order_by('-first_published_at')
-        if not self.promo_page:
-            self.promo_page = blogpages.first()
-        blogpages = blogpages.not_page(self.promo_page)
         context['blogpages'] = blogpages
-
         return context
-
-    content_panels = Page.content_panels + [
-        PageChooserPanel('promo_page', 'blog.BlogPage'),
-    ]
 
     settings_panels = []
 
     edit_handler = TabbedInterface([
-        ObjectList(content_panels, heading='Content'),
+        ObjectList( Page.content_panels, heading='Content'),
         ObjectList(Page.promote_panels, heading='Page Configuration'),
     ])
+
+    subpage_types = ['blog.BlogPage']
 
 
 class BlogTagPage(Page):
@@ -144,3 +131,5 @@ class BlogTagPage(Page):
         ObjectList(Page.content_panels, heading='Content'),
         ObjectList(Page.promote_panels, heading='Page Configuration'),
     ])
+
+    subpage_types = ['blog.BlogPage']
