@@ -1,4 +1,4 @@
-{% load static %}
+{% load static navigation_tags wagtailcore_tags %}
 <nav class="navbar navbar-default navbar-fixed-top nav-transparent overlay-nav sticky-nav nav-border-bottom {{nav_kind}}" role="navigation">
     <div class="container">
         <div class="row">
@@ -9,13 +9,10 @@
             <div class="col-md-9 text-right">
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav navbar-right">
-                        <li><a href="#slider" class="inner-link">Home</a> </li>
-                        <li><a href="#features" class="inner-link">About</a> </li>
-                        <li><a href="#animated-tab" class="inner-link">Services</a> </li>
-                        <li><a href="#portfolio" class="inner-link">Work</a></li>
-                        <li><a href="#blog" class="inner-link">Blog</a></li>
-                        <li><a href="#contact-us" class="inner-link">Contact</a></li>
-                        <li><a href="index.html" class="inner-link">Demos</a></li>
+                      {% top_menu calling_page=calling_page as menu %}
+                      {% for item in menu.menuitems %}
+                      <li><a href="{% pageurl item %}" class="inner-link">{{ item.title }}</a> </li>
+                      {% endfor %}
                     </ul>
                 </div>
             </div>
