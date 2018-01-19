@@ -4,7 +4,7 @@
 
 {% block content %}
 <!-- navigation-->
-{% include "includes/navigation.html" with nav_kind="nav-white" %}
+{% include "includes/navigation.html" with nav_kind="nav-white nav-border-bottom" %}
 <!--end of navigation-->
 <section class="wow fadeIn blog-single-full-width-header fix-background parallax-fix">
     {% if page.image %}
@@ -51,22 +51,38 @@
 
       {{ self.body }}
 
-<section class="wow fadeIn blog-details-text no-padding-top">
+{% if page.tags.all %}
+<section class="wow fadeIn blog-details-text no-padding padding-six-bottom">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8 col-sm-10 center-col text-center ">
+      <div class="blog-date  margin-six no-margin-bottom border-top">
+        <h5 class="widget-title margin-two no-margin-top">Tags</h5>
+        {% for tag in page.tags.all %}
+        <a href="{% slugurl 'tags' %}?tag={{ tag }}">{{ tag }}</a>{% if not forloop.last %}, {% endif %}
+        {% endfor %}
+      </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endif %}
+
+<section class="wow fadeIn blog-details-text no-padding-top padding-six-bottom">
 <div class="container">
         <div class="row">
             <div class="col-md-8 col-sm-10 center-col text-center">
                 <div class="text-center margin-ten no-margin-bottom">
-                    <!-- social icon -->
                     <a class="btn social-icon social-icon-large button" href="#"><i class="fa fa-facebook"></i></a>
                     <a class="btn social-icon social-icon-large button" href="#"><i class="fa fa-twitter"></i></a>
                     <a class="btn social-icon social-icon-large button" href="#"><i class="fa fa-google-plus"></i></a>
-                    <a class="btn social-icon social-icon-large button" href="#"><i class="fa fa-envelope"></i></a>
-                    <!-- end social icon -->
+                    <a class="btn social-icon social-icon-large button" href="mailto:?subject={{page.get_site.site_name}} - {{page.title}}&amp;body={{page.full_url}}"><i class="fa fa-envelope"></i></a>
                 </div>
             </div>
         </div>
     </div>
 </section>
+
 
 {% if page.related_pages_columns %}
 <section class="wow fadeIn border-top">

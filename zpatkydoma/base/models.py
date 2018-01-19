@@ -4,18 +4,15 @@ from django.db import models
 from wagtail.wagtailcore.models import Page
 from wagtail.wagtailcore.fields import StreamField
 from wagtail.wagtailadmin.edit_handlers import (
-    FieldPanel,
     StreamFieldPanel,
     PageChooserPanel,
     TabbedInterface,
     ObjectList
 )
-from wagtail.wagtailcore import blocks
-from wagtail.wagtailimages.blocks import ImageChooserBlock
 
 
 from .blocks import BaseStreamBlock
-from zpatkydoma.blog.models import BlogPage, BlogIndexPage
+from zpatkydoma.blog.models import BlogPage
 
 
 class StandardPage(Page):
@@ -40,7 +37,7 @@ class HomePage(Page):
 
     def get_context(self, request):
         context = super(HomePage, self).get_context(request)
-        blogpages = BlogPage.objects.live().order_by('-first_published_at')
+        blogpages = BlogPage.objects.live().order_by('-date_published')
         if not self.promo_page:
             self.promo_page = blogpages.first()
         blogpages = blogpages.not_page(self.promo_page) if blogpages else blogpages

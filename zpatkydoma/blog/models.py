@@ -95,6 +95,7 @@ class BlogPage(Page):
     ])
 
     parent_page_types = ['blog.BlogIndexPage']
+    subpage_types = []
 
 
 class BlogIndexPage(Page):

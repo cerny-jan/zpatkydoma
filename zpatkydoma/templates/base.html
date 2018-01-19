@@ -6,7 +6,7 @@
                         {% if self.seo_title %}{{ self.seo_title }}{% else %}{{ self.title }}{% endif %} {% if request.GET.tag|length %} | {{ request.GET.tag }}{% endif %}
                   {% endblock %}
         </title>
-        <meta name="description" content="{% if self.seo_description %}{{ self.seo_description }}{% endif %}">
+        <meta name="description" content="{% if self.search_description %}{{ self.search_description }}{% endif %}">
         <meta name="keywords" content="">
         <meta charset="utf-8">
         <meta name="author" content="zpatkydoma.cz">
@@ -62,6 +62,8 @@
         <script type="text/javascript" src="{% static 'js/smooth-scroll.js' %}"></script>
         <!-- animation -->
         <script type="text/javascript" src="{% static 'js/wow.min.js' %}"></script>
+        <!-- page scroll -->
+        <script type="text/javascript" src="{% static 'js/page-scroll.js' %}"></script></script>
         <!-- parallax -->
         <script type="text/javascript" src="{% static 'js/jquery.parallax-1.1.3.js' %}"></script>
         <!-- owl slider  -->
