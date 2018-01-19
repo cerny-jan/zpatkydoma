@@ -4,12 +4,13 @@ from .base import *
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
-
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'krzgjv02(+gu(zg(qs$x+y6u3ouzdgp0%@gg@&@7y65x^e=k2u'
 
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+BASE_URL = 'http://localhost:8000'
 
 INSTALLED_APPS += ['debug_toolbar']
 

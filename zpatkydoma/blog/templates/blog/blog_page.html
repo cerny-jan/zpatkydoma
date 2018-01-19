@@ -2,6 +2,43 @@
 
 {% load wagtailcore_tags wagtailimages_tags %}
 
+{% block extra_meta_tags %}
+      {% image page.image fill-1920x1080 as parallax_image %}
+      <meta property="og:url" content="{{page.full_url}}" />
+      <meta property="og:type" content="article" />
+      <meta property="og:title" content="{{page.title}}" />
+      <meta property="og:description" content="{{page.search_description}}" />
+      <meta property="og:image" content="http://{{page.get_site.hostname}}{{parallax_image.url}}" />
+      <meta property="og:locale" content="cs_CZ" />
+      <script type="application/ld+json">
+        {
+          "@context": "http://schema.org",
+          "@type": "BlogPosting",
+          "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https://{{page.get_site.hostname}}"
+          },
+          "headline": "{{page.title}}",
+          "image": "http://{{page.get_site.hostname}}{{parallax_image.url}}",
+          "datePublished": "{{page.date_published|date:"Y-m-d" }}",
+          "dateModified": "{{page.last_published_at|date:"Y-m-d" }}",
+          "author": {
+            "@type": "Organization",
+            "name": "{{page.get_site.site_name}}"
+          },
+          "publisher": {
+            "@type": "Organization",
+            "name": "{{page.get_site.site_name}}",
+            "logo": {
+              "@type": "ImageObject",
+              "url": "https://google.com/logo.jpg"
+            }
+          },
+          "description": "{{page.search_description}}"
+        }
+      </script>
+{% endblock %}
+
 {% block content %}
 <!-- navigation-->
 {% include "includes/navigation.html" with nav_kind="nav-white nav-border-bottom" %}
@@ -9,8 +46,8 @@
 <section class="wow fadeIn blog-single-full-width-header fix-background parallax-fix">
     {% if page.image %}
     {% image page.image fill-1920x1080 as parallax_image %}
-    <img class="parallax-background-img" src="{{ parallax_image.url }}"
-         alt="{{ parallax_image.alt }}"  />
+    <img class="parallax-background-img" src="{{parallax_image.url}}"
+         alt="{{parallax_image.alt}}"  />
     {% else %}
     <img class="parallax-background-img" src="http://placehold.it/1920x1080" alt="" />
     {% endif %}
@@ -19,14 +56,14 @@
         <div class="row">
             <div class="col-md-7 col-sm-8 position-relative full-width-headline text-center center-col">
                 <!-- post title  -->
-                <h2 class="white-text"><span>{{ page.title }}</span></h2>
+                <h2 class="white-text"><span>{{page.title}}</span></h2>
                 <!-- end post title  -->
                 <!-- post date and categories  -->
-                <div class="blog-date posted-by">{{ page.date_published }}
+                <div class="blog-date posted-by">{{page.date_published}}
                   {% if  page.tags.all %}
                     |
                     {% for tag in page.tags.all %}
-                    <a href="{% slugurl 'tags' %}?tag={{ tag }}" class="white-text">{{ tag }}</a>{% if not forloop.last %}, {% endif %}
+                    <a href="{% slugurl 'tags' %}?tag={{tag}}" class="white-text">{{tag}}</a>{% if not forloop.last %}, {% endif %}
                     {% endfor %}
                   {% endif %}
                   </div>
@@ -73,10 +110,10 @@
         <div class="row">
             <div class="col-md-8 col-sm-10 center-col text-center">
                 <div class="text-center margin-ten no-margin-bottom">
-                    <a class="btn social-icon social-icon-large button" href="#"><i class="fa fa-facebook"></i></a>
-                    <a class="btn social-icon social-icon-large button" href="#"><i class="fa fa-twitter"></i></a>
-                    <a class="btn social-icon social-icon-large button" href="#"><i class="fa fa-google-plus"></i></a>
-                    <a class="btn social-icon social-icon-large button" href="mailto:?subject={{page.get_site.site_name}} - {{page.title}}&amp;body={{page.full_url}}"><i class="fa fa-envelope"></i></a>
+                    <a class="btn social-icon social-icon-large button" target="_blank" href="https://facebook.com/sharer.php?u={{page.full_url|urlencode}}"><i class="fa fa-facebook"></i></a>
+                    <a class="btn social-icon social-icon-large button" target="_blank" href="https://twitter.com/intent/tweet?text={{page.title|urlencode}}&url={{page.full_url|urlencode}}&hashtags={{page.get_site.site_name|urlencode}}"><i class="fa fa-twitter"></i></a>
+                    <a class="btn social-icon social-icon-large button" target="_blank" href="https://plus.google.com/share?url={{page.full_url|urlencode}}"><i class="fa fa-google-plus"></i></a>
+                    <a class="btn social-icon social-icon-large button" target="_blank" href="mailto:?subject={{page.get_site.site_name}} - {{page.title}}&amp;body={{page.full_url}}"><i class="fa fa-envelope"></i></a>
                 </div>
             </div>
         </div>

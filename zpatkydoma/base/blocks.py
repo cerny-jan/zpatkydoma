@@ -68,12 +68,12 @@ class BaseStreamBlock(StreamBlock):
                                        label='Landscape Images',
                                        icon='image',
                                        template='blocks/landscape_images_block.html',
-                                       help_text='Inserts 2 images on the line, select even number of images')
+                                       help_text='Add even number of images (it inserts 2 images on the line)')
     image_slider_block = ListBlock(SimpleImageBlock(),
                                    label='Image Slider',
                                    icon='image',
                                    template='blocks/image_slider_block.html',
-                                   help_text='Full width image slider, select at least 4 images')
+                                   help_text='Full width image slider, add at least 4 images')
     block_quote = QuoteBlock()
     embed_block = EmbedBlock(
         help_text='Insert an embed URL e.g https://www.youtube.com/embed/SGJFWirQ3ks',
