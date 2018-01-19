@@ -21,7 +21,7 @@ class ImageBlock(StructBlock):
         label = 'Image'
 
 
-class ImageSliderBlock(StructBlock):
+class SimpleImageBlock(StructBlock):
     image = ImageChooserBlock(required=False)
 
     class Meta:
@@ -55,7 +55,6 @@ class HeadingBlock(StructBlock):
         label = 'Heading'
 
 
-
 class BaseStreamBlock(StreamBlock):
     heading_block = HeadingBlock()
     paragraph_block = RichTextBlock(
@@ -65,15 +64,23 @@ class BaseStreamBlock(StreamBlock):
         label='Text'
     )
     image_block = ImageBlock()
-    image_slider_block = ListBlock(ImageSliderBlock(),
-        label='Image Slider', icon='image', template='blocks/image_slider_block.html', help_text='Full width image slider, select at least 4 images')
-    block_quote=QuoteBlock()
-    embed_block=EmbedBlock(
-        help_text = 'Insert an embed URL e.g https://www.youtube.com/embed/SGJFWirQ3ks',
-        icon = 'fa-s15',
-        template = 'blocks/embed_block.html')
-    raw_html=RawHTMLBlock(
-        required = False,
-        template = 'blocks/raw_html_block.html',
-        label = 'Raw HTML',
-        help_text = 'A text area for entering raw HTML which will be rendered unescaped')
+    landscape_images_block = ListBlock(SimpleImageBlock(),
+                                       label='Landscape Images',
+                                       icon='image',
+                                       template='blocks/landscape_images_block.html',
+                                       help_text='Inserts 2 images on the line, select even number of images')
+    image_slider_block = ListBlock(SimpleImageBlock(),
+                                   label='Image Slider',
+                                   icon='image',
+                                   template='blocks/image_slider_block.html',
+                                   help_text='Full width image slider, select at least 4 images')
+    block_quote = QuoteBlock()
+    embed_block = EmbedBlock(
+        help_text='Insert an embed URL e.g https://www.youtube.com/embed/SGJFWirQ3ks',
+        icon='fa-s15',
+        template='blocks/embed_block.html')
+    raw_html = RawHTMLBlock(
+        required=False,
+        template='blocks/raw_html_block.html',
+        label='Raw HTML',
+        help_text='A text area for entering raw HTML which will be rendered unescaped')

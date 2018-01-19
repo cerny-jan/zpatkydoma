@@ -1,0 +1,14 @@
+{% load wagtailimages_tags %}
+
+<section class="wow fadeIn blog-details-text no-padding">
+  <div class="container">
+    <div class="row">
+      {% for item in self %}
+      {% image item.image fill-1200x800 as big_image %}
+      <div class="col-md-6 col-sm-6 wow fadeIn animated ">
+        <img class="margin-eight-bottom" src="{{ big_image.url }}" alt="{{ big_image.alt }}" />
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
