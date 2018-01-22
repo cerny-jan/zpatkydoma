@@ -133,7 +133,7 @@ h1.page-title { margin:95px auto 0; width: 100%; }
 .title-large{ font-size:28px !important; line-height:41px !important;}
 .title-extra-large{ font-size:35px !important; line-height:43px !important;}
 
-.text-extra-large .rich-text p { font-size: 16px !important; line-height: 28px !important; font-weight: 100; }
+.text-extra-large .rich-text p { font-size: 16px !important; line-height: 28px !important; font-weight: 100}
 
 
 /* text color */
@@ -465,6 +465,10 @@ nav .container{ display: table-cell; vertical-align: middle; height: 80px; posit
 .menu-new{ background:#c11f1f; padding:0 6px 1px 5px; font-size:10px; color:#fff; margin-left:5px;}
 .megamenu-right-icon { display: none !important; }
 
+.nav-white.sticky-nav li a.active { border-bottom-color: #fff}
+.nav-white.sticky-nav.shrink-nav li a.active { border-bottom-color: #000}
+
+
 /*  simple dropdown menu    */
 .simple-dropdown-menu ul { padding: 0 !important; }
 .simple-dropdown-menu ul li { }
@@ -724,6 +728,9 @@ footer ul.list-inline li:first-child {padding-left: 6px}
 .copyright { font-size: 11px; text-transform:uppercase; color: #888888 }
 .footer-logo img { max-width: 100px;}
 .footer-bottom { position: relative; top:1px}
+
+.copyright { font-size: 10px; color: #888888; text-transform:uppercase}
+.copyright a { font-size: 10px; color: #888888 }
 
 /* ===================================
     Owl carousel
@@ -1179,7 +1186,7 @@ footer ul.list-inline li:first-child {padding-left: 6px}
 .blog-single-full-width-form input[type="text"], .blog-single-full-width-form textarea { border:none; border-bottom:1px solid #dfdfdf; padding: 10px 0}
 .blog-single-full-width-form input[type="text"]:focus, .blog-single-full-width-form textarea:focus { border-color: #000}
 
-.text-large-full-width .rich-text p { font-size:22px !important; font-weight: 100; line-height: 35px !important}
+.text-large-full-width .rich-text p { font-size:22px !important; font-weight: 100; line-height: 35px !important; text-indent: 20px}
 
 
 /* blog single full width with image slider */
@@ -1256,7 +1263,7 @@ footer ul.list-inline li:first-child {padding-left: 6px}
 .grid figure:hover .gallery-img {background-color:#000; }
 .no-hover figure:hover .gallery-img {background-color: transparent !important; }
 .no-hover figure:hover img { opacity: 1 !important; -ms-transform: none; -webkit-transform: none;  transform: none; }
-figure:hover img { -ms-transform: scale(1.1,1.1); -webkit-transform: scale(1.1,1.1);  transform: scale(1.1,1.1); transition: all .3s ease; -webkit-transition: all .3s ease; -moz-transition: all .3s ease; opacity:0.15;  cursor:url("../images/icon-zoom-white.png"), pointer; }
+.blog-slider-grid figure:hover img { -ms-transform: scale(1.1,1.1); -webkit-transform: scale(1.1,1.1);  transform: scale(1.1,1.1); transition: all .3s ease; -webkit-transition: all .3s ease; -moz-transition: all .3s ease; opacity:0.15;  cursor:url("../images/icon-zoom-white.png"), pointer; }
 .mfp-figure figure:hover img { cursor: pointer}
 .grid figure:hover figcaption { opacity: 1; transition: all .3s ease; -webkit-transition: all .3s ease; -moz-transition: all .3s ease;}
 

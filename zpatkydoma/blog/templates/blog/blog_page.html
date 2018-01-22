@@ -63,7 +63,7 @@
                   {% if  page.tags.all %}
                     |
                     {% for tag in page.tags.all %}
-                    <a href="{% slugurl 'tags' %}?tag={{tag}}" class="white-text">{{tag}}</a>{% if not forloop.last %}, {% endif %}
+                    <a href="{% slugurl 'tags' %}?tag={{tag.slug}}" class="white-text">{{tag}}</a>{% if not forloop.last %}, {% endif %}
                     {% endfor %}
                   {% endif %}
                   </div>
