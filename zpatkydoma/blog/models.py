@@ -124,6 +124,8 @@ class BlogPage(Page):
 
 class BlogListPage(Page):
 
+    sub_title = models.CharField(blank=True, max_length=255)
+
     posts_per_page = models.IntegerField(validators=[MinValueValidator(5), MaxValueValidator(
         30)], default=25, help_text='Number of posts shown per page (min  5, max 30)')
 
@@ -151,8 +153,12 @@ class BlogListPage(Page):
         FieldPanel('posts_per_page')
     ]
 
+    content_panels = Page.content_panels + [
+        FieldPanel('sub_title', classname='full')
+    ]
+
     edit_handler = TabbedInterface([
-        ObjectList(Page.content_panels, heading='Content'),
+        ObjectList(content_panels, heading='Content'),
         ObjectList(cofiguration_panels, heading='Page Configuration'),
     ])
 

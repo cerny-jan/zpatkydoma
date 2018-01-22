@@ -62,13 +62,13 @@
         </div>
     </section>
 
-    <section id="blog" class="bg-gray no-padding-top">
+    <section class="bg-gray no-padding-top">
         <div class="container" >
             <div class="row blog-grid-listing">
               {% for blogpage in blogpages|slice:"2:"%}
                 {% with blogpage=blogpage.specific %}
               <div class="col-md-4 col-sm-6 col-xs-6 blog-listing wow fadeInUp" data-wow-duration="300ms">
-                  <div class="blog-image"><a href="blog-single-right-sidebar.html">
+                  <div class="blog-image"><a href="{% pageurl blogpage %}">
                     {% if blogpage.image %}
                     {% image blogpage.image fill-599x449 as thumbnail %}
                     <img src="{{ thumbnail.url }}" alt="{{ thumbnail.alt }}" />
@@ -78,7 +78,7 @@
                   </a></div>
                   <div class="blog-details" >
                       <div class="blog-date">Posted at {{ blogpage.date_published }}</div>
-                      <div class="blog-title"><a href="blog-single-right-sidebar.html">{{ blogpage.title }}</a></div>
+                      <div class="blog-title"><a href="{% pageurl blogpage %}">{{ blogpage.title }}</a></div>
                       <div class="blog-short-description height-100">{{ blogpage.intro|truncatechars_html:250|richtext }}</div>
                       <div class="separator-line bg-black no-margin-lr"></div>
                       <!-- <div><a href="#" class="blog-like"><i class="fa fa-heart-o"></i>Likes</a><a href="#" class="blog-share"><i class="fa fa-share-alt"></i>Share</a><a href="#" class="comment"><i class="fa fa-comment-o"></i>3 comment(s)</a></div> -->
@@ -88,7 +88,8 @@
             {% endfor %}
             </div>
       </section>
-      <section id="blog" class="bg-gray no-padding-top padding-six-bottom">
+      <section class="bg-gray no-padding-top padding-six-bottom">
+        <div class="container">
             <div class="row">
                 <div class="col-md-12 col-sm-12 col-xs-12 wow fadeInUp">
                     <div class="pagination">
@@ -103,6 +104,7 @@
                         {% endif %}
                     </div>
                 </div>
+              </div>
     </section>
 
 {% endblock %}

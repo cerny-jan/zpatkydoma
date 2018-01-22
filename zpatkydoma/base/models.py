@@ -25,20 +25,29 @@ class SocialMediaSettings(BaseSetting):
     facebook = models.URLField(
         help_text='Facebook page URL', blank=True)
     twitter = models.CharField(
-        help_text='Twitter username', blank=True, max_length=255,)
+        help_text='Twitter username without @', blank=True, max_length=255)
     email = models.EmailField(
         help_text='Email address', blank=True)
-    instagram = models.URLField(
-        help_text='Instagram username', blank=True)
+    instagram = models.CharField(
+        help_text='Instagram username', blank=True, max_length=255)
 
 
 class StandardPage(Page):
 
+    sub_title = models.CharField(blank=True, max_length=255)
+
     body = StreamField(BaseStreamBlock(required=False), blank=True)
 
+
     content_panels = Page.content_panels + [
+        FieldPanel('sub_title', classname='full'),
         StreamFieldPanel('body')
     ]
+
+    edit_handler = TabbedInterface([
+        ObjectList(content_panels, heading='Content'),
+        ObjectList(Page.promote_panels, heading='Page Configuration'),
+    ])
 
 
 class HomePage(Page):
