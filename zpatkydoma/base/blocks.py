@@ -57,6 +57,12 @@ class HeadingBlock(StructBlock):
 
 class BaseStreamBlock(StreamBlock):
     heading_block = HeadingBlock()
+    indented_paragraph_block = RichTextBlock(
+            icon="fa-paragraph",
+            template="blocks/indented_paragraph_block.html",
+            features=['ol', 'ul', 'bold', 'italic', 'hr', 'link'],
+            label='Indented Text'
+        )
     paragraph_block = RichTextBlock(
         icon="fa-paragraph",
         template="blocks/paragraph_block.html",
