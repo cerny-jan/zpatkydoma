@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+
+{% load wagtailcore_tags wagtailimages_tags %}
+
+{% block content %}
+
+{% include "includes/navigation.html" with nav_kind="bg-white nav-border-bottom" %}
+
+    <section class="content-top-margin page-title bg-gray">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 col-md-7 col-sm-12 wow fadeInUp" data-wow-duration="300ms">
+            <h1 class="black-text">{{page.title}}</h1>
+            <span class="xs-display-none">Lorem Ipsum is simply dummy text of the printing.</span>
+            <div class="separator-line margin-three bg-black no-margin-lr sm-margin-top-three sm-margin-bottom-three no-margin-bottom xs-display-none"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="wow fadeIn">
+      <div class="container">
+        <div class="row blog-3col">
+          {% for blogpage in blogpages %} {% with blogpage=blogpage.specific %}
+          <div class="col-md-4 col-sm-6 col-xs-6 blog-listing wow fadeInUp" data-wow-duration="300ms">
+            <div class="blog-image"><a href="{% pageurl blogpage %}">
+                            {% if blogpage.image %}
+                            {% image blogpage.image fill-599x449 as thumbnail %}
+                            <img src="{{ thumbnail.url }}" alt="{{ thumbnail.alt }}" />
+                            {% else %}
+                            <img src="http://placehold.it/599x449" alt=""/>
+                            {% endif %}
+                          </a></div>
+            <div class="blog-details">
+              <div class="blog-date">Posted at {{ blogpage.date_published }}</div>
+              <div class="blog-title"><a href="{% pageurl blogpage %}">{{ blogpage.title }}</a></div>
+              <div class="blog-short-description">{{ blogpage.intro|truncatechars_html:250|richtext }}</div>
+              <div class="separator-line bg-black no-margin-lr"></div>
+              <!-- <div><a href="#" class="blog-like"><i class="fa fa-heart-o"></i>Likes</a><a href="#" class="blog-share"><i class="fa fa-share-alt"></i>Share</a><a href="#" class="comment"><i class="fa fa-comment-o"></i>3 comment(s)</a></div> -->
+            </div>
+          </div>
+          {% endwith %} {% empty %}
+          <div class="title-large text-center margin-eight">No pages found in this section.</div>
+          {% endfor %}
+        </div>
+      </div>
+    </section>
+
+
+
+{% endblock %}

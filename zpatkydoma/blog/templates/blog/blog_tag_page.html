@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 
-{% load wagtailcore_tags wagtailimages_tags%}
+{% load wagtailcore_tags wagtailimages_tags %}
 
 {% block content %}
 
@@ -22,9 +22,9 @@
 
 <section class="wow fadeIn">
     <div class="container">
-        <div class="row blog-4col">
+        <div class="row blog-3col">
           {% for blogpage in blogpages %}
-            <div class="col-md-3 col-sm-6 col-xs-6 blog-listing wow fadeInUp" data-wow-duration="300ms">
+            <div class="col-md-4 col-sm-6 col-xs-6 blog-listing wow fadeInUp" data-wow-duration="300ms">
                 <div class="blog-image"><a href="{% pageurl blogpage %}">
                   {% if blogpage.image %}
                   {% image blogpage.image fill-599x449 as thumbnail %}

@@ -1,78 +1,57 @@
-{% load static %}
+{% load static navigation_tags wagtailcore_tags %}
 <footer>
     <div class=" bg-white footer-top">
     </div>
-    <div class="container footer-middle">
-        <div class="row">
+    <div class="container footer-middle no-padding-top">
+        <!-- <div class="row">
             <div class="col-md-3 col-sm-3 footer-link1 xs-display-none">
-                <!-- headline -->
                 <h5>About Us</h5>
-                <!-- end headline -->
-                <!-- text -->
                 <p class="footer-text">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
-                <!-- end text -->
             </div>
             <div class="col-md-2 col-sm-3 col-xs-4 footer-link2 col-md-offset-3">
-                <!-- headline -->
                 <h5>Company</h5>
-                <!-- end headline -->
-                <!-- link -->
                 <ul>
                     <li><a href="about-us.html">About Company</a></li>
                     <li><a href="about-us.html">What We Do</a></li>
                     <li><a href="about-us.html">What We Think</a></li>
                     <li><a href="careers.html">Careers</a></li>
                 </ul>
-                <!-- end link -->
             </div>
             <div class="col-md-2 col-sm-3 col-xs-4  footer-link3">
-                <!-- headline -->
                 <h5>Services</h5>
-                <!-- end headline -->
-                <!-- link -->
                 <ul>
                     <li><a href="services.html">Web Development</a></li>
                     <li><a href="services.html">Graphic Design</a></li>
                     <li><a href="services.html">Copywriting</a></li>
                     <li><a href="services.html">Online Marketing</a></li>
                 </ul>
-                <!-- end link -->
             </div>
             <div class="col-md-2 col-sm-3 col-xs-4  footer-link4">
-                <!-- headline -->
                 <h5>Introduction</h5>
-                <!-- end headline -->
-                <!-- link -->
                 <ul>
                     <li><a href="team-members.html">Team Members</a></li>
                     <li><a href="testimonials.html">Testimonials</a></li>
                     <li><a href="our-clients.html">Our Clients</a></li>
                     <li><a href="careers.html">Careers With Us</a></li>
                 </ul>
-                <!-- end link -->
             </div>
-        </div>
-        <div class="wide-separator-line bg-mid-gray no-margin-lr margin-three no-margin-bottom"></div>
+        </div> -->
+        <!-- <div class="wide-separator-line bg-mid-gray no-margin-lr margin-three no-margin-bottom"></div> -->
         <div class="row margin-four no-margin-bottom">
             <div class="col-md-6 col-sm-12 sm-text-center sm-margin-bottom-four">
-                <!-- link -->
-                <ul class="list-inline footer-link text-uppercase">
-                    <li><a href="about-us.html">About</a></li>
-                    <li><a href="blog-masonry-3columns.html">Blog</a></li>
-                    <li><a href="careers.html">Careers</a></li>
-                    <li><a href="testimonials.html">Testimonials</a></li>
-                    <li><a href="contact-us.html">Contact</a></li>
-                </ul>
-                <!-- end link -->
+                  <ul class="list-inline footer-link text-uppercase">
+                    {% menu calling_page=self as menu %}
+                    {% for item in menu.menuitems %}
+                    <li><a href="{% pageurl item %}">{{ item.title }}</a> </li>
+                    {% endfor %}
+                  </ul>
             </div>
             <div class="col-md-6 col-sm-12 footer-social text-right sm-text-center">
                 <!-- social media link -->
-                <a target="_blank" href="https://www.facebook.com/"><i class="fa fa-facebook"></i></a>
-                <a target="_blank" href="https://twitter.com/"><i class="fa fa-twitter"></i></a>
-                <a target="_blank" href="https://plus.google.com"><i class="fa fa-google-plus"></i></a>
-                <a target="_blank" href="https://dribbble.com/"><i class="fa fa-dribbble"></i></a>
-                <a target="_blank" href="https://www.youtube.com/"><i class="fa fa-youtube"></i></a>
-                <a target="_blank" href="https://www.linkedin.com/"><i class="fa fa-linkedin"></i></a>
+                <a target="_blank" rel="noopener" href=""><i class="fa fa-facebook"></i></a>
+                <a target="_blank" rel="noopener" href=""><i class="fa fa-twitter"></i></a>
+                <a target="_blank" rel="noopener" href=""><i class="fa fa-envelope"></i></a>
+                <a target="_blank" rel="noopener" href=""><i class="fa fa-instagram "></i></a>
                 <!-- end social media link -->
             </div>
         </div>

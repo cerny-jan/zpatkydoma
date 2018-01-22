@@ -1067,6 +1067,8 @@ footer ul.list-inline li:first-child {padding-left: 6px}
 .blog-slider-grid figure:hover img { -ms-transform: scale(1.1,1.1); -webkit-transform: scale(1.1,1.1);  transform: scale(1.1,1.1); transition: all .3s ease; -webkit-transition: all .3s ease; -moz-transition: all .3s ease; opacity:0.8;  }
 .blog-slider-right { margin-bottom: 28px;}
 
+.blog-slider-grid figcaption{ position: absolute; z-index: 2; padding: 20px; text-align: center; width: 100%; bottom: 0; display: block; background: rgba(0,0,0,0.7) }
+
 /* blog - masonry */
 .blog-grid-listing { padding-top: 0; }
 .blog-grid-listing .blog-details { padding: 0 30px 30px; background-color:#fff}

@@ -51,7 +51,7 @@
     {% else %}
     <img class="parallax-background-img" src="http://placehold.it/1920x1080" alt="" />
     {% endif %}
-    <div class="opacity-medium bg-black"></div>
+    <div class="opacity-light bg-black"></div>
     <div class="container">
         <div class="row">
             <div class="col-md-7 col-sm-8 position-relative full-width-headline text-center center-col">
@@ -77,7 +77,7 @@
 <section class="wow fadeIn blog-single-full-width-text blog-details-text padding-five">
     <div class="container">
         <div class="row">
-            <div class="col-md-8 col-sm-10 center-col text-center">
+            <div class="col-md-8 col-sm-10 center-col text-left">
               <!-- post details highlight text -->
               <span class="text-large-full-width">{{ page.intro|richtext }}</span>
               <!-- end post details highlight text -->
@@ -110,10 +110,10 @@
         <div class="row">
             <div class="col-md-8 col-sm-10 center-col text-center">
                 <div class="text-center margin-ten no-margin-bottom">
-                    <a class="btn social-icon social-icon-large button" target="_blank" href="https://facebook.com/sharer.php?u={{page.full_url|urlencode}}"><i class="fa fa-facebook"></i></a>
-                    <a class="btn social-icon social-icon-large button" target="_blank" href="https://twitter.com/intent/tweet?text={{page.title|urlencode}}&url={{page.full_url|urlencode}}&hashtags={{page.get_site.site_name|urlencode}}"><i class="fa fa-twitter"></i></a>
-                    <a class="btn social-icon social-icon-large button" target="_blank" href="https://plus.google.com/share?url={{page.full_url|urlencode}}"><i class="fa fa-google-plus"></i></a>
-                    <a class="btn social-icon social-icon-large button" target="_blank" href="mailto:?subject={{page.get_site.site_name}} - {{page.title}}&amp;body={{page.full_url}}"><i class="fa fa-envelope"></i></a>
+                    <a class="btn social-icon social-icon-large button" target="_blank"  rel="noopener" href="https://facebook.com/sharer.php?u={{page.full_url|urlencode}}"><i class="fa fa-facebook"></i></a>
+                    <a class="btn social-icon social-icon-large button" target="_blank"  rel="noopener" href="https://twitter.com/intent/tweet?text={{page.title|urlencode}}&url={{page.full_url|urlencode}}&hashtags={{page.get_site.site_name|urlencode}}"><i class="fa fa-twitter"></i></a>
+                    <a class="btn social-icon social-icon-large button" target="_blank"  rel="noopener" href="https://plus.google.com/share?url={{page.full_url|urlencode}}"><i class="fa fa-google-plus"></i></a>
+                    <a class="btn social-icon social-icon-large button" target="_blank"  rel="noopener" href="mailto:?subject={{page.get_site.site_name}} - {{page.title}}&amp;body={{page.full_url}}"><i class="fa fa-envelope"></i></a>
                 </div>
             </div>
         </div>
@@ -144,8 +144,8 @@
                   <div class="blog-details no-padding-left-right no-padding-bottom">
                       <div class="blog-date">Posted at {{ related_page.date_published }}</div>
                       <div class="blog-title"><a href="{% pageurl related_page %}">{{ related_page.title }}</a></div>
-                      <div class="blog-short-description">{{ related_page.intro|truncatewords_html:25|richtext }}</div>
-                      <!-- <div class="separator-line bg-black no-margin-lr"></div> -->
+                      <div class="blog-short-description">{{ related_page.intro|truncatechars_html:250|richtext }}</div>
+                      <div class="separator-line bg-black no-margin-lr"></div>
                       <!-- <div><a href="#" class="blog-like"><i class="fa fa-heart-o"></i>Likes</a><a href="#" class="blog-share"><i class="fa fa-share-alt"></i>Share</a><a href="#" class="comment"><i class="fa fa-comment-o"></i>3 comment(s)</a></div> -->
                   </div>
               </div>
