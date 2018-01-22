@@ -13,12 +13,19 @@
               {% endif %}
             </div>
             <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
+              {% menu calling_page=self as menu %}
+              {% if menu.menuitems %}
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                  <span class="sr-only">Toggle navigation</span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                </button>
+              {% endif %}
             </div>
             <div class="col-md-9 text-right">
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav navbar-right">
-                      {% menu calling_page=self as menu %}
                       {% for item in menu.menuitems %}
                       <li><a href="{% pageurl item %}" class="{% if item.active %}active {% endif %}inner-link">{{ item.title }}</a> </li>
                       {% endfor %}
