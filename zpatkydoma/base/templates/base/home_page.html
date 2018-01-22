@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 
-{% load wagtailcore_tags wagtailimages_tags %}
+{% load static wagtailcore_tags wagtailimages_tags %}
 
 {% block content %}
 
@@ -87,6 +87,22 @@
               {% endwith %}
             {% endfor %}
             </div>
+      </section>
+      <section id="blog" class="bg-gray no-padding-top padding-six-bottom">
+            <div class="row">
+                <div class="col-md-12 col-sm-12 col-xs-12 wow fadeInUp">
+                    <div class="pagination">
+                        {% if blogpages.has_previous %}
+                        <a href="?page={{ blogpages.previous_page_number }}"><img src="{% static 'images/arrow-pre-small.png' %}" alt=""/></a>
+                        {% endif %}
+                        {% for page_num in blogpages.paginator.page_range %}
+                        <a href="?page={{ page_num }}" {% if page_num == blogpages.number %}class="active"{% endif %}>{{ page_num }}</a>
+                        {% endfor %}
+                        {% if blogpages.has_next %}
+                        <a href="?page={{ blogpages.next_page_number }}"><img src="{% static 'images/arrow-next-small.png' %}" alt=""/></a>
+                        {% endif %}
+                    </div>
+                </div>
     </section>
 
 {% endblock %}

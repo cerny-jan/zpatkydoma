@@ -2,11 +2,13 @@ import datetime
 
 from django.db import models
 from django import forms
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from django.core.validators import MinValueValidator, MaxValueValidator
 
 from modelcluster.fields import ParentalKey
 from modelcluster.contrib.taggit import ClusterTaggableManager
 
-from taggit.models import TaggedItemBase
+from taggit.models import TaggedItemBase, Tag
 
 from wagtail.wagtailcore.models import Page
 from wagtail.wagtailcore.fields import StreamField, RichTextField
@@ -25,10 +27,6 @@ from wagtail.wagtailsnippets.models import register_snippet
 from zpatkydoma.base.blocks import BaseStreamBlock
 
 
-class BlogPageTag(TaggedItemBase):
-    content_object = ParentalKey('BlogPage', related_name='tagged_items')
-
-
 @register_snippet
 class BlogCategory(models.Model):
     name = models.CharField(max_length=255)
@@ -41,6 +39,10 @@ class BlogCategory(models.Model):
 
     class Meta:
         verbose_name_plural = 'Blog Categories'
+
+
+class BlogPageTag(TaggedItemBase):
+    content_object = ParentalKey('BlogPage', related_name='tagged_items')
 
 
 class RelatedPage(models.Model):
@@ -122,18 +124,36 @@ class BlogPage(Page):
 
 class BlogListPage(Page):
 
+    posts_per_page = models.IntegerField(validators=[MinValueValidator(5), MaxValueValidator(
+        30)], default=25, help_text='Number of posts shown per page (min  5, max 30)')
+
     def get_context(self, request):
         # Update context to include only published posts, ordered by reverse-chron
         context = super(BlogListPage, self).get_context(request)
-        blogpages = self.get_children().live().order_by('-first_published_at')
+        all_blogpages = self.get_children().live().order_by('-first_published_at')
+
+        paginator = Paginator(all_blogpages, self.posts_per_page)
+        page = request.GET.get('page')
+        try:
+            blogpages = paginator.page(page)
+        except PageNotAnInteger:
+            # If page is not an integer, deliver first page.
+            blogpages = paginator.page(1)
+        except EmptyPage:
+            # If page is out of range (e.g. 9999), deliver last page of results.
+            blogpages = paginator.page(paginator.num_pages)
         context['blogpages'] = blogpages
         return context
 
     settings_panels = []
 
+    cofiguration_panels = Page.promote_panels + [
+        FieldPanel('posts_per_page')
+    ]
+
     edit_handler = TabbedInterface([
         ObjectList(Page.content_panels, heading='Content'),
-        ObjectList(Page.promote_panels, heading='Page Configuration'),
+        ObjectList(cofiguration_panels, heading='Page Configuration'),
     ])
 
     subpage_types = ['blog.BlogPage']
@@ -144,11 +164,12 @@ class BlogTagPage(Page):
     def get_context(self, request):
         tag = request.GET.get('tag')
         if tag:
-            blogpages = BlogPage.objects.filter(tags__name=tag)
+            blogpages = BlogPage.objects.filter(tags__slug=tag)
         else:
             blogpages = BlogPage.objects.all()
         context = super(BlogTagPage, self).get_context(request)
         context['blogpages'] = blogpages
+        context['tag'] = Tag.objects.filter(slug=tag).first()
         return context
 
     settings_panels = []

@@ -1,4 +1,4 @@
-{% load static navigation_tags wagtailcore_tags %}
+{% load static navigation_tags wagtailcore_tags wagtailsettings_tags  %}
 <footer>
     <div class=" bg-white footer-top">
     </div>
@@ -47,32 +47,24 @@
                   </ul>
             </div>
             <div class="col-md-6 col-sm-12 footer-social text-right sm-text-center">
-                <!-- social media link -->
-                <a target="_blank" rel="noopener" href=""><i class="fa fa-facebook"></i></a>
-                <a target="_blank" rel="noopener" href=""><i class="fa fa-twitter"></i></a>
-                <a target="_blank" rel="noopener" href=""><i class="fa fa-envelope"></i></a>
-                <a target="_blank" rel="noopener" href=""><i class="fa fa-instagram "></i></a>
-                <!-- end social media link -->
+                <a target="_blank" rel="noopener" href="{{settings.base.SocialMediaSettings.facebook}}"><i class="fa fa-facebook"></i></a>
+                <a target="_blank" rel="noopener" href="https://twitter.com/{{settings.base.SocialMediaSettings.twitter}}"><i class="fa fa-twitter"></i></a>
+                <a target="_blank" rel="noopener" href="mailto:{{settings.base.SocialMediaSettings.email}}"><i class="fa fa-envelope"></i></a>
+                <a target="_blank" rel="noopener" href="https://www.instagram.com/{{settings.base.SocialMediaSettings.instagram}}"><i class="fa fa-instagram "></i></a>
             </div>
         </div>
     </div>
     <div class="container-fluid bg-dark-gray footer-bottom">
         <div class="container">
             <div class="row margin-three">
-                <!-- copyright -->
                 <div class="col-md-6 col-sm-6 col-xs-12 copyright text-left letter-spacing-1 xs-text-center xs-margin-bottom-one">
-                    &copy; 2015 H-Code is proudly powered by ThemeZaa.
+                    &copy; 2018 {{page.get_site.site_name}}, content managed by <a target="_blank" rel="noopener" href="https://wagtail.io">Wagtail</a>.
                 </div>
-                <!-- end copyright -->
-                <!-- logo -->
                 <div class="col-md-6 col-sm-6 col-xs-12 footer-logo text-right xs-text-center">
                     <a href="index.html"><img src="{% static 'images/logo-light-gray.png' %}" alt=""/></a>
                 </div>
-                <!-- end logo -->
             </div>
         </div>
     </div>
-    <!-- scroll to top -->
     <a href="javascript:;" class="scrollToTop"><i class="fa fa-angle-up"></i></a>
-    <!-- scroll to top End... -->
 </footer>
