@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 
-{% load wagtailcore_tags wagtailimages_tags %}
+{% load static wagtailcore_tags wagtailimages_tags %}
 
 {% block extra_meta_tags %}
       {% image page.image fill-1920x1080 as parallax_image %}
@@ -37,6 +37,11 @@
           "description": "{{page.search_description}}"
         }
       </script>
+{% endblock %}
+
+{% block extra_css %}
+<!-- owl carousel -->
+<link rel="stylesheet" href="{% static 'css/owl.min.css' %}" />
 {% endblock %}
 
 {% block content %}
@@ -110,7 +115,7 @@
         <div class="row">
             <div class="col-md-8 col-sm-10 center-col text-center">
                 <div class="text-center margin-ten no-margin-bottom">
-                    <a class="btn social-icon social-icon-large button" target="_blank"  rel="noopener" href="https://facebook.com/sharer.php?u={{page.full_url|urlencode}}"><i class="fa fa-facebook"></i></a>
+                    <a class="btn social-icon social-icon-large button" target="_blank"  rel="noopener" href="https://www.facebook.com/dialog/share?app_id={{settings.base.SocialMediaSettings.facebook_app_id}}&display=popup&href={{page.full_url|urlencode}}&redirect_uri={{page.full_url|urlencode}}"><i class="fa fa-facebook"></i></a>
                     <a class="btn social-icon social-icon-large button" target="_blank"  rel="noopener" href="https://twitter.com/intent/tweet?text={{page.title|urlencode}}&url={{page.full_url|urlencode}}&hashtags={{page.get_site.site_name|urlencode}}"><i class="fa fa-twitter"></i></a>
                     <a class="btn social-icon social-icon-large button" target="_blank"  rel="noopener" href="https://plus.google.com/share?url={{page.full_url|urlencode}}"><i class="fa fa-google-plus"></i></a>
                     <a class="btn social-icon social-icon-large button" target="_blank"  rel="noopener" href="mailto:?subject={{page.get_site.site_name}} - {{page.title}}&amp;body={{page.full_url}}"><i class="fa fa-envelope"></i></a>
@@ -163,4 +168,18 @@
 </div>
 <!-- end content section -->
 
+{% endblock %}
+
+{% block extra_js %}
+<!-- owl slider  -->
+<script type="text/javascript" src="{% static 'js/owl.carousel.min.js' %}"></script>
+<script>
+$("#blog-slider").owlCarousel({
+    navigation: false,
+    items: 3,
+    itemsDesktop: [1200, 3],
+    itemsTablet: [800, 2],
+    itemsMobile: [700, 1]
+});
+</script>
 {% endblock %}
