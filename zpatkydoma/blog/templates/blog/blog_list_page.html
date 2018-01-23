@@ -26,7 +26,8 @@
             <div class="blog-image"><a href="{% pageurl blogpage %}">
                             {% if blogpage.image %}
                             {% image blogpage.image fill-599x449 as thumbnail %}
-                            <img src="{{ thumbnail.url }}" alt="{{ thumbnail.alt }}" />
+                            {% image blogpage.image fill-30x22 as thumbnail_mini %}
+                            <img class="lazyload" src="{{thumbnail_mini.url}}" data-src="{{ thumbnail.url }}" alt="{{ thumbnail.alt }}" width="599" height="449"/>
                             {% else %}
                             <img src="http://placehold.it/599x449" alt=""/>
                             {% endif %}

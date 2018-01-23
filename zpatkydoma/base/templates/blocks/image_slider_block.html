@@ -4,7 +4,8 @@
     <div id="blog-slider" class="owl-carousel owl-theme dark-pagination">
        {% for item in self %}
        {% image item.image fill-750x500 as slider_image %}
-        <div class="item"><img src="{{ slider_image.url }}" alt="{{ big_image.alt }}"/></div>
+       {% image item.image fill-30x20 as thumbnail %}
+        <div class="item "><img class="lazyload" src="{{thumbnail.url}}" data-src="{{ slider_image.url }}" alt="{{ slider_image.alt }}"width="750" height="500"/></div>
         {% endfor %}
     </div>
 </section>

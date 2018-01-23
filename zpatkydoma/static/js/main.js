@@ -6,6 +6,7 @@ var $blog;
 var hashfilter;
 
 $(document).ready(function () {
+    lazyload();
 
     /*==============================================================*/
     //Smooth Scroll - START CODE

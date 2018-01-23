@@ -5,8 +5,9 @@
     <div class="row">
       {% for item in self %}
       {% image item.image fill-1200x800 as big_image %}
+      {% image self.image fill-30x19 as thumbnail %}
       <div class="col-md-6 col-sm-6 wow fadeIn animated ">
-        <img class="margin-eight-bottom" src="{{ big_image.url }}" alt="{{ big_image.alt }}" />
+        <img class="lazyload margin-eight-bottom" src="{{thumbnail.url}}" data-src="{{ big_image.url }}" alt="{{ big_image.alt }}" width="1200" height="800"/>
       </div>
       {% endfor %}
     </div>

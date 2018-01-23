@@ -1,13 +1,13 @@
 {% load wagtailimages_tags %}
 
 {% image self.image fill-1280x800 as big_image %}
-
+{% image self.image fill-30x19 as thumbnail %}
 <section class="wow fadeIn blog-details-text no-padding">
   <div class="container">
     <div class="row">
       <div class="col-md-10 col-sm-10 center-col text-left">
         <div class="blog-image margin-eight-bottom">
-          <img src="{{ big_image.url }}" alt="{{ big_image.alt }}" />
+          <img class="lazyload" src="{{thumbnail.url}}" data-src="{{ big_image.url }}" alt="{{ big_image.alt }}" width="1280" height="800"/>
         </div>
       </div>
     </div>

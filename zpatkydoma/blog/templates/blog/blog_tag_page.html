@@ -7,7 +7,6 @@
 {% include "includes/navigation.html" with nav_kind="bg-white nav-border-bottom" %}
 
 
-
 <section class="content-top-margin page-title bg-gray">
     <div class="container">
         <div class="row">
@@ -27,7 +26,8 @@
                 <div class="blog-image"><a href="{% pageurl blogpage %}">
                   {% if blogpage.image %}
                   {% image blogpage.image fill-599x449 as thumbnail %}
-                  <img src="{{ thumbnail.url }}" alt="{{ thumbnail.alt }}" />
+                  {% image blogpage.image fill-30x22 as thumbnail_mini %}
+                  <img class="lazyload" src="{{thumbnail_mini.url}}" data-src="{{ thumbnail.url }}" alt="{{ thumbnail.alt }}" width="599" height="449"/>
                   {% else %}
                   <img src="http://placehold.it/599x449" alt=""/>
                   {% endif %}
@@ -41,7 +41,6 @@
             {% empty %}
               <div class="title-large text-center">No pages found with that tag.</div>
             {% endfor %}
-
         </div>
     </div>
 </section>

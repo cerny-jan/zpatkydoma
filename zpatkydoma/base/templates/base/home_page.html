@@ -17,7 +17,8 @@
                                       <a href="{% pageurl promo_page %}">
                                         {% if promo_page.image %}
                                         {% image promo_page.image fill-1200x840 as thumbnail %}
-                                        <img src="{{ thumbnail.url }}" alt="{{ thumbnail.alt }}" />
+                                        {% image promo_page.image fill-30x21 as thumbnail_mini %}
+                                        <img class="lazyload" src="{{thumbnail_mini.url}}" data-src="{{ thumbnail.url }}" alt="{{ thumbnail.alt }}" width="1200" height="840"/>
                                         {% else %}
                                         <img src="http://placehold.it/1200x840" alt=""/>
                                         {% endif %}
@@ -42,7 +43,8 @@
                                     <a href="{% pageurl blogpage %}">
                                       {% if blogpage.image %}
                                       {% image blogpage.image fill-1200x828 as thumbnail %}
-                                      <img src="{{ thumbnail.url }}" alt="{{ thumbnail.alt }}" />
+                                      {% image blogpage.image fill-30x21 as thumbnail_mini %}
+                                      <img class="lazyload" src="{{thumbnail_mini.url}}" data-src="{{ thumbnail.url }}" alt="{{ thumbnail.alt }}" width="1200" height="828"/>
                                       {% else %}
                                       <img src="http://placehold.it/1200x828" alt=""/>
                                       {% endif %}
@@ -71,7 +73,8 @@
                   <div class="blog-image"><a href="{% pageurl blogpage %}">
                     {% if blogpage.image %}
                     {% image blogpage.image fill-599x449 as thumbnail %}
-                    <img src="{{ thumbnail.url }}" alt="{{ thumbnail.alt }}" />
+                    {% image blogpage.image fill-30x22 as thumbnail_mini %}
+                    <img class="lazyload" src="{{thumbnail_mini.url}}" data-src="{{ thumbnail.url }}" alt="{{ thumbnail.alt }}" width="599" height="449"/>
                     {% else %}
                     <img src="http://placehold.it/599x449" alt=""/>
                     {% endif %}
