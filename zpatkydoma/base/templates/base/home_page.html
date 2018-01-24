@@ -2,6 +2,31 @@
 
 {% load static wagtailcore_tags wagtailimages_tags %}
 
+{% block extra_meta_tags %}
+    <script type="application/ld+json">
+    {
+      "@context": "http://schema.org",
+      "@type": "WebSite",
+      "url": "{{page.get_site.root_url}}",
+      "name": "{{page.get_site.site_name}}",
+      "headline": "{% if self.seo_title %}{{ self.seo_title }}{% else %}{{ self.title }}{% endif %}",
+      "inLanguage": "cs_CZ",
+      "author": {
+        "@type": "Organization",
+        "name": "{{page.get_site.site_name}}",
+        "url": "{{page.get_site.root_url}}",
+        "sameAs": [
+          "{{settings.base.SocialMediaSettings.facebook}}",
+          "https://twitter.com/{{settings.base.SocialMediaSettings.twitter|default:'add_your_twitter_username'}}",
+          "https://www.instagram.com/{{settings.base.SocialMediaSettings.instagram|default:'add_your_instagram_username'}}"
+        ]
+      },
+      "description": "{{page.search_description}}",
+      "publisher": "{{page.get_site.site_name}}"
+    }
+    </script>
+{% endblock %}
+
 {% block content %}
 
 {% include "includes/navigation.html" with nav_kind="bg-gray static-sticky" calling_page=self %}

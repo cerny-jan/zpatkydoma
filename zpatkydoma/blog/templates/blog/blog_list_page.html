@@ -2,6 +2,25 @@
 
 {% load static wagtailcore_tags wagtailimages_tags %}
 
+
+{% block extra_meta_tags %}
+<script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "WebPage",
+    "@id": "{{page.full_url}}",
+    "name":"{% if self.seo_title %}{{ self.seo_title }}{% else %}{{ self.title }}{% endif %}",
+    "inLanguage": "cs_CZ",
+    "mainEntityOfPage": {
+      "@type": "WebSite",
+      "@id": "{{page.get_site.root_url}}",
+      "name": "{{page.get_site.site_name}}",
+    }
+  }
+  </script>
+
+{% endblock %}
+
 {% block content %}
 
 {% include "includes/navigation.html" with nav_kind="bg-white nav-border-bottom" %}
