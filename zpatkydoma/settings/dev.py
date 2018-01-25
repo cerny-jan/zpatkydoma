@@ -12,7 +12,7 @@ EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 BASE_URL = 'http://localhost:8000'
 
-INSTALLED_APPS += ['debug_toolbar']
+INSTALLED_APPS += ['debug_toolbar','wagtail.contrib.wagtailstyleguide',]
 
 MIDDLEWARE += ['debug_toolbar.middleware.DebugToolbarMiddleware']
 

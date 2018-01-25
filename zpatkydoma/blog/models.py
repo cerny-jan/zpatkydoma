@@ -22,14 +22,15 @@ from wagtail.wagtailadmin.edit_handlers import (
     ObjectList
 )
 from wagtail.wagtailimages.edit_handlers import ImageChooserPanel
-from wagtail.wagtailsnippets.models import register_snippet
+# from wagtail.wagtailsnippets.models import register_snippet
 
 from zpatkydoma.base.blocks import BaseStreamBlock
 
 
-@register_snippet
 class BlogCategory(models.Model):
-    name = models.CharField(max_length=255)
+    name = models.CharField(max_length=255, unique=True, error_messages={
+        'unique': 'Category has to be unique'}, help_text='Category has to be unique')
+
     panels = [
         FieldPanel('name')
     ]
@@ -39,6 +40,7 @@ class BlogCategory(models.Model):
 
     class Meta:
         verbose_name_plural = 'Blog Categories'
+        # unique_together = ('name',)
 
 
 class BlogPageTag(TaggedItemBase):
@@ -82,7 +84,7 @@ class BlogPage(Page):
         'blog.BlogCategory',
         blank=True,
         null=True,
-        on_delete=models.SET_NULL)
+        on_delete=models.PROTECT)
 
     tags = ClusterTaggableManager(through=BlogPageTag, blank=True)
 
