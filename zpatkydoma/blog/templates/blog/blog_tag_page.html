@@ -2,10 +2,19 @@
 
 {% load wagtailcore_tags wagtailimages_tags %}
 
+
+{% block additional_datalayer %}
+      <script>
+        dataLayer.push({
+          'title':'{{page.title}}',
+          'contentType':'{{page.get_verbose_name}}'
+        })
+      </script>
+{% endblock %}
+
 {% block content %}
 
 {% include "includes/navigation.html" with nav_kind="bg-white nav-border-bottom" %}
-
 
 <section class="content-top-margin page-title bg-gray">
     <div class="container">

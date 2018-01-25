@@ -95,6 +95,7 @@ class BlogPage(Page):
         else:
             return None
 
+
     content_panels = Page.content_panels + [
         ImageChooserPanel('image'),
         FieldPanel('intro', classname='full'),
@@ -120,6 +121,9 @@ class BlogPage(Page):
 
     parent_page_types = ['blog.BlogListPage']
     subpage_types = []
+
+    class Meta:
+        verbose_name = 'Blog Page'
 
 
 class BlogListPage(Page):
@@ -164,6 +168,9 @@ class BlogListPage(Page):
 
     subpage_types = ['blog.BlogPage']
 
+    class Meta:
+        verbose_name = 'Blog List Page'
+
 
 class BlogTagPage(Page):
 
@@ -186,3 +193,6 @@ class BlogTagPage(Page):
     ])
 
     subpage_types = ['blog.BlogPage']
+
+    class Meta:
+        verbose_name = 'Blog Tag Page'

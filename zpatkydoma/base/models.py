@@ -50,6 +50,9 @@ class StandardPage(Page):
         ObjectList(Page.promote_panels, heading='Page Configuration'),
     ])
 
+    class Meta:
+        verbose_name = 'Standard Page'
+
 
 class HomePage(Page):
     promo_page = models.ForeignKey(
@@ -101,3 +104,6 @@ class HomePage(Page):
         ObjectList(content_panels, heading='Content'),
         ObjectList(cofiguration_panels, heading='Page Configuration'),
     ])
+
+    class Meta:
+        verbose_name = 'Home Page'
