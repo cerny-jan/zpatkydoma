@@ -15,11 +15,14 @@
 
 {% include "includes/navigation.html" with nav_kind="bg-white nav-border-bottom" %}
 
-  <section class="content-top-margin page-title page-title-small bg-gray">
+  <section class="content-top-margin page-title page-title{% if not page.sub_title %}-small{% endif %} bg-gray">
       <div class="container">
           <div class="row">
               <div class="col-md-8 col-sm-12 wow fadeInUp" data-wow-duration="300ms">
                   <h1 class="black-text">{{page.title}}</h1>
+                  {%if page.sub_title %}<span class="xs-display-none">{{page.sub_title}}</span>
+                  <div class="separator-line margin-three bg-black no-margin-lr sm-margin-top-three sm-margin-bottom-three no-margin-bottom xs-display-none"></div>
+                  {% endif %}
               </div>
           </div>
       </div>
@@ -28,60 +31,7 @@
     <!-- content section -->
     <section class="wow fadeIn">
         <div class="container">
-            <div class="row">
-                <!-- content  -->
-                <div class="col-md-6 col-sm-12 sm-margin-bottom-four">
-                    <img src="http://placehold.it/1920x1200" alt=""/>
-                </div>
-                <div class="col-md-6 col-sm-12">
-                    <p class="text-large font-weight-600 text-black margin-three no-margin-top">Here is the headline for your text</p>
-                    <p class="text-large text-black margin-three no-margin-top">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text.</p>
-                    <p class="text-med">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</p>
-                    <p class="text-med">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
-                </div>
-                <!-- end content  -->
-            </div>
-            <div class="wide-separator-line no-margin-lr"></div>
-            <div class="row margin-five">
-                <!-- content  -->
-                <div class="col-md-6 col-sm-6 xs-margin-bottom-five">
-                    <p class="text-large font-weight-600 text-black margin-three no-margin-top">Here is the headline for your text</p>
-                    <p class="text-med no-margin">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</p>
-                </div>
-                <div class="col-md-6 col-sm-6">
-                    <p class="text-large font-weight-600 text-black margin-three no-margin-top">Here is the headline for your text</p>
-                    <p class="text-med no-margin">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</p>
-                </div>
-                <!-- end content  -->
-            </div>
-            <div class="wide-separator-line no-margin-lr"></div>
-            <div class="row">
-                <!-- content  -->
-                <div class="col-md-6 col-sm-12">
-                    <p class="text-large font-weight-600 text-black margin-three no-margin-top">Here is the headline for your text</p>
-                    <p class="text-large text-black margin-three no-margin-top">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text.</p>
-                    <p class="text-med">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</p>
-                    <p class="text-med sm-margin-bottom-four">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
-                </div>
-                <div class="col-md-6 col-sm-12">
-                    <img src="http://placehold.it/1920x1200" alt=""/>
-                </div>
-                <!-- end content  -->
-            </div>
-            <div class="wide-separator-line no-margin-lr sm-display-none"></div>
-            <div class="row margin-five no-margin-bottom">
-                <!-- content  -->
-                <div class="col-md-4 col-sm-4 xs-margin-bottom-five">
-                    <p class="text-med">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries.</p>
-                </div>
-                <div class="col-md-4 col-sm-4 xs-margin-bottom-five">
-                    <p class="text-med">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries.</p>
-                </div>
-                <div class="col-md-4 col-sm-4">
-                    <p class="text-med">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries.</p>
-                </div>
-                <!-- end content  -->
-            </div>
+              {{self.body}}
         </div>
     </section>
     <!-- end content section -->

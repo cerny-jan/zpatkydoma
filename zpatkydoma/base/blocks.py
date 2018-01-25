@@ -8,7 +8,8 @@ from wagtail.wagtailcore.blocks import (
     StructBlock,
     TextBlock,
     RawHTMLBlock,
-    ListBlock
+    ListBlock,
+    StaticBlock
 )
 
 
@@ -58,11 +59,11 @@ class HeadingBlock(StructBlock):
 class BaseStreamBlock(StreamBlock):
     heading_block = HeadingBlock()
     indented_paragraph_block = RichTextBlock(
-            icon="fa-paragraph",
-            template="blocks/indented_paragraph_block.html",
-            features=['ol', 'ul', 'bold', 'italic', 'hr', 'link'],
-            label='Indented Text'
-        )
+        icon="fa-paragraph",
+        template="blocks/indented_paragraph_block.html",
+        features=['ol', 'ul', 'bold', 'italic', 'hr', 'link'],
+        label='Indented Text'
+    )
     paragraph_block = RichTextBlock(
         icon="fa-paragraph",
         template="blocks/paragraph_block.html",
@@ -90,3 +91,57 @@ class BaseStreamBlock(StreamBlock):
         template='blocks/raw_html_block.html',
         label='Raw HTML',
         help_text='A text area for entering raw HTML which will be rendered unescaped')
+
+
+class StandardPageHeadingBlock(StructBlock):
+    heading_text = CharBlock(required=True)
+    size = ChoiceBlock(choices=[
+        ('', 'Select a header size'),
+        ('title-small', 'Small'),
+        ('title-med', 'Medium'),
+        ('title-large', 'Large'),
+        ('title-extra-large', 'Extra Large')
+    ], blank=True, required=False)
+
+    class Meta:
+        icon = 'title'
+        template = 'blocks/standard_page_heading_block.html'
+        label = 'Heading'
+
+
+class SeparatorLineStaticBlock(StaticBlock):
+    class Meta:
+        icon = 'fa-minus '
+        label = 'Separator Line'
+        admin_text = 'Automaticaly inserts separator line into the template'
+        template = 'blocks/separator_line_static_block.html'
+
+
+class TwoColumnsBlock(StructBlock):
+    left_column = StreamBlock([
+        ('heading', StandardPageHeadingBlock()),
+        ('paragraph', RichTextBlock(
+            icon="fa-paragraph",
+            features=['ol', 'ul', 'bold', 'italic', 'hr', 'link'],
+            label='Text'
+        )),
+    ], icon='arrow-left', label='Left column content')
+
+    right_column = StreamBlock([
+        ('heading', StandardPageHeadingBlock()),
+        ('paragraph', RichTextBlock(
+            icon="fa-paragraph",
+            features=['ol', 'ul', 'bold', 'italic', 'hr', 'link'],
+            label='Text'
+        )),
+    ], icon='arrow-right', label='Right column content')
+
+    class Meta:
+        icon = 'fa-columns '
+        label = 'Two Columns Layout'
+        template = 'blocks/two_columns_layout.html'
+
+
+class StandardPageStreamBlock(StreamBlock):
+    two_column_block = TwoColumnsBlock()
+    separator_line_block = SeparatorLineStaticBlock()
