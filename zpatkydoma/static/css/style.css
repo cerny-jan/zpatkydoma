@@ -273,6 +273,7 @@ i { color: #9a9a9a; margin: 0 3px}
 .no-padding-left { padding-left:0px !important;}
 .no-padding-bottom { padding-bottom:0 !important}
 .section-padding-inner{ padding: 140px 0}
+.padding-caption-top{padding-top: 5px}
 
 /* float */
 .f-left { float:left !important}
