@@ -21,6 +21,15 @@
 
 {% endblock %}
 
+{% block additional_datalayer %}
+      <script>
+        dataLayer.push({
+          'title':'{{page.title}}',
+          'contentType':'{{page.get_verbose_name}}'
+        })
+      </script>
+{% endblock %}
+
 {% block content %}
 
 {% include "includes/navigation.html" with nav_kind="bg-white nav-border-bottom" %}

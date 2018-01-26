@@ -37,14 +37,12 @@
         <![endif]-->
         {% block extra_css %}
         {% endblock %}
-        <script>
-        {% if user.is_authenticated %}
-            var dataLayer = [{'environment':'dev'}];
-        {% else %}
-            var dataLayer = [{'environment':'production'}];
-        {% endif %}
-        </script>
 
+        <script>
+          var dataLayer = [{'environment':{% if user.is_authenticated %}'dev'{%else%}'production'{% endif %}}];
+        </script>
+        {% block additional_datalayer %}
+        {% endblock %}
 
         {% include "includes/GTM.html" %}
     </head>

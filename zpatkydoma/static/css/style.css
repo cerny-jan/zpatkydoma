@@ -208,7 +208,7 @@ i { color: #9a9a9a; margin: 0 3px}
 .slider-text .separator-line { margin:14% auto; height: 2px}
 .thin-separator-line { height: 1px; width: 30px; margin:7% auto}
 .vertical-separator { height:25px; width:25px; border-left:1px solid #000}
-.wide-separator-line { height: 1px;  background-color:#e5e5e5; margin:5% 15px;}
+.wide-separator-line { height: 1px;  background-color:#e5e5e5; margin-bottom: 5%;}
 .indicators-black .active { background-color: #000; border: 2px solid rgba(0, 0, 0, 1); }
 .indicators-black li { border: 2px solid rgba(0, 0, 0, 1);}
 

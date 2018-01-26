@@ -16,7 +16,7 @@ from wagtail.wagtailadmin.edit_handlers import (
 from wagtail.contrib.settings.models import BaseSetting, register_setting
 
 
-from .blocks import BaseStreamBlock
+from .blocks import BaseStreamBlock, StandardPageStreamBlock
 from zpatkydoma.blog.models import BlogPage
 
 
@@ -36,9 +36,10 @@ class SocialMediaSettings(BaseSetting):
 
 class StandardPage(Page):
 
-    sub_title = models.CharField(blank=True, max_length=255)
+    sub_title = models.CharField(
+        blank=True, max_length=255, help_text='if a subtitle is used, entire title section of the page will be bigger')
 
-    body = StreamField(BaseStreamBlock(required=False), blank=True)
+    body = StreamField(StandardPageStreamBlock(required=False), blank=True)
 
     content_panels = Page.content_panels + [
         FieldPanel('sub_title', classname='full'),
@@ -49,6 +50,9 @@ class StandardPage(Page):
         ObjectList(content_panels, heading='Content'),
         ObjectList(Page.promote_panels, heading='Page Configuration'),
     ])
+
+    class Meta:
+        verbose_name = 'Standard Page'
 
 
 class HomePage(Page):
@@ -101,3 +105,6 @@ class HomePage(Page):
         ObjectList(content_panels, heading='Content'),
         ObjectList(cofiguration_panels, heading='Page Configuration'),
     ])
+
+    class Meta:
+        verbose_name = 'Home Page'
