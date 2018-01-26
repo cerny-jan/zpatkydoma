@@ -7,7 +7,10 @@
       {% image item.image fill-1200x800 as big_image %}
       {% image item.image fill-30x19 as thumbnail %}
       <div class="col-md-6 col-sm-6 wow fadeIn animated ">
-        <img class="lazyload margin-eight-bottom" src="{{thumbnail.url}}" data-src="{{ big_image.url }}" alt="{{ big_image.alt }}" width="1200" height="800"/>
+        <figure class="margin-eight-bottom">
+        <img class="lazyload" src="{{thumbnail.url}}" data-src="{{ big_image.url }}" alt="{{ big_image.alt }}" width="1200" height="800"/>
+        {% if item.caption %}<figcaption class="bg-white padding-caption-top font-weight-100 text-center text-med" >{{item.caption}}</figcaption>{% endif %}
+      </figure>
       </div>
       {% endfor %}
     </div>
