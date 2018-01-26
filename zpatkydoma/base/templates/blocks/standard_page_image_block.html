@@ -1,0 +1,6 @@
+{% load wagtailimages_tags %}
+
+{% image self.image fill-1200x800 as big_image %}
+{% image self.image fill-30x21 as thumbnail %}
+
+  <img class="lazyload" src="{{thumbnail.url}}" data-src="{{ big_image.url }}" alt="{{ big_image.alt }}" width="1200" height="800"/>

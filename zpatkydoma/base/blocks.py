@@ -109,6 +109,15 @@ class StandardPageHeadingBlock(StructBlock):
         label = 'Heading'
 
 
+class StandardPageImageBlock(StructBlock):
+    image = ImageChooserBlock(required=False)
+
+    class Meta:
+        icon = 'image'
+        template = 'blocks/standard_page_image_block.html'
+        label = 'Image'
+
+
 class SeparatorLineStaticBlock(StaticBlock):
     class Meta:
         icon = 'fa-minus '
@@ -117,31 +126,38 @@ class SeparatorLineStaticBlock(StaticBlock):
         template = 'blocks/separator_line_static_block.html'
 
 
-class TwoColumnsBlock(StructBlock):
-    left_column = StreamBlock([
-        ('heading', StandardPageHeadingBlock()),
-        ('paragraph', RichTextBlock(
-            icon="fa-paragraph",
-            features=['ol', 'ul', 'bold', 'italic', 'hr', 'link'],
-            label='Text'
-        )),
-    ], icon='arrow-left', label='Left column content')
+class ColumnStreamBlock(StreamBlock):
+    heading = StandardPageHeadingBlock()
+    paragraph = RichTextBlock(
+        icon="fa-paragraph",
+        features=['ol', 'ul', 'bold', 'italic', 'hr', 'link'],
+        label='Text'
+    )
+    image = StandardPageImageBlock()
 
-    right_column = StreamBlock([
-        ('heading', StandardPageHeadingBlock()),
-        ('paragraph', RichTextBlock(
-            icon="fa-paragraph",
-            features=['ol', 'ul', 'bold', 'italic', 'hr', 'link'],
-            label='Text'
-        )),
-    ], icon='arrow-right', label='Right column content')
+
+class TwoColumnsBlock(StructBlock):
+    left_column = ColumnStreamBlock(
+        icon='arrow-left', label='Left column content')
+    right_column = ColumnStreamBlock(
+        icon='arrow-right', label='Right column content')
 
     class Meta:
-        icon = 'fa-columns '
+        icon = 'fa-columns'
         label = 'Two Columns Layout'
         template = 'blocks/two_columns_layout.html'
 
 
+class OneColumnsBlock(StructBlock):
+    column = ColumnStreamBlock()
+
+    class Meta:
+        icon = 'fa-file-text-o'
+        label = 'One Column Layout'
+        template = 'blocks/one_column_layout.html'
+
+
 class StandardPageStreamBlock(StreamBlock):
+    one_columng_block = OneColumnsBlock()
     two_column_block = TwoColumnsBlock()
     separator_line_block = SeparatorLineStaticBlock()
