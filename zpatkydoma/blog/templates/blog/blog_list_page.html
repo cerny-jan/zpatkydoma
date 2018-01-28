@@ -4,6 +4,14 @@
 
 
 {% block extra_meta_tags %}
+<meta property="og:url" content="{{page.full_url}}" />
+<meta property="og:title" content="{% if self.seo_title %}{{ self.seo_title }}{% else %}{{ self.title }}{% endif %}" />
+<meta property="og:description" content="{{page.search_description}}" />
+<meta property="og:image" content="" />
+<meta property="og:type" content="website" />
+<meta property="og:locale" content="cs_CZ" />
+<meta property="og:site_name" content="{{page.get_site.site_name}}" />
+<meta property="fb:app_id" content="{{settings.base.SocialMediaSettings.facebook_app_id}}" />
 <script type="application/ld+json">
   {
     "@context": "http://schema.org",
@@ -18,7 +26,6 @@
     }
   }
   </script>
-
 {% endblock %}
 
 {% block additional_datalayer %}

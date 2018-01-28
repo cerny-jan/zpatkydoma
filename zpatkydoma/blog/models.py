@@ -184,7 +184,7 @@ class BlogTagPage(Page):
             blogpages = BlogPage.objects.all()
         context = super(BlogTagPage, self).get_context(request)
         context['blogpages'] = blogpages
-        context['tag'] = Tag.objects.filter(slug=tag).first()
+        context['searched_tag'] = Tag.objects.filter(slug=tag).first()
         return context
 
     settings_panels = []

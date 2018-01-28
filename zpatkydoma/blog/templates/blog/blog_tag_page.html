@@ -2,7 +2,30 @@
 
 {% load wagtailcore_tags wagtailimages_tags %}
 
-
+{% block extra_meta_tags %}
+        <meta property="og:url" content="{{page.full_url}}" />
+        <meta property="og:title" content="{% if self.seo_title %}{{ self.seo_title }}{% else %}{{ self.title }}{% endif %}{% if searched_tag %} - {{searched_tag}}{% endif %}" />
+        <meta property="og:description" content="{{page.search_description}}" />
+        <meta property="og:image" content="" />
+        <meta property="og:type" content="website" />
+        <meta property="og:locale" content="cs_CZ" />
+        <meta property="og:site_name" content="{{page.get_site.site_name}}" />
+        <meta property="fb:app_id" content="{{settings.base.SocialMediaSettings.facebook_app_id}}" />
+        <script type="application/ld+json">
+          {
+            "@context": "http://schema.org",
+            "@type": "WebPage",
+            "@id": "{{page.full_url}}",
+            "name": "{% if self.seo_title %}{{ self.seo_title }}{% else %}{{ self.title }}{% endif %}{% if searched_tag %} - {{searched_tag}}{% endif %}",
+            "inLanguage": "cs_CZ",
+            "mainEntityOfPage": {
+              "@type": "WebSite",
+              "@id": "{{page.get_site.root_url}}",
+              "name": "{{page.get_site.site_name}}",
+            }
+          }
+        </script>
+{% endblock %}
 {% block additional_datalayer %}
       <script>
         dataLayer.push({
@@ -20,7 +43,7 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-8 col-md-7 col-sm-12 wow fadeInUp" data-wow-duration="300ms">
-                <h1 class="black-text">Tag{% if tag %} - {{tag}}{% endif %}</h1>
+                <h1 class="black-text">{% if self.seo_title %}{{ self.seo_title }}{% else %}{{ self.title }}{% endif %}{% if searched_tag %} - {{searched_tag}}{% endif %}</h1>
                 <div class="separator-line margin-three bg-black no-margin-lr sm-margin-top-three sm-margin-bottom-three no-margin-bottom xs-display-none"></div>
             </div>
         </div>

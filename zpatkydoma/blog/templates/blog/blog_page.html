@@ -10,63 +10,35 @@
       <meta property="og:description" content="{{page.search_description}}" />
       <meta property="og:image" content="{{page.get_site.root_url}}{{parallax_image.url}}" />
       <meta property="og:locale" content="cs_CZ" />
+      <meta property="og:site_name" content="{{page.get_site.site_name}}" />
+      <meta property="fb:app_id" content="{{settings.base.SocialMediaSettings.facebook_app_id}}" />
       <script type="application/ld+json">
         {
           "@context": "http://schema.org",
-          "@type": "WebPage",
-          "@id": "{{page.full_url}}",
+          "@type": "BlogPosting",
+          "url": "{{page.full_url}}",
+          "headline": "{{page.title}}",
+          "image": "{{page.get_site.root_url}}{{parallax_image.url}}",
+          "datePublished": "{{page.date_published|date:"Y-m-d"}}",
+          "dateModified": "{{page.last_published_at|date:"Y-m-d"}}",
           "inLanguage": "cs_CZ",
-          "breadcrumb": {
-            "@type": "BreadcrumbList",
-            "itemListElement": [{
-                "@type": "ListItem",
-                "position": 1,
-                "item": {
-                  "@type": "WebSite",
-                  "url": "{{page.get_site.root_url}}",
-                  "name": "{{page.get_site.site_name}}"
-                }
-              },
-              {
-                "@type": "ListItem",
-                "position": 2,
-                "item": {
-                  "@type": "WebPage",
-                  "url": "{{page.get_parent.full_url}}",
-                  "name": "{% if page.get_parent.seo_title %}{{  page.get_parent.seo_title }}{% else %}{{  page.get_parent.title }}{% endif %}"
-                }
-              },
-              {
-                "@type": "ListItem",
-                "position": 3,
-                "item": {
-                  "@type": "BlogPosting",
-                  "url": "{{page.full_url}}",
-                  "headline": "Using git to manage a website",
-                  "image": "{{page.get_site.root_url}}{{parallax_image.url}}",
-                  "datePublished": "{{page.date_published|date:"Y-m-d" }}",
-                  "dateModified": "{{page.last_published_at|date:"Y-m-d" }}",
-                  "mainEntityOfPage": {
-                    "@type": "WebPage",
-                    "@id": "{{page.get_parent.full_url}}"
-                  },
-                  "author": {
-                    "@type": "Organization",
-                    "name": "{{page.get_site.site_name}}"
-                  },
-                  "publisher": {
-                    "@type": "Organization",
-                    "name": "{{page.get_site.site_name}}",
-                    "logo": {
-                      "@type": "ImageObject",
-                      "url": "https://google.com/logo.jpg"
-                    }
-                  },
-                  "description": "{{page.search_description}}"
-                }
-              }
-            ]
-          }
+          "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "{{page.full_url}}"
+          },
+          "author": {
+            "@type": "Organization",
+            "name": "{{page.get_site.site_name}}"
+          },
+          "publisher": {
+            "@type": "Organization",
+            "name": "{{page.get_site.site_name}}",
+            "logo": {
+              "@type": "ImageObject",
+              "url": "https://google.com/logo.jpg"
+            }
+          },
+          "description": "{{page.search_description}}"
         }
       </script>
 {% endblock %}
