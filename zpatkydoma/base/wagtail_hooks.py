@@ -2,6 +2,7 @@ from wagtail.contrib.modeladmin.options import ModelAdmin, modeladmin_register
 from zpatkydoma.blog.models import BlogCategory
 from django.contrib.staticfiles.templatetags.staticfiles import static
 from django.utils.html import format_html
+from zpatkydoma.blog.models import BlogPage
 
 from wagtail.wagtailcore import hooks
 
@@ -15,6 +16,14 @@ def editor_css():
 
 
 
+class BlogPageModel(ModelAdmin):
+    model = BlogPage
+    def published_date(self, obj):
+        return obj.date_published.strftime('%d-%m-%Y')
+
+    list_display = ('title','category','published_date','live')
+    list_filter = ('category',)
+
 class BlogCategoryModelAdmin(ModelAdmin):
     model = BlogCategory
     menu_label = 'Blog Categories'  # ditch this to use verbose_name_plural from model
@@ -26,4 +35,5 @@ class BlogCategoryModelAdmin(ModelAdmin):
     inspect_view_enabled = True
 
 
+modeladmin_register(BlogPageModel)
 modeladmin_register(BlogCategoryModelAdmin)

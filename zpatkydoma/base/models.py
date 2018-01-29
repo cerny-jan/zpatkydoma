@@ -106,5 +106,7 @@ class HomePage(Page):
         ObjectList(cofiguration_panels, heading='Page Configuration'),
     ])
 
+    parent_page_types = ['wagtailcore.Page']
+
     class Meta:
         verbose_name = 'Home Page'

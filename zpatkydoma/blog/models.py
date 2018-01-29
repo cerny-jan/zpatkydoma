@@ -23,6 +23,7 @@ from wagtail.wagtailadmin.edit_handlers import (
 )
 from wagtail.wagtailimages.edit_handlers import ImageChooserPanel
 from wagtail.api import APIField
+from wagtail.wagtailsearch import index
 
 from zpatkydoma.base.blocks import BaseStreamBlock
 
@@ -97,6 +98,19 @@ class BlogPage(Page):
         else:
             return None
 
+
+    search_fields = Page.search_fields + [
+        index.SearchField('intro'),
+        index.RelatedFields('category', [
+            index.SearchField('name'),
+            index.FilterField('name')
+        ]),
+        index.RelatedFields('tags', [
+            index.SearchField('name'),
+            index.FilterField('name')
+        ]),
+    ]
+
     api_fields = [
         APIField('intro'),
         APIField('body'),
@@ -105,7 +119,6 @@ class BlogPage(Page):
         APIField('tags'),
         APIField('related_pages')
     ]
-
 
     content_panels = Page.content_panels + [
         ImageChooserPanel('image'),

@@ -12,6 +12,8 @@ EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 BASE_URL = 'http://localhost:8000'
 
+WAGTAILAPI_BASE_URL = 'http://example.com'
+
 INSTALLED_APPS += ['debug_toolbar','wagtail.contrib.wagtailstyleguide',]
 
 MIDDLEWARE += ['debug_toolbar.middleware.DebugToolbarMiddleware']
@@ -36,6 +38,17 @@ DEBUG_TOOLBAR_CONFIG = {
 }
 
 INTERNAL_IPS = ['127.0.0.1']
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'zpatkydoma',
+        'USER': 'zpatkydoma',
+        'PASSWORD': 'admin',
+        'HOST': '127.0.0.1',
+        'PORT': '5432',
+    }
+}
 
 try:
     from .local import *
