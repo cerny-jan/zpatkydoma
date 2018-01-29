@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'wagtail.wagtailcore',
     'wagtail.contrib.settings',
     'wagtail.contrib.modeladmin',
+    'wagtail.api.v2',
 
     'modelcluster',
     'taggit',
@@ -145,5 +146,8 @@ WAGTAIL_SITE_NAME = "zpatkydoma"
 # e.g. in notification emails. Don't include '/admin' or a trailing slash
 BASE_URL = 'http://example.com'
 
+WAGTAILAPI_BASE_URL = 'http://example.com'
+
+WAGTAILAPI_SEARCH_ENABLED = False
 
 TAGGIT_CASE_INSENSITIVE =True

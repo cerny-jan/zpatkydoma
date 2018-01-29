@@ -22,7 +22,7 @@ from wagtail.wagtailadmin.edit_handlers import (
     ObjectList
 )
 from wagtail.wagtailimages.edit_handlers import ImageChooserPanel
-# from wagtail.wagtailsnippets.models import register_snippet
+from wagtail.api import APIField
 
 from zpatkydoma.base.blocks import BaseStreamBlock
 
@@ -96,6 +96,15 @@ class BlogPage(Page):
             return 6
         else:
             return None
+
+    api_fields = [
+        APIField('intro'),
+        APIField('body'),
+        APIField('date_published'),
+        APIField('category'),
+        APIField('tags'),
+        APIField('related_pages')
+    ]
 
 
     content_panels = Page.content_panels + [

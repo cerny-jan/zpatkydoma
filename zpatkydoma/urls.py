@@ -9,7 +9,8 @@ from wagtail.wagtailcore import urls as wagtail_urls
 from wagtail.wagtaildocs import urls as wagtaildocs_urls
 from wagtail.contrib.wagtailsitemaps.views import sitemap
 
-from search import views as search_views
+from .api import api_router
+
 
 urlpatterns = [
     url(r'^django-admin/', include(admin.site.urls)),
@@ -17,6 +18,7 @@ urlpatterns = [
     url(r'^admin/', include(wagtailadmin_urls)),
     url(r'^documents/', include(wagtaildocs_urls)),
     url('^sitemap\.xml$', sitemap),
+    url(r'^api/v2/', api_router.urls),
 
 
     # For anything not caught by a more specific rule above, hand over to
