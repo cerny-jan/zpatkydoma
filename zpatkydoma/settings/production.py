@@ -25,10 +25,10 @@ SECURE_CONTENT_TYPE_NOSNIFF = True
 # X_FRAME_OPTIONS = 'Deny'
 #
 # If your Django app is behind a proxy, though, the proxy may be “swallowing” the fact that a request is HTTPS
-# SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
 #  SecurityMiddleware redirects all non-HTTPS requests to HTTPS (except for those URLs matching a regular expression listed in SECURE_REDIRECT_EXEMPT).
-# SECURE_SSL_REDIRECT=True
+SECURE_SSL_REDIRECT=True
 
 # Parse database configuration from $DATABASE_URL
 DATABASES['default'] =  dj_database_url.config()
