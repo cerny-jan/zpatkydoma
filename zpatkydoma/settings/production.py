@@ -8,7 +8,11 @@ DEBUG = False
 
 SECRET_KEY = os.environ['DJANGO_SECRET_KEY']
 
-ALLOWED_HOSTS = ['127.0.0.1','*']
+BASE_URL = 'https://intense-river-31481.herokuapp.com'
+
+WAGTAILAPI_BASE_URL = 'https://intense-river-31481.herokuapp.com'
+
+ALLOWED_HOSTS = ['127.0.0.1','intense-river-31481.herokuapp.com']
 
 # client-side JavaScript will not to be able to access the CSRF cookie.
 CSRF_COOKIE_HTTPONLY = True
