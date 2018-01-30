@@ -1,1 +1,1 @@
-web: gunicorn zpatkydoma.wsgi_production --log-file -
+web: gunicorn zpatkydoma.wsgi --log-file -
