@@ -1108,6 +1108,10 @@ ul.list-line li span {min-width:130px; display:inline-block}
     height: 100%;
 }
 
+.next-previous-project-style2 a.disabled { pointer-events:none;}
+.next-previous-project-style2 a.disabled span {opacity: 0.6;}
+.next-previous-project-style2 a i { opacity: 0.6;}
+.next-previous-project-style2 a.disabled.next-project:hover span{}
 
 /* next - previous style #2 */
 .next-previous-project-style2 a { width: 33.33%; display: inline-block; text-align: center; padding:50px 0; letter-spacing: 4px; font-size:11px; border-top:1px solid #e5e5e5; transition-duration: .3s; -webkit-transition-duration: .3s; -moz-transition-duration: .3s; -o-transition-duration: .3s; }

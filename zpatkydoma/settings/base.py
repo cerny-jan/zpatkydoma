@@ -148,10 +148,12 @@ WAGTAIL_SITE_NAME = "zpatkydoma"
 
 # Base URL to use when referring to full URLs within the Wagtail admin backend -
 # e.g. in notification emails. Don't include '/admin' or a trailing slash
-BASE_URL = 'http://example.com'
+BASE_URL = 'http://localhost:8000'
 
-WAGTAILAPI_BASE_URL = 'http://example.com'
+WAGTAILAPI_BASE_URL = 'http://localhost:8000'
 
 WAGTAILAPI_SEARCH_ENABLED = False
 
-TAGGIT_CASE_INSENSITIVE =True
+TAGGIT_CASE_INSENSITIVE = True
+
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
