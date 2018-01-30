@@ -1,6 +1,8 @@
 from __future__ import absolute_import, unicode_literals
 
 import dj_database_url
+from google.oauth2 import service_account
+import json
 from .base import *
 
 
@@ -12,7 +14,7 @@ BASE_URL = 'https://intense-river-31481.herokuapp.com'
 
 WAGTAILAPI_BASE_URL = 'https://intense-river-31481.herokuapp.com'
 
-ALLOWED_HOSTS = ['127.0.0.1','intense-river-31481.herokuapp.com']
+ALLOWED_HOSTS = ['127.0.0.1', 'intense-river-31481.herokuapp.com']
 
 # client-side JavaScript will not to be able to access the CSRF cookie.
 CSRF_COOKIE_HTTPONLY = True
@@ -32,10 +34,10 @@ SESSION_COOKIE_SECURE = True
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
 #  SecurityMiddleware redirects all non-HTTPS requests to HTTPS (except for those URLs matching a regular expression listed in SECURE_REDIRECT_EXEMPT).
-SECURE_SSL_REDIRECT=True
+SECURE_SSL_REDIRECT = True
 
 # Parse database configuration from $DATABASE_URL
-DATABASES['default'] =  dj_database_url.config()
+DATABASES['default'] = dj_database_url.config()
 
 CACHES = {
     'default': {
@@ -71,6 +73,7 @@ TEMPLATES = [
     },
 ]
 
+# static files
 STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
 
 COMPRESS_OFFLINE = True
@@ -79,6 +82,19 @@ COMPRESS_CSS_FILTERS = [
     'compressor.filters.cssmin.CSSMinFilter',
 ]
 COMPRESS_CSS_HASHING_METHOD = 'content'
+
+# media files
+GS_BUCKET_NAME = os.getenv('GS_BUCKET_NAME')
+GS_PROJECT_ID=os.getenv('GOOGLE_PROJECT_ID')
+GOOGLE_SERVICE_ACCOUNT_INFO = os.getenv('GOOGLE_SERVICE_ACCOUNT_INFO')
+GS_CREDENTIALS = service_account.Credentials.from_service_account_info(
+    json.loads(GOOGLE_SERVICE_ACCOUNT_INFO))
+
+
+INSTALLED_APPS.append('storages')
+MEDIA_URL = 'https://storage.googleapis.com/{bucket_name}/'.format(
+    bucket_name=GS_BUCKET_NAME)
+DEFAULT_FILE_STORAGE = 'storages.backends.gcloud.GoogleCloudStorage'
 
 LOGGING = {
     'version': 1,
