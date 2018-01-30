@@ -17,10 +17,10 @@ CSRF_COOKIE_HTTPONLY = True
 SECURE_CONTENT_TYPE_NOSNIFF = True
 
 # the cookie will be marked as “secure,” which means browsers may ensure that the cookie is only sent with an HTTPS connection.
-# CSRF_COOKIE_SECURE = True
+CSRF_COOKIE_SECURE = True
 #
 # Whether to use a secure cookie for the session cookie.
-# SESSION_COOKIE_SECURE = True
+SESSION_COOKIE_SECURE = True
 #
 # X_FRAME_OPTIONS = 'Deny'
 #
@@ -33,15 +33,15 @@ SECURE_SSL_REDIRECT=True
 # Parse database configuration from $DATABASE_URL
 DATABASES['default'] =  dj_database_url.config()
 
-# CACHES = {
-#     'default': {
-#         'BACKEND': 'django_redis.cache.RedisCache',
-#         'LOCATION': os.environ['REDIS_URL'],
-#         'OPTIONS': {
-#             'CLIENT_CLASS': 'django_redis.client.DefaultClient',
-#         }
-#     }
-# }
+CACHES = {
+    'default': {
+        'BACKEND': 'django_redis.cache.RedisCache',
+        'LOCATION': os.environ['REDIS_URL'],
+        'OPTIONS': {
+            'CLIENT_CLASS': 'django_redis.client.DefaultClient',
+        }
+    }
+}
 
 TEMPLATES = [
     {
