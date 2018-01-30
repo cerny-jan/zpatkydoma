@@ -1,41 +1,46 @@
 from __future__ import absolute_import, unicode_literals
 
 from .base import *
+import dj_database_url
 
 DEBUG = False
 
 SECRET_KEY = os.environ['DJANGO_SECRET_KEY']
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1']
+ALLOWED_HOSTS = ['127.0.0.1','*']
 
-# SECURE_CONTENT_TYPE_NOSNIFF = True
-#
+# client-side JavaScript will not to be able to access the CSRF cookie.
+CSRF_COOKIE_HTTPONLY = True
+
+# SecurityMiddleware sets the X-Content-Type-Options: nosniff header on all responses that do not already have it.
+SECURE_CONTENT_TYPE_NOSNIFF = True
+
+# the cookie will be marked as “secure,” which means browsers may ensure that the cookie is only sent with an HTTPS connection.
 # CSRF_COOKIE_SECURE = True
 #
+# Whether to use a secure cookie for the session cookie.
 # SESSION_COOKIE_SECURE = True
 #
 # X_FRAME_OPTIONS = 'Deny'
+#
+# If your Django app is behind a proxy, though, the proxy may be “swallowing” the fact that a request is HTTPS
+# SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'zpatkydoma',
-        'USER': 'zpatkydoma',
-        'PASSWORD': 'admin',
-        'HOST': '127.0.0.1',
-        'PORT': '5432',
-    }
-}
+#  SecurityMiddleware redirects all non-HTTPS requests to HTTPS (except for those URLs matching a regular expression listed in SECURE_REDIRECT_EXEMPT).
+# SECURE_SSL_REDIRECT=True
 
-CACHES = {
-    'default': {
-        'BACKEND': 'django_redis.cache.RedisCache',
-        'LOCATION': '127.0.0.1:6379',
-        'OPTIONS': {
-            'CLIENT_CLASS': 'django_redis.client.DefaultClient',
-        }
-    }
-}
+# Parse database configuration from $DATABASE_URL
+DATABASES['default'] =  dj_database_url.config()
+
+# CACHES = {
+#     'default': {
+#         'BACKEND': 'django_redis.cache.RedisCache',
+#         'LOCATION': os.environ['REDIS_URL'],
+#         'OPTIONS': {
+#             'CLIENT_CLASS': 'django_redis.client.DefaultClient',
+#         }
+#     }
+# }
 
 TEMPLATES = [
     {
@@ -60,6 +65,15 @@ TEMPLATES = [
         },
     },
 ]
+
+STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
+
+COMPRESS_OFFLINE = True
+COMPRESS_CSS_FILTERS = [
+    'compressor.filters.css_default.CssAbsoluteFilter',
+    'compressor.filters.cssmin.CSSMinFilter',
+]
+COMPRESS_CSS_HASHING_METHOD = 'content'
 
 try:
     from .local import *
