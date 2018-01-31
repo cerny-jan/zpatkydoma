@@ -1108,6 +1108,11 @@ ul.list-line li span {min-width:130px; display:inline-block}
     height: 100%;
 }
 
+.standard-page .rich-text p {
+  font-size: 14px !important;
+  line-height: 26px !important;
+}
+
 .next-previous-project-style2 a.disabled { pointer-events:none;}
 .next-previous-project-style2 a.disabled span {opacity: 0.6;}
 .next-previous-project-style2 a i { opacity: 0.6;}
