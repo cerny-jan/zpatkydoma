@@ -1,4 +1,4 @@
-#body-list>li>div.sequence-member-inner > .struct-block > .fields:first-child >li:nth-child(2){
+.model-standardpage #body-list>li>div.sequence-member-inner > .struct-block > .fields:first-child >li:nth-child(2){
 
 border-top: 1px dotted lightslategrey;
 
