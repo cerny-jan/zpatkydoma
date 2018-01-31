@@ -58,7 +58,7 @@
         <div class="container">
             <div class="row margin-three">
                 <div class="col-md-6 col-sm-6 col-xs-12 copyright text-left letter-spacing-1 xs-text-center xs-margin-bottom-one">
-                    &copy; 2018 {{page.get_site.site_name}}, content managed by <a target="_blank" rel="noopener" href="https://wagtail.io">Wagtail</a>.
+                    &copy; 2018 {{page.get_site.site_name|default:"zpatkydoma.cz"}}, content managed by <a target="_blank" rel="noopener" href="https://wagtail.io">Wagtail</a>.
                 </div>
                 <div class="col-md-6 col-sm-6 col-xs-12 footer-logo text-right xs-text-center">
                     <a href="/"><img src="{% static 'images/logo-light-gray.png' %}" alt=""/></a>
