@@ -56,13 +56,9 @@
           {% for blogpage in blogpages %}
             <div class="col-md-4 col-sm-6 col-xs-6 blog-listing wow fadeInUp" data-wow-duration="300ms">
                 <div class="blog-image"><a href="{% pageurl blogpage %}">
-                  {% if blogpage.image %}
                   {% image blogpage.image fill-599x449 as thumbnail %}
                   {% image blogpage.image fill-30x22 as thumbnail_mini %}
                   <img class="lazyload" src="{{thumbnail_mini.url}}" data-src="{{ thumbnail.url }}" alt="{{ thumbnail.alt }}" width="599" height="449"/>
-                  {% else %}
-                  <img src="http://placehold.it/599x449" alt=""/>
-                  {% endif %}
                 </a></div>
                 <div class="blog-details">
                     <div class="blog-date">Posted at {{ blogpage.date_published }}</div>

@@ -27,7 +27,7 @@ class BlogPageModel(ModelAdmin):
         return obj.get_parent()
     parent_page.admin_order_field = 'url_path'
 
-    list_display = ('parent_page', 'title', 'category',
+    list_display = ('title', 'parent_page', 'category',
                     'published_date', 'live')
     list_filter = ('category',)
     search_fields = ('title', 'intro', 'body')

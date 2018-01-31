@@ -66,7 +66,7 @@ class BlogPage(Page):
     image = models.ForeignKey(
         'wagtailimages.Image',
         null=True,
-        blank=True,
+        blank=False,
         on_delete=models.SET_NULL,
         related_name='+',
         help_text='Landscape mode only'

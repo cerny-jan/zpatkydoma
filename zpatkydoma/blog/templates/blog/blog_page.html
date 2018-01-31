@@ -66,13 +66,8 @@
 {% include "includes/navigation.html" with nav_kind="nav-white nav-border-bottom" %}
 <!--end of navigation-->
 <section class="wow fadeIn blog-single-full-width-header fix-background parallax-fix">
-    {% if page.image %}
     {% image page.image fill-1920x1080 as parallax_image %}
-    <img class="parallax-background-img" src="{{parallax_image.url}}"
-         alt="{{parallax_image.alt}}"  />
-    {% else %}
-    <img class="parallax-background-img" src="http://placehold.it/1920x1080" alt="" />
-    {% endif %}
+    <img class="parallax-background-img" src="{{parallax_image.url}}" alt="{{parallax_image.alt}}" />
     <div class="opacity-light bg-black"></div>
     <div class="container">
         <div class="row">
@@ -149,13 +144,9 @@
             {% with item.related_page.specific as related_page %}
               <div class="col-md-{{page.related_pages_columns}} col-sm-{{page.related_pages_columns}} col-xs-6 blog-listing no-margin-bottom xs-margin-bottom-ten wow fadeInUp" data-wow-duration="300ms">
                   <div class="blog-image"><a href="{% pageurl related_page %}">
-                    {% if related_page.image %}
                     {% image related_page.image fill-599x449 as thumbnail %}
                     {% image related_page.image fill-30x22 as thumbnail_mini %}
                     <img class="lazyload" src="{{thumbnail_mini.url}}" data-src="{{ thumbnail.url }}" alt="{{ thumbnail.alt }}" width="599" height="449"/>
-                    {% else %}
-                    <img src="http://placehold.it/599x449" alt=""/>
-                    {% endif %}
                   </a></div>
                   <div class="blog-details no-padding-left-right no-padding-bottom">
                       <div class="blog-date">Posted at {{ related_page.date_published }}</div>
