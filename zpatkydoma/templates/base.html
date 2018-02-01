@@ -44,7 +44,9 @@
         {% block additional_datalayer %}
         {% endblock %}
 
-        {% include "includes/GTM.html" %}
+        {% if not request.is_preview %}
+          {% include "includes/GTM.html" %}
+        {% endif %}
     </head>
     <body>
       {% wagtailuserbar %}
