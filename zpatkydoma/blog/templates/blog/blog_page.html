@@ -58,7 +58,7 @@
         dataLayer.push({
           'title':'{{page.title}}',
           'contentType':'{{page.get_verbose_name}}',
-          'category':'{{page.category}}',
+          'category':'{{page.category|default:""}}',
           'tags':'{{page.tags.all|join:", "}}',
           'datePublished': '{{page.date_published|date:"Y-m-d"}}',
           'relatedPagesCount':'{{page.related_pages.count }}'
