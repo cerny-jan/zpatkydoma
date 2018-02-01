@@ -701,7 +701,7 @@ footer ul.list-inline li:first-child {padding-left: 6px}
 
 /* blog home masonry */
 .blog-listing {overflow: hidden; margin-bottom:5%;}
-.blog-image { overflow: hidden; background: #a1a1a1}
+.blog-image { overflow: hidden; background: #fff}
 .blog-listing:hover img {-ms-transform: scale(1.2,1.2); -webkit-transform: scale(1.2,1.2);  transform: scale(1.2,1.2); transition: all .3s ease; -webkit-transition: all .3s ease; -moz-transition: all .3s ease; opacity:0.5}
 .blog-date{ color: #898989; font-size: 11px; letter-spacing: 2px; text-transform: uppercase; padding-top: 30px; }
 .blog-date a { color: #898989;}
