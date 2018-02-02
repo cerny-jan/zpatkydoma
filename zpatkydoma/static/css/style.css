@@ -274,6 +274,7 @@ i { color: #9a9a9a; margin: 0 3px}
 .no-padding-bottom { padding-bottom:0 !important}
 .section-padding-inner{ padding: 140px 0}
 .padding-caption-top{padding-top: 5px}
+.padding-eight-top{padding-top: 8% !important}
 
 /* float */
 .f-left { float:left !important}
@@ -840,7 +841,6 @@ footer ul.list-inline li:first-child {padding-left: 6px}
 .blog-single-full-width-form input[type="text"]:focus, .blog-single-full-width-form textarea:focus { border-color: #000}
 
 .text-large-full-width .rich-text p { font-size:22px !important; font-weight: 100; line-height: 35px !important; text-indent: 20px}
-
 
 /* blog single full width with image slider */
 .blog-single-full-width-with-image-slider-header { min-height:650px;}
