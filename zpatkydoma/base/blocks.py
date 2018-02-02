@@ -26,7 +26,7 @@ class ImageBlock(StructBlock):
 class SimpleImageBlock(StructBlock):
     image = ImageChooserBlock(required=False)
     caption = CharBlock(blank=True, required=False)
-    
+
     class Meta:
         icon = 'image'
 
@@ -84,7 +84,12 @@ class BaseStreamBlock(StreamBlock):
                                        label='Landscape Images',
                                        icon='image',
                                        template='blocks/landscape_images_block.html',
-                                       help_text='Add even number of images (it inserts 2 images on the line)')
+                                       help_text='Add even number of images (it inserts 2 horizontal images on the line)')
+    portrait_images_block = ListBlock(SimpleImageBlock(),
+                                       label='Portrait Images',
+                                       icon='image',
+                                       template='blocks/portrait_images_block.html',
+                                       help_text='Add 2 images (it inserts 2 vertical images on the line)')
     image_slider_block = ListBlock(SliderImageBlock(),
                                    label='Image Slider',
                                    icon='image',

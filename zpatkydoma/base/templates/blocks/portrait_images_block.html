@@ -1,0 +1,18 @@
+{% load wagtailimages_tags %}
+
+<section class="wow fadeIn blog-details-text no-padding">
+  <div class="container">
+    <div class="row">
+      {% for item in self %}
+      {% image item.image fill-800x1200 as big_image %}
+      {% image item.image fill-19x30 as thumbnail %}
+      <div class="col-md-5 col-sm-5 wow fadeIn animated {% if forloop.first %}col-md-offset-1 col-sm-offset-1{% endif %}">
+        <figure class="margin-eight-bottom">
+        <img class="lazyload" src="{{thumbnail.url}}" data-src="{{ big_image.url }}" alt="{{ big_image.alt }}" width="800" height="1200"/>
+        {% if item.caption %}<figcaption class="bg-white padding-caption-top font-weight-100 text-center text-med" >{{item.caption}}</figcaption>{% endif %}
+      </figure>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
