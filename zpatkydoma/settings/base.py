@@ -179,4 +179,6 @@ WAGTAILAPI_SEARCH_ENABLED = False
 
 TAGGIT_CASE_INSENSITIVE = True
 
+WAGTAIL_ALLOW_UNICODE_SLUGS = False
+
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
