@@ -71,7 +71,7 @@ class HomePage(Page):
 
     def get_context(self, request):
         context = super(HomePage, self).get_context(request)
-        all_blogpages = BlogPage.objects.live().order_by('-date_published')
+        all_blogpages = BlogPage.objects.live().order_by('-date_published','-last_published_at')
         # if the promo_page wasn't set in Admin, use the lastest published page
         if not self.promo_page:
             self.promo_page = all_blogpages.first()
