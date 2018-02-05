@@ -14,7 +14,7 @@ from wagtail.wagtailadmin.edit_handlers import (
     FieldPanel
 )
 from wagtail.contrib.settings.models import BaseSetting, register_setting
-
+from wagtail.wagtailsnippets.models import register_snippet
 
 from .blocks import BaseStreamBlock, StandardPageStreamBlock
 from zpatkydoma.blog.models import BlogPage
@@ -32,6 +32,21 @@ class SocialMediaSettings(BaseSetting):
         help_text='Email address', blank=True)
     instagram = models.CharField(
         help_text='Instagram username', blank=True, max_length=255, verbose_name='Instagram username')
+
+
+@register_snippet
+class FooterText(models.Model):
+    body = models.TextField(blank=True, max_length=400, help_text='The footer text is not html escaped')
+
+    panels = [
+        FieldPanel('body'),
+    ]
+
+    def __str__(self):
+        return "Footer text"
+
+    class Meta:
+        verbose_name_plural = 'Footer Text'
 
 
 class StandardPage(Page):

@@ -1,4 +1,5 @@
 from django import template
+from zpatkydoma.base.models import FooterText
 
 
 register = template.Library()
@@ -16,4 +17,15 @@ def menu(context, calling_page=None):
         'calling_page': calling_page,
         'menuitems': menuitems,
         'request': context['request'],
+    }
+
+
+@register.assignment_tag(takes_context=True)
+def get_footer_text(context):
+    footer_text = ""
+    if FooterText.objects.first() is not None:
+        footer_text = FooterText.objects.first().body
+
+    return {
+        'footer_text': footer_text,
     }
