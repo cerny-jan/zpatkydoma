@@ -1,4 +1,5 @@
-# Ignore everything in this directory
-*
-# Except this file
-!.gitignore
+!original_images/
+original_images/*
+!original_images/horizontal.jpg
+!original_images/vertical.jpg
+images/*
