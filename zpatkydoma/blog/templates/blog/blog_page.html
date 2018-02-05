@@ -79,11 +79,8 @@
             <div class="col-md-7 col-sm-8 position-relative full-width-headline text-center center-col padding-eight-top">
                 <h2 class="white-text"><span>{{page.title}}</span></h2>
                 <div class="blog-date posted-by">{{page.date_published}}
-                  {% if  page.tags.all %}
-                    |
-                    {% for tag in page.tags.all %}
-                    <a href="{% slugurl 'tags' %}?tag={{tag.slug}}" class="white-text">{{tag}}</a>{% if not forloop.last %}, {% endif %}
-                    {% endfor %}
+                  {% if  page.domicile %}
+                    | <span  class="white-text">{{page.domicile}}</span>
                   {% endif %}
                   </div>
             </div>

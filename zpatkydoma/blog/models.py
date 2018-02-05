@@ -81,6 +81,8 @@ class BlogPage(Page):
     date_published = models.DateField(
         'Published date', default=datetime.date.today)
 
+    domicile =  models.CharField(blank=True, max_length=255)
+
     category = models.ForeignKey(
         'blog.BlogCategory',
         blank=True,
@@ -114,6 +116,7 @@ class BlogPage(Page):
         APIField('intro'),
         APIField('body'),
         APIField('date_published'),
+        APIField('domicile'),
         APIField('category'),
         APIField('tags'),
         APIField('related_pages')
@@ -128,6 +131,7 @@ class BlogPage(Page):
     cofiguration_panels = Page.promote_panels + [
         MultiFieldPanel([
             FieldPanel('date_published'),
+            FieldPanel('domicile'),
             FieldPanel('category', widget=forms.Select),
             FieldPanel('tags'),
             InlinePanel('related_pages',
@@ -135,11 +139,11 @@ class BlogPage(Page):
         ], heading='Blog Page Configuration')
     ]
 
-    settings_panels = []
 
     edit_handler = TabbedInterface([
         ObjectList(content_panels, heading='Content'),
         ObjectList(cofiguration_panels, heading='Page Configuration'),
+        ObjectList(Page.settings_panels, heading='Schduled Publishing'),
     ])
 
     parent_page_types = ['blog.BlogListPage']
