@@ -22,8 +22,8 @@ from zpatkydoma.blog.models import BlogPage
 
 @register_setting(icon='fa-facebook')
 class SocialMediaSettings(BaseSetting):
-    facebook = models.URLField(
-        help_text='Facebook page URL', blank=True, verbose_name='Facebook URL')
+    facebook = models.CharField(
+            help_text='Facebook username', blank=True, max_length=255, verbose_name='Facebook username')
     facebook_app_id = models.CharField(
         help_text='https://developers.facebook.com/docs/apps/register', blank=True, max_length=255, verbose_name='Facebook App ID')
     twitter = models.CharField(
