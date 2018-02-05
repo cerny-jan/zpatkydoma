@@ -1,4 +1,10 @@
 [{
+  "model": "base.footertext",
+  "pk": 1,
+  "fields": {
+    "body": "&copy;\u00a02018\u00a0zpatkydoma.cz,\u00a0content managed by\u00a0<a target=\"_blank\" rel=\"noopener\" href=\"https://wagtail.io\">Wagtail</a>"
+  }
+}, {
   "model": "blog.blogcategory",
   "pk": 1,
   "fields": {
@@ -644,6 +650,13 @@
   "fields": {
     "app_label": "sessions",
     "model": "session"
+  }
+}, {
+  "model": "contenttypes.contenttype",
+  "pk": 37,
+  "fields": {
+    "app_label": "base",
+    "model": "footertext"
   }
 }, {
   "model": "auth.permission",
@@ -1492,6 +1505,30 @@
     "name": "Can delete session",
     "content_type": 36,
     "codename": "delete_session"
+  }
+}, {
+  "model": "auth.permission",
+  "pk": 107,
+  "fields": {
+    "name": "Can add footer text",
+    "content_type": 37,
+    "codename": "add_footertext"
+  }
+}, {
+  "model": "auth.permission",
+  "pk": 108,
+  "fields": {
+    "name": "Can change footer text",
+    "content_type": 37,
+    "codename": "change_footertext"
+  }
+}, {
+  "model": "auth.permission",
+  "pk": 109,
+  "fields": {
+    "name": "Can delete footer text",
+    "content_type": 37,
+    "codename": "delete_footertext"
   }
 }, {
   "model": "taggit.taggeditem",
