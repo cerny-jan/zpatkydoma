@@ -59,8 +59,7 @@
                                   <figure>
                                       <a href="{% pageurl promo_page %}">
                                         {% image promo_page.image fill-1200x840 as thumbnail %}
-                                        {% image promo_page.image fill-30x21 as thumbnail_mini %}
-                                        <img class="lazyload" src="{{thumbnail_mini.url}}" data-src="{{ thumbnail.url }}" alt="{{ thumbnail.alt }}" width="1200" height="840"/>
+                                        <img src="{{ thumbnail.url }}" alt="{{ thumbnail.alt }}" />
                                       </a>
                                       <figcaption>
                                           <h3><a href="{% pageurl promo_page %}">{{ promo_page.title }}</a></h3>
@@ -81,8 +80,7 @@
                                 <figure>
                                     <a href="{% pageurl blogpage %}">
                                       {% image blogpage.image fill-1200x828 as thumbnail %}
-                                      {% image blogpage.image fill-30x21 as thumbnail_mini %}
-                                      <img class="lazyload" src="{{thumbnail_mini.url}}" data-src="{{ thumbnail.url }}" alt="{{ thumbnail.alt }}" width="1200" height="828"/>
+                                      <img  src="{{ thumbnail.url }}"  alt="{{ thumbnail.alt }}" />
                                     </a>
                                     <figcaption >
                                         <h3><a href="{% pageurl blogpage %}">{{ blogpage.title }}</a></h3>

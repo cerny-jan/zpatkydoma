@@ -108,7 +108,7 @@
       <div class="blog-date  margin-six no-margin-bottom border-top">
         <h5 class="widget-title margin-two no-margin-top">Tags</h5>
         {% for tag in page.tags.all %}
-        <a href="{% slugurl 'tags' %}?tag={{ tag }}">{{ tag }}</a>{% if not forloop.last %}, {% endif %}
+        <a href="{% slugurl 'tags' %}?tag={{ tag.slug }}">{{ tag }}</a>{% if not forloop.last %}, {% endif %}
         {% endfor %}
       </div>
       </div>

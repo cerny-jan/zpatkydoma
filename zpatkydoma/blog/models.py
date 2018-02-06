@@ -143,7 +143,7 @@ class BlogPage(Page):
     edit_handler = TabbedInterface([
         ObjectList(content_panels, heading='Content'),
         ObjectList(cofiguration_panels, heading='Page Configuration'),
-        ObjectList(Page.settings_panels, heading='Schduled Publishing'),
+        ObjectList(Page.settings_panels, heading='Scheduled Publishing'),
     ])
 
     parent_page_types = ['blog.BlogListPage']
