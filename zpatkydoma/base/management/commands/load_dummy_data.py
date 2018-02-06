@@ -6,6 +6,8 @@ from django.core.management import call_command
 
 from wagtail.wagtailcore.models import Site, Page
 
+# command to generate the data
+# python manage.py dumpdata  --exclude=contenttypes --exclude=wagtailimages.rendition --exclude=sessions.session --exclude=postgres_search.indexentry --indent=2 -o zpatkydoma/base/fixtures/dummy_data.json
 
 class Command(BaseCommand):
     def handle(self, **options):
