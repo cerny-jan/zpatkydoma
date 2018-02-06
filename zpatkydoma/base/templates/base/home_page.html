@@ -63,7 +63,7 @@
                                       </a>
                                       <figcaption>
                                           <h3><a href="{% pageurl promo_page %}">{{ promo_page.title }}</a></h3>
-                                          <span>Posted at  {{ promo_page.date_published }}</span>
+                                          <span> {{ promo_page.date_published }}</span>
                                       </figcaption>
                                   </figure>
                               </div>
@@ -84,7 +84,7 @@
                                     </a>
                                     <figcaption >
                                         <h3><a href="{% pageurl blogpage %}">{{ blogpage.title }}</a></h3>
-                                        <span>Posted at {{ blogpage.date_published }} </a></span>
+                                        <span>{{ blogpage.date_published }} </a></span>
                                     </figcaption>
                                 </figure>
                             </div>
@@ -109,7 +109,7 @@
                     <img class="lazyload" src="{{thumbnail_mini.url}}" data-src="{{ thumbnail.url }}" alt="{{ thumbnail.alt }}" width="599" height="449"/>
                   </a></div>
                   <div class="blog-details" >
-                      <div class="blog-date">Posted at {{ blogpage.date_published }}</div>
+                      <div class="blog-date">{{ blogpage.date_published }}</div>
                       <div class="blog-title"><a href="{% pageurl blogpage %}">{{ blogpage.title }}</a></div>
                       <div class="blog-short-description height-100">{{ blogpage.intro|truncatechars_html:250|richtext }}</div>
                       <div class="separator-line bg-black no-margin-lr"></div>
