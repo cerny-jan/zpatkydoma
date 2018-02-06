@@ -122,7 +122,7 @@
         <div class="row">
             <div class="col-md-8 col-sm-10 center-col text-center">
                 <div class="text-center margin-ten no-margin-bottom">
-                    <a class="btn social-icon social-icon-large button" target="_blank"  rel="noopener" href="https://www.facebook.com/dialog/share?app_id={{settings.base.SocialMediaSettings.facebook_app_id}}&display=popup&href={{page.full_url|urlencode}}&redirect_uri={{page.full_url|urlencode}}"><i class="fa fa-facebook"></i></a>
+                    <a id="facebook-share" class="btn social-icon social-icon-large button" target="_blank"  rel="noopener" href="https://www.facebook.com/dialog/share?app_id={{settings.base.SocialMediaSettings.facebook_app_id}}&display=popup&href={{page.full_url|urlencode}}&redirect_uri={{page.full_url|urlencode}}"><i class="fa fa-facebook"></i></a>
                     <a class="btn social-icon social-icon-large button" target="_blank"  rel="noopener" href="https://twitter.com/intent/tweet?text={{page.title|urlencode}}&url={{page.full_url|urlencode}}&hashtags={{page.get_site.site_name|urlencode}}"><i class="fa fa-twitter"></i></a>
                     <a class="btn social-icon social-icon-large button" target="_blank"  rel="noopener" href="https://plus.google.com/share?url={{page.full_url|urlencode}}"><i class="fa fa-google-plus"></i></a>
                     <a class="btn social-icon social-icon-large button" target="_blank"  rel="noopener" href="mailto:?subject={{page.get_site.site_name}} - {{page.title}}&amp;body={{page.full_url}}"><i class="fa fa-envelope"></i></a>
