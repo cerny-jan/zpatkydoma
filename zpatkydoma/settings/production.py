@@ -112,6 +112,8 @@ LOGGING = {
     },
 }
 
+TRACKING_ENVIRONMENT = 'production'
+
 try:
     from .local import *
 except ImportError:

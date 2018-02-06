@@ -12,6 +12,7 @@ Version:1.0.0
 @import url(//fonts.googleapis.com/css?family=Oswald:400,300,700);
 @import url(//fonts.googleapis.com/css?family=Open+Sans+Condensed:300,300italic,700);
 
+
 /* ===================================
     Reset
 ====================================== */
@@ -95,6 +96,10 @@ h1.page-title { margin:95px auto 0; width: 100%; }
 
 .text-extra-large .rich-text p { font-size: 16px !important; line-height: 28px !important; font-weight: 100}
 .block-heading_block {margin-top: 2% !important;}
+
+.logo-text { font-size: 20px !important; text-transform: uppercase;font-weight: 600;letter-spacing: 1px !important;}
+.logo-text-white { font-size: 20px !important; text-transform: uppercase;font-weight: 600;letter-spacing: 1px !important;color: #fff;}
+.logo-text-grey { font-size: 16px !important; text-transform: uppercase;font-weight: 600;letter-spacing: 1px !important;color: #888888;}
 
 /* text color */
 .white-text{ color:#FFF !important}

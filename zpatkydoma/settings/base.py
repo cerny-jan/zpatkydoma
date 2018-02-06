@@ -90,6 +90,7 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                 'wagtail.contrib.settings.context_processors.settings',
+                'zpatkydoma.base.context_processors.custom_settings',
             ],
         },
     },
@@ -184,3 +185,5 @@ WAGTAIL_ALLOW_UNICODE_SLUGS = False
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 DATE_FORMAT = 'd.m.Y'
+
+TRACKING_ENVIRONMENT = 'dev'

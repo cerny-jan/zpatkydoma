@@ -15,9 +15,9 @@
         {% endblock %}
         <!-- favicon -->
         <link rel="shortcut icon" href="{% static 'images/favicon.png' %}">
-        <link rel="apple-touch-icon" href="{% static 'images/apple-touch-icon-57x57.png' %}">
-        <link rel="apple-touch-icon" sizes="72x72" href="{% static 'images/apple-touch-icon-72x72.png' %}">
-        <link rel="apple-touch-icon" sizes="114x114" href="{% static 'images/apple-touch-icon-114x114.png' %}">
+        <link rel="apple-touch-icon" href="{% static 'images/apple-icon-57x57.png' %}">
+        <link rel="apple-touch-icon" sizes="72x72" href="{% static 'images/apple-icon-72x72.png' %}">
+        <link rel="apple-touch-icon" sizes="114x114" href="{% static 'images/apple-icon-114x114.png' %}">
         <!-- animation -->
         <link rel="stylesheet" href="{% static 'css/animate.css' %}" />
         <!-- bootstrap -->
@@ -37,14 +37,13 @@
         <![endif]-->
         {% block extra_css %}
         {% endblock %}
-
         <script>
-          var dataLayer = [{'environment':{% if user.is_authenticated %}'dev'{%else%}'production'{% endif %}}];
+          var dataLayer = [{'environment':'{{tracking_environment}}'}];
         </script>
         {% block additional_datalayer %}
         {% endblock %}
 
-        {% if not request.is_preview %}
+        {% if not request.is_preview and not user.is_authenticated %}
           {% include "includes/GTM.html" %}
         {% endif %}
     </head>

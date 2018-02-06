@@ -112,6 +112,8 @@ LOGGING = {
     },
 }
 
+TRACKING_ENVIRONMENT = 'staging'
+
 try:
     from .local import *
 except ImportError:
