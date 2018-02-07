@@ -10,11 +10,11 @@ DEBUG = False
 
 SECRET_KEY = os.environ['DJANGO_SECRET_KEY']
 
-BASE_URL = 'https://intense-river-31481.herokuapp.com'
+BASE_URL = 'https://zpatkydoma.cz'
 
-WAGTAILAPI_BASE_URL = 'https://intense-river-31481.herokuapp.com'
+WAGTAILAPI_BASE_URL = 'https://zpatkydoma.cz'
 
-ALLOWED_HOSTS = ['127.0.0.1', 'intense-river-31481.herokuapp.com']
+ALLOWED_HOSTS = ['intense-river-31481.herokuapp.com']
 
 # client-side JavaScript will not to be able to access the CSRF cookie.
 CSRF_COOKIE_HTTPONLY = True
@@ -75,14 +75,25 @@ TEMPLATES = [
 ]
 
 # static files
-STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
+STATICFILES_STORAGE = 'compressor.storage.GzipCompressorFileStorage'
 
+COMPRESS_OFFLINE = True
 COMPRESS_OFFLINE = True
 COMPRESS_CSS_FILTERS = [
     'compressor.filters.css_default.CssAbsoluteFilter',
     'compressor.filters.cssmin.CSSMinFilter',
 ]
 COMPRESS_CSS_HASHING_METHOD = 'content'
+
+INSTALLED_APPS += ['compressor']
+
+COMPRESS_ENABLED = True
+
+COMPRESS_JS_FILTERS = [
+    'compressor.filters.jsmin.JSMinFilter'
+]
+STATICFILES_FINDERS += ['compressor.finders.CompressorFinder']
+
 
 # media files
 GS_BUCKET_NAME = os.getenv('GS_BUCKET_NAME')
