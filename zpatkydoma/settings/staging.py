@@ -75,7 +75,7 @@ TEMPLATES = [
 ]
 
 # static files
-STATICFILES_STORAGE = 'compressor.storage.CompressorFileStorage'
+STATICFILES_STORAGE = 'compressor.storage.GzipCompressorFileStorage'
 
 COMPRESS_OFFLINE = True
 COMPRESS_OFFLINE = True
