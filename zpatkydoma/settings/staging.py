@@ -75,14 +75,37 @@ TEMPLATES = [
 ]
 
 # static files
-STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
+# STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
+#
+# COMPRESS_OFFLINE = True
+# COMPRESS_CSS_FILTERS = [
+#     'compressor.filters.css_default.CssAbsoluteFilter',
+#     'compressor.filters.cssmin.CSSMinFilter',
+# ]
+# COMPRESS_CSS_HASHING_METHOD = 'content'
 
+INSTALLED_APPS += ['compressor']
+
+COMPRESS_ENABLED = True
 COMPRESS_OFFLINE = True
+STATICFILES_FINDERS = (
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+    # other finders..
+    'compressor.finders.CompressorFinder',
+)
+
 COMPRESS_CSS_FILTERS = [
     'compressor.filters.css_default.CssAbsoluteFilter',
     'compressor.filters.cssmin.CSSMinFilter',
 ]
-COMPRESS_CSS_HASHING_METHOD = 'content'
+
+COMPRESS_JS_FILTERS = [
+    'compressor.filters.jsmin.JSMinFilter'
+]
+
+COMPRESS_STORAGE = 'compressor.storage.CompressorFileStorage'
+
 
 # media files
 GS_BUCKET_NAME = os.getenv('GS_BUCKET_NAME')
