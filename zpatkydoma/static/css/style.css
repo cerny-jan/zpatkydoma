@@ -279,7 +279,7 @@ i { color: #9a9a9a; margin: 0 3px}
 .no-padding-bottom { padding-bottom:0 !important}
 .section-padding-inner{ padding: 140px 0}
 .padding-caption-top{padding-top: 5px}
-.padding-eight-top{padding-top: 8% !important}
+
 
 /* float */
 .f-left { float:left !important}
@@ -1098,6 +1098,10 @@ ul.list-line li span {min-width:130px; display:inline-block}
 
 /* 404 */
 .not-found-title { font-size:60px; line-height:100px; display:block; font-weight: 700}
+
+.blog-parallax-headline {
+  padding-top: 8%;
+}
 
 .responsive-object {
     position: relative;
