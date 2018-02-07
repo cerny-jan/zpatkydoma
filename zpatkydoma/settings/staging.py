@@ -75,24 +75,8 @@ TEMPLATES = [
 ]
 
 # static files
-STATICFILES_STORAGE = 'compressor.storage.BrotliCompressorFileStorage'
-
-COMPRESS_OFFLINE = True
-COMPRESS_OFFLINE = True
-COMPRESS_CSS_FILTERS = [
-    'compressor.filters.css_default.CssAbsoluteFilter',
-    'compressor.filters.cssmin.CSSMinFilter',
-]
-COMPRESS_CSS_HASHING_METHOD = 'content'
-
-INSTALLED_APPS += ['compressor']
-
 COMPRESS_ENABLED = True
-
-COMPRESS_JS_FILTERS = [
-    'compressor.filters.jsmin.JSMinFilter'
-]
-STATICFILES_FINDERS += ['compressor.finders.CompressorFinder']
+COMPRESS_OFFLINE = True
 
 
 # media files

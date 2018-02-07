@@ -88,7 +88,7 @@
     </div>
 </section>
 
-<section class="wow fadeIn blog-single-full-width-text blog-details-text padding-five">
+<section class="wow fadeIn blog-single-full-width-text blog-details-text padding-four">
     <div class="container">
         <div class="row">
             <div class="col-md-8 col-sm-10 center-col text-left">
@@ -164,9 +164,8 @@
     </div>
 </section>
 {% endif %}
-
 <div class="next-previous-project-style2">
-    <a class="text-uppercase border-right {% if not page.get_prev_sibling.live %} disabled {% endif%} previous-project" href={{page.get_prev_sibling.url}}><i class="fa fa-angle-left"></i><span>Předchozí</span></a><a class="border-right text-uppercase back-project" href="{{ page.get_parent.url }}"><span>Back</span><i class="fa fa-th-large"></i></a><a class="text-uppercase {% if not page.get_next_sibling.live %} disabled {% endif%} next-project" href={{page.get_next_sibling.url}}><span>Další </span><i class="fa fa-angle-right"></i></a>
+    <a class="text-uppercase border-right {% if not page.get_prev_siblings.live.first %} disabled {% endif%} previous-project" href={{page.get_prev_siblings.live.first.url}}><i class="fa fa-angle-left"></i><span>Předchozí</span></a><a class="border-right text-uppercase back-project" href="{{ page.get_parent.url }}"><span>Back</span><i class="fa fa-th-large"></i></a><a class="text-uppercase {% if not page.get_next_siblings.live.first %} disabled {% endif%} next-project" href={{page.get_next_siblings.live.first.url}}><span>Další </span><i class="fa fa-angle-right"></i></a>
 </div>
 
 {% endblock %}

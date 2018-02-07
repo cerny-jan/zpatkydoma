@@ -1,6 +1,6 @@
 {% load wagtailimages_tags %}
 
-<section id="blog-slider-main" class="blog-slider wow fadeIn no-padding-top clearfix">
+<section id="blog-slider-main" class="blog-slider wow fadeIn no-padding-top margin-four-top clearfix">
     <div id="blog-slider" class="owl-carousel owl-theme dark-pagination">
        {% for item in self %}
        {% image item.image fill-750x500 as slider_image %}
