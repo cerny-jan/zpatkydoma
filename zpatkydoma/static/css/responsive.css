@@ -19,6 +19,10 @@
     .box-min-height { min-height: 778px;}
 }
 @media (max-width: 1383px) {
+  .blog-parallax-headline {
+    padding-top: 0%;
+  }
+
     /*  navigation  */
     .sub-menu ul { right: -25px; z-index: 99; }
     .search-form {width:80%}

@@ -61,9 +61,10 @@
                   <img class="lazyload" src="{{thumbnail_mini.url}}" data-src="{{ thumbnail.url }}" alt="{{ thumbnail.alt }}" width="599" height="449"/>
                 </a></div>
                 <div class="blog-details">
-                    <div class="blog-date">Posted at {{ blogpage.date_published }}</div>
+                    <div class="blog-date">{{ blogpage.date_published }}</div>
                     <div class="blog-title"><a href="{% pageurl blogpage %}">{{ blogpage.title }}</a></div>
-                    <div class="blog-short-description">{{ blogpage.intro|truncatewords_html:30|richtext }}</div>
+                    <div class="blog-short-description">{{ blogpage.intro|truncatechars_html:250|richtext}}</div>
+                    <div class="separator-line bg-black no-margin-lr"></div>
                 </div>
             </div>
             {% empty %}

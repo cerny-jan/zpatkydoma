@@ -62,6 +62,7 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                 'wagtail.contrib.settings.context_processors.settings',
+                'zpatkydoma.base.context_processors.custom_settings',
             ],
             'loaders': [
                 ('django.template.loaders.cached.Loader', [
@@ -74,14 +75,25 @@ TEMPLATES = [
 ]
 
 # static files
-STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
+STATICFILES_STORAGE = 'compressor.storage.BrotliCompressorFileStorage'
 
+COMPRESS_OFFLINE = True
 COMPRESS_OFFLINE = True
 COMPRESS_CSS_FILTERS = [
     'compressor.filters.css_default.CssAbsoluteFilter',
     'compressor.filters.cssmin.CSSMinFilter',
 ]
 COMPRESS_CSS_HASHING_METHOD = 'content'
+
+INSTALLED_APPS += ['compressor']
+
+COMPRESS_ENABLED = True
+
+COMPRESS_JS_FILTERS = [
+    'compressor.filters.jsmin.JSMinFilter'
+]
+STATICFILES_FINDERS += ['compressor.finders.CompressorFinder']
+
 
 # media files
 GS_BUCKET_NAME = os.getenv('GS_BUCKET_NAME')
