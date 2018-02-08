@@ -85,7 +85,7 @@ GS_PROJECT_ID=os.getenv('GOOGLE_PROJECT_ID')
 GOOGLE_SERVICE_ACCOUNT_INFO = os.getenv('GOOGLE_SERVICE_ACCOUNT_INFO')
 GS_CREDENTIALS = service_account.Credentials.from_service_account_info(
     json.loads(GOOGLE_SERVICE_ACCOUNT_INFO))
-
+GS_CACHE_CONTROL = 'public, max-age=604800'
 
 INSTALLED_APPS.append('storages')
 MEDIA_URL = 'https://storage.googleapis.com/{bucket_name}/'.format(

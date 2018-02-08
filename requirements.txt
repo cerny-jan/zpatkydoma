@@ -3,7 +3,7 @@ wagtail>=1.13,<1.14
 wagtailfontawesome==1.1.1
 django-redis==4.8.0
 django-toolbelt==0.0.1
-django-storages==1.6.5
+git+https://github.com/cerny-jan/django-storages
 dj-database-url==0.4.2
 whitenoise==3.3.1
 postgres==2.2.1
