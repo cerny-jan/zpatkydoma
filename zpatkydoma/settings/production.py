@@ -75,30 +75,14 @@ TEMPLATES = [
 ]
 
 # static files
-STATICFILES_STORAGE = 'compressor.storage.GzipCompressorFileStorage'
-
-COMPRESS_OFFLINE = True
-COMPRESS_OFFLINE = True
-COMPRESS_CSS_FILTERS = [
-    'compressor.filters.css_default.CssAbsoluteFilter',
-    'compressor.filters.cssmin.CSSMinFilter',
-]
-COMPRESS_CSS_HASHING_METHOD = 'content'
-
-INSTALLED_APPS += ['compressor']
-
 COMPRESS_ENABLED = True
-
-COMPRESS_JS_FILTERS = [
-    'compressor.filters.jsmin.JSMinFilter'
-]
-STATICFILES_FINDERS += ['compressor.finders.CompressorFinder']
+COMPRESS_OFFLINE = True
 
 
 # media files
 GS_BUCKET_NAME = os.getenv('GS_BUCKET_NAME')
 GS_PROJECT_ID=os.getenv('GOOGLE_PROJECT_ID')
-
+GS_CACHE_CONTROL = 'public, max-age=604800'
 
 INSTALLED_APPS.append('storages')
 MEDIA_URL = 'https://storage.googleapis.com/{bucket_name}/'.format(
