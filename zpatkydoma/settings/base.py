@@ -202,3 +202,34 @@ EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 DATE_FORMAT = 'd.m.Y'
 
 TRACKING_ENVIRONMENT = 'dev'
+
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'filters': {
+        'require_debug_false': {
+            '()': 'django.utils.log.RequireDebugFalse',
+        }
+    },
+    'handlers': {
+        'console': {
+            'class': 'logging.StreamHandler',
+        },
+        'mail_admins': {
+            'class': 'django.utils.log.AdminEmailHandler',
+        }
+    },
+    'loggers': {
+        'django': {
+            'handlers': ['console'],
+            'level': os.getenv('DJANGO_LOG_LEVEL', 'INFO'),
+        },
+        'django.request': {
+            'handlers': ['mail_admins'],
+            'filters': ['require_debug_false'],
+            'level': 'ERROR',
+            'propagate': False,
+        },
+    },
+}
