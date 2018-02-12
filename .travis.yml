@@ -1,0 +1,11 @@
+language: "python"
+python:
+    - "3.5"
+cache: "pip"
+deploy:
+    provider: "script"
+    script: "deployment/deploy.sh"
+    on:
+        branch: "master"
+        python: "3.5"
+        repo: "cerny-jan/zpatkydoma"
