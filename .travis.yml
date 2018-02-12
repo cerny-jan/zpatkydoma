@@ -2,6 +2,8 @@ language: "python"
 python:
     - "3.5"
 cache: "pip"
+script:
+  - "pytest"
 deploy:
     provider: "script"
     script: "deployment/deploy.sh"
