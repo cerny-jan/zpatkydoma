@@ -14,40 +14,40 @@ BASE_URL = 'https://zpatkydoma.cz'
 
 WAGTAILAPI_BASE_URL = 'https://zpatkydoma.cz'
 
-ALLOWED_HOSTS = ['intense-river-31481.herokuapp.com']
+ALLOWED_HOSTS = ['zpatkydomacz-2726.rostiapp.cz','zpatkydoma.cz']
 
 # client-side JavaScript will not to be able to access the CSRF cookie.
 CSRF_COOKIE_HTTPONLY = True
-
-# SecurityMiddleware sets the X-Content-Type-Options: nosniff header on all responses that do not already have it.
-SECURE_CONTENT_TYPE_NOSNIFF = True
-
-# the cookie will be marked as “secure,” which means browsers may ensure that the cookie is only sent with an HTTPS connection.
-CSRF_COOKIE_SECURE = True
 #
-# Whether to use a secure cookie for the session cookie.
-SESSION_COOKIE_SECURE = True
+# # SecurityMiddleware sets the X-Content-Type-Options: nosniff header on all responses that do not already have it.
+# SECURE_CONTENT_TYPE_NOSNIFF = True
 #
-# X_FRAME_OPTIONS = 'Deny'
+# # the cookie will be marked as “secure,” which means browsers may ensure that the cookie is only sent with an HTTPS connection.
+# CSRF_COOKIE_SECURE = True
+# #
+# # Whether to use a secure cookie for the session cookie.
+# SESSION_COOKIE_SECURE = True
+# #
+# # X_FRAME_OPTIONS = 'Deny'
+# #
+# # If your Django app is behind a proxy, though, the proxy may be “swallowing” the fact that a request is HTTPS
+# SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 #
-# If your Django app is behind a proxy, though, the proxy may be “swallowing” the fact that a request is HTTPS
-SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
-
-#  SecurityMiddleware redirects all non-HTTPS requests to HTTPS (except for those URLs matching a regular expression listed in SECURE_REDIRECT_EXEMPT).
-SECURE_SSL_REDIRECT = True
+# #  SecurityMiddleware redirects all non-HTTPS requests to HTTPS (except for those URLs matching a regular expression listed in SECURE_REDIRECT_EXEMPT).
+# SECURE_SSL_REDIRECT = True
 
 # Parse database configuration from $DATABASE_URL
 DATABASES['default'] = dj_database_url.config()
 
-CACHES = {
-    'default': {
-        'BACKEND': 'django_redis.cache.RedisCache',
-        'LOCATION': os.environ['REDIS_URL'],
-        'OPTIONS': {
-            'CLIENT_CLASS': 'django_redis.client.DefaultClient',
-        }
-    }
-}
+# CACHES = {
+#     'default': {
+#         'BACKEND': 'django_redis.cache.RedisCache',
+#         'LOCATION': os.environ['REDIS_URL'],
+#         'OPTIONS': {
+#             'CLIENT_CLASS': 'django_redis.client.DefaultClient',
+#         }
+#     }
+# }
 
 TEMPLATES = [
     {
@@ -75,33 +75,14 @@ TEMPLATES = [
 ]
 
 # static files
-STATICFILES_STORAGE = 'compressor.storage.GzipCompressorFileStorage'
-
-COMPRESS_OFFLINE = True
-COMPRESS_OFFLINE = True
-COMPRESS_CSS_FILTERS = [
-    'compressor.filters.css_default.CssAbsoluteFilter',
-    'compressor.filters.cssmin.CSSMinFilter',
-]
-COMPRESS_CSS_HASHING_METHOD = 'content'
-
-INSTALLED_APPS += ['compressor']
-
 COMPRESS_ENABLED = True
-
-COMPRESS_JS_FILTERS = [
-    'compressor.filters.jsmin.JSMinFilter'
-]
-STATICFILES_FINDERS += ['compressor.finders.CompressorFinder']
+COMPRESS_OFFLINE = True
 
 
 # media files
 GS_BUCKET_NAME = os.getenv('GS_BUCKET_NAME')
 GS_PROJECT_ID=os.getenv('GOOGLE_PROJECT_ID')
-GOOGLE_SERVICE_ACCOUNT_INFO = os.getenv('GOOGLE_SERVICE_ACCOUNT_INFO')
-GS_CREDENTIALS = service_account.Credentials.from_service_account_info(
-    json.loads(GOOGLE_SERVICE_ACCOUNT_INFO))
-
+GS_CACHE_CONTROL = 'public, max-age=604800'
 
 INSTALLED_APPS.append('storages')
 MEDIA_URL = 'https://storage.googleapis.com/{bucket_name}/'.format(
