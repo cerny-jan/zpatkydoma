@@ -4,6 +4,9 @@ python:
 cache: "pip"
 script:
     - py.test
+branches:
+  only:
+  - master
 deploy:
     provider: "script"
     script: "deployment/deploy.sh"
