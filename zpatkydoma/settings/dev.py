@@ -37,15 +37,10 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'zpatkydoma',
-        'USER': 'zpatkydoma',
-        'PASSWORD': 'admin',
+        'USER': 'postgres',
+        'PASSWORD': '',
         'HOST': '127.0.0.1',
         'PORT': '5432',
-        'TEST': {
-            'NAME': 'test_zpatkydoma',
-            'USER': 'postgres',
-            'PASSWORD': '',
-        },
     }
 }
 
