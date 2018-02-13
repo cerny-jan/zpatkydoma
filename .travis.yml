@@ -4,12 +4,7 @@ python:
     - "3.5"
 cache: "pip"
 env:
-  -DJANGO_SETTINGS_MODULE=patkydoma.settings.production
-  -DJANGO_SECRET_KEY=secretkey
-  -DATABASE_URL=postgres://postgres@localhost/test_zpatkydoma
-  -GOOGLE_PROJECT_ID=test
-  -EMAIL_HOST_USER=test@test.com
-  -EMAIL_HOST_PASSWORD=pswd
+  -DJANGO_SETTINGS_MODULE=patkydoma.settings.production DJANGO_SECRET_KEY=secretkey DATABASE_URL=postgres://postgres@localhost/test_zpatkydoma GOOGLE_PROJECT_ID=test EMAIL_HOST_USER=test@test.com EMAIL_HOST_PASSWORD=pswd
 services:
   - postgresql
 before_script:
