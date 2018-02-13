@@ -1,7 +1,7 @@
-language: "python"
+language: python
 python:
-    - "3.5"
-cache: "pip"
+    - 3.5
+cache: pip
 install:
   - pip install -r requirements.txt
 services:
@@ -12,9 +12,9 @@ branches:
   only:
   - master
 deploy:
-    provider: "script"
-    script: "deployment/deploy.sh"
+    provider: script
+    script: deploy/deploy.sh
     on:
-        branch: "master"
-        python: "3.5"
-        repo: "cerny-jan/zpatkydoma"
+        branch: master
+        python: 3.5
+        repo: cerny-jan/zpatkydoma"
