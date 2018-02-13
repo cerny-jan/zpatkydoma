@@ -46,7 +46,7 @@ DATABASES['default'] = dj_database_url.config()
 CACHES = {
     'default': {
         'BACKEND': 'django_redis.cache.RedisCache',
-        'LOCATION': os.environ['REDIS_URL'],
+        'LOCATION': os.getenv('REDIS_URL', 'redis://127.0.0.1:6379'),
         'OPTIONS': {
             'CLIENT_CLASS': 'django_redis.client.DefaultClient',
         }
@@ -84,7 +84,7 @@ COMPRESS_OFFLINE = True
 
 
 # media files
-GS_BUCKET_NAME = os.getenv('GS_BUCKET_NAME')
+GS_BUCKET_NAME = 'zpatkydoma'
 GS_PROJECT_ID=os.getenv('GOOGLE_PROJECT_ID')
 GOOGLE_SERVICE_ACCOUNT_INFO = os.getenv('GOOGLE_SERVICE_ACCOUNT_INFO')
 GS_CREDENTIALS = service_account.Credentials.from_service_account_info(

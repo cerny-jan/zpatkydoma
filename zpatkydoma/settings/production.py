@@ -1,8 +1,6 @@
 from __future__ import absolute_import, unicode_literals
 
 import dj_database_url
-from google.oauth2 import service_account
-import json
 from .base import *
 
 
@@ -14,7 +12,8 @@ BASE_URL = 'https://zpatkydoma.cz'
 
 WAGTAILAPI_BASE_URL = 'https://zpatkydoma.cz'
 
-ALLOWED_HOSTS = ['zpatkydomacz-2726.rostiapp.cz','zpatkydoma.cz']
+ALLOWED_HOSTS = ['zpatkydomacz-2726.rostiapp.cz', 'zpatkydoma.cz']
+
 
 # client-side JavaScript will not to be able to access the CSRF cookie.
 CSRF_COOKIE_HTTPONLY = True
@@ -46,7 +45,7 @@ DATABASES['default'] = dj_database_url.config()
 # CACHES = {
 #     'default': {
 #         'BACKEND': 'django_redis.cache.RedisCache',
-#         'LOCATION': os.environ['REDIS_URL'],
+#         'LOCATION': os.getenv('REDIS_URL', 'redis://127.0.0.1:6379'),
 #         'OPTIONS': {
 #             'CLIENT_CLASS': 'django_redis.client.DefaultClient',
 #         }
@@ -84,8 +83,8 @@ COMPRESS_OFFLINE = True
 
 
 # media files
-GS_BUCKET_NAME = os.getenv('GS_BUCKET_NAME')
-GS_PROJECT_ID=os.getenv('GOOGLE_PROJECT_ID')
+GS_BUCKET_NAME = 'zpatkydoma'
+GS_PROJECT_ID = os.getenv('GOOGLE_PROJECT_ID')
 GS_CACHE_CONTROL = 'public, max-age=604800'
 
 INSTALLED_APPS.append('storages')
