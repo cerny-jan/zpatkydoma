@@ -7,12 +7,12 @@ from django.core.management import call_command
 from wagtail.wagtailcore.models import Site, Page
 
 # command to generate the data
-# python manage.py dumpdata  --exclude=contenttypes --exclude=wagtailimages.rendition --exclude=sessions.session --exclude=postgres_search.indexentry --indent=2 -o zpatkydoma/base/fixtures/dummy_data.json
+# python manage.py dumpdata --natural-foreign --indent 2 -e auth.permission -e contenttypes -e wagtailcore.GroupCollectionPermission -e wagtailimages.rendition  -e sessions -e postgres_search.indexentry > tests/fixtures/test_data.json
 
 class Command(BaseCommand):
     def handle(self, **options):
-        fixtures_dir = os.path.join(settings.BASE_DIR, 'zpatkydoma','base', 'fixtures')
-        fixture_file = os.path.join(fixtures_dir, 'dummy_data.json')
+        fixtures_dir = os.path.join(settings.BASE_DIR, 'tests', 'fixtures')
+        fixture_file = os.path.join(fixtures_dir, 'test_data.json')
 
         # Wagtail creates default Site and Page instances during install, but we already have
         # them in the data load. Remove the auto-generated ones.
@@ -24,4 +24,4 @@ class Command(BaseCommand):
 
         call_command('loaddata', fixture_file, verbosity=0)
 
-        print('Dummy data is loaded!')
+        self.stdout.write(self.style.SUCCESS('Test data loaded!'))
