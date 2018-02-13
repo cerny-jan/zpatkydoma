@@ -2,13 +2,14 @@ language: "python"
 python:
     - "3.5"
 cache: "pip"
-env:
-  -DJANGO_SETTINGS_MODULE=zpatkydoma.settings.production DJANGO_SECRET_KEY=secretkey DATABASE_URL=postgres://postgres@localhost/test_zpatkydoma GOOGLE_PROJECT_ID=test EMAIL_HOST_USER=test@test.com EMAIL_HOST_PASSWORD=pswd
+install:
+  - pip install -r requirements-dev.txt
 services:
   - postgresql
 before_script:
   - psql -c 'create database test_zpatkydoma;' -U postgres
-script: python manage.py test
+script:
+  - python manage.py test
 branches:
   only:
   - master
