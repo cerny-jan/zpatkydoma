@@ -193,6 +193,7 @@ class BlogListPage(Page):
         ObjectList(cofiguration_panels, heading='Page Configuration'),
     ])
 
+    parent_page_types = ['base.HomePage']
     subpage_types = ['blog.BlogPage']
 
     class Meta:
@@ -204,9 +205,9 @@ class BlogTagPage(Page):
     def get_context(self, request):
         tag = request.GET.get('tag')
         if tag:
-            blogpages = BlogPage.objects.filter(tags__slug=tag)
+            blogpages = BlogPage.objects.filter(tags__slug=tag).live()
         else:
-            blogpages = BlogPage.objects.all()
+            blogpages = BlogPage.objects.all().live()
         context = super(BlogTagPage, self).get_context(request)
         context['blogpages'] = blogpages
         context['searched_tag'] = Tag.objects.filter(slug=tag).first()
@@ -219,6 +220,7 @@ class BlogTagPage(Page):
         ObjectList(Page.promote_panels, heading='Page Configuration'),
     ])
 
+    parent_page_types = ['base.HomePage']
     subpage_types = ['blog.BlogPage']
 
     class Meta:
