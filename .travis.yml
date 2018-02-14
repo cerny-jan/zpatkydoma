@@ -11,10 +11,5 @@ script:
 branches:
   only:
   - master
-deploy:
-    provider: script
-    script: bash echo 'test'
-    on:
-        branch: master
-        python: 3.5
-        repo: cerny-jan/zpatkydoma"
+after_success:
+  - deployment/deploy.sh
