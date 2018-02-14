@@ -1,5 +1,7 @@
 #!/bin/sh
+echo 'Deployment started'
 
+set -v
 # this is base on https://github.com/pyvec/python.cz/blob/master/deployment/deploy.sh
 
 # This script should be executed on the CI machine.
