@@ -20,5 +20,11 @@ chmod 764 /srv/app/deployment/update.sh
 /srv/venv/bin/pip install -U pip
 /srv/venv/bin/pip install -r /srv/app/requirements.txt
 
+# migrate django changes
+python /srv/app/manage.py migrate
+# prepare django static files
+python /srv/app/manage.py collectstatic
+python /srv/app/manage.py compress
+
 # restart the app
 supervisorctl restart app
