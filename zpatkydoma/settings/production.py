@@ -42,15 +42,15 @@ CSRF_COOKIE_HTTPONLY = True
 # Parse database configuration from $DATABASE_URL
 DATABASES['default'] = dj_database_url.config()
 
-# CACHES = {
-#     'default': {
-#         'BACKEND': 'django_redis.cache.RedisCache',
-#         'LOCATION': os.getenv('REDIS_URL', 'redis://127.0.0.1:6379'),
-#         'OPTIONS': {
-#             'CLIENT_CLASS': 'django_redis.client.DefaultClient',
-#         }
-#     }
-# }
+CACHES = {
+    'default': {
+        'BACKEND': 'django_redis.cache.RedisCache',
+        'LOCATION': os.getenv('REDIS_URL', 'redis://127.0.0.1:6379'),
+        'OPTIONS': {
+            'CLIENT_CLASS': 'django_redis.client.DefaultClient',
+        }
+    }
+}
 
 TEMPLATES = [
     {
