@@ -18,7 +18,7 @@ chmod 764 /srv/app/deployment/update.sh
 
 # install dependencies
 /srv/venv/bin/pip install -U pip
-/srv/venv/bin/pip install -r requirements.txt
+/srv/venv/bin/pip install -r /srv/app/requirements.txt
 
 # restart the app
 supervisorctl restart app
