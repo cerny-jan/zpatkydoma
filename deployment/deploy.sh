@@ -9,12 +9,12 @@ fi
 
 
 # Decrypting private key
-openssl aes-256-cbc -K $encrypted_f2ef1a2b0bb8_key -iv $encrypted_f2ef1a2b0bb8_iv -in deployment/zpatkydoma_deployment.enc -out deployment/zpatkydoma_deployment -d
-chmod 600 deployment/zpatkydoma_deployment
+openssl aes-256-cbc -K $encrypted_17b712f42c00_key -iv $encrypted_17b712f42c00_iv -in deployment/id_rsa_zpatkydoma_deployment.enc -out deployment/id_rsa_zpatkydoma_deployment -d
+chmod 600 deployment/id_rsa_zpatkydoma_deployment
 
 # Run the 'update.sh' script remotely.
-ssh 'app@node-14.rosti.cz' -p '14232' -o 'StrictHostKeyChecking no' -i 'deployment/zpatkydoma_deployment' '/srv/app/deployment/update.sh'
+ssh 'app@node-14.rosti.cz' -p '14232' -o 'StrictHostKeyChecking no' -i 'deployment/id_rsa_zpatkydoma_deployment' '/srv/app/deployment/update.sh'
 
 
 # Remove decrypted private key
-rm deployment/zpatkydoma_deployment
+rm deployment/id_rsa_zpatkydoma_deployment
