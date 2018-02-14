@@ -62,6 +62,14 @@
   }
 },
 {
+  "model": "blog.blogpagetag",
+  "pk": 17,
+  "fields": {
+    "tag": 11,
+    "content_object": 12
+  }
+},
+{
   "model": "blog.relatedpage",
   "pk": 6,
   "fields": {
@@ -217,6 +225,14 @@
   "fields": {
     "name": "english",
     "slug": "english"
+  }
+},
+{
+  "model": "taggit.tag",
+  "pk": 11,
+  "fields": {
+    "name": "Jable\u010dn\u00e9 rohl\u00ed\u010dky",
+    "slug": "jablecne-rohlicky"
   }
 },
 {
@@ -396,7 +412,7 @@
   "pk": 1,
   "fields": {
     "password": "pbkdf2_sha256$36000$7DEDvIiMYl6J$6ORSTTqv1/ljGrIwcrzHOOcKP4gEqIO9SK0pNFFPa9k=",
-    "last_login": "2018-02-06T16:09:58.038Z",
+    "last_login": "2018-02-14T11:01:59.500Z",
     "is_superuser": true,
     "username": "admin",
     "first_name": "",
@@ -742,6 +758,76 @@
   }
 },
 {
+  "model": "wagtailcore.pagerevision",
+  "pk": 20,
+  "fields": {
+    "page": 7,
+    "submitted_for_moderation": false,
+    "created_at": "2018-02-14T11:02:25.954Z",
+    "user": [
+      "admin"
+    ],
+    "content_json": "{\"pk\": 7, \"path\": \"000100020004\", \"depth\": 3, \"numchild\": 4, \"title\": \"O \\u010cesku\", \"draft_title\": \"O \\u010cesku\", \"slug\": \"o-cesku\", \"content_type\": 10, \"live\": true, \"has_unpublished_changes\": false, \"url_path\": \"/homepage/o-cesku/\", \"owner\": 1, \"seo_title\": \"\", \"show_in_menus\": true, \"search_description\": \"\", \"go_live_at\": null, \"expire_at\": null, \"expired\": false, \"locked\": false, \"first_published_at\": \"2018-02-06T09:34:27.427Z\", \"last_published_at\": \"2018-02-06T09:34:27.427Z\", \"latest_revision_created_at\": \"2018-02-06T09:34:27.166Z\", \"live_revision\": 5, \"sub_title\": \"\", \"posts_per_page\": 5}",
+    "approved_go_live_at": null
+  }
+},
+{
+  "model": "wagtailcore.pagerevision",
+  "pk": 21,
+  "fields": {
+    "page": 13,
+    "submitted_for_moderation": false,
+    "created_at": "2018-02-14T11:03:17.395Z",
+    "user": [
+      "admin"
+    ],
+    "content_json": "{\"pk\": 13, \"path\": \"0001000200040005\", \"depth\": 4, \"numchild\": 0, \"title\": \"blog post\", \"draft_title\": \"blog post\", \"slug\": \"blog-post\", \"content_type\": 11, \"live\": true, \"has_unpublished_changes\": false, \"url_path\": \"/homepage/o-cesku/blog-post/\", \"owner\": 1, \"seo_title\": \"\", \"show_in_menus\": false, \"search_description\": \"\", \"go_live_at\": null, \"expire_at\": null, \"expired\": false, \"locked\": false, \"first_published_at\": null, \"last_published_at\": null, \"latest_revision_created_at\": null, \"live_revision\": null, \"image\": 2, \"intro\": \"<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting,\\u00a0</p>\", \"body\": \"[]\", \"date_published\": \"2018-02-14\", \"domicile\": \"\", \"category\": null, \"tagged_items\": [], \"related_pages\": []}",
+    "approved_go_live_at": null
+  }
+},
+{
+  "model": "wagtailcore.pagerevision",
+  "pk": 22,
+  "fields": {
+    "page": 14,
+    "submitted_for_moderation": false,
+    "created_at": "2018-02-14T11:04:05.927Z",
+    "user": [
+      "admin"
+    ],
+    "content_json": "{\"pk\": 14, \"path\": \"0001000200040006\", \"depth\": 4, \"numchild\": 0, \"title\": \"blog post 2\", \"draft_title\": \"blog post 2\", \"slug\": \"blog-post-2\", \"content_type\": 11, \"live\": true, \"has_unpublished_changes\": false, \"url_path\": \"/homepage/o-cesku/blog-post-2/\", \"owner\": 1, \"seo_title\": \"\", \"show_in_menus\": false, \"search_description\": \"\", \"go_live_at\": null, \"expire_at\": null, \"expired\": false, \"locked\": false, \"first_published_at\": null, \"last_published_at\": null, \"latest_revision_created_at\": null, \"live_revision\": null, \"image\": 2, \"intro\": \"<p>orem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.\\u00a0</p>\", \"body\": \"[]\", \"date_published\": \"2018-02-14\", \"domicile\": \"\", \"category\": null, \"tagged_items\": [], \"related_pages\": []}",
+    "approved_go_live_at": null
+  }
+},
+{
+  "model": "wagtailcore.pagerevision",
+  "pk": 23,
+  "fields": {
+    "page": 15,
+    "submitted_for_moderation": false,
+    "created_at": "2018-02-14T11:04:38.795Z",
+    "user": [
+      "admin"
+    ],
+    "content_json": "{\"pk\": 15, \"path\": \"0001000200040007\", \"depth\": 4, \"numchild\": 0, \"title\": \"blog post 3\", \"draft_title\": \"blog post 3\", \"slug\": \"blog-post-3\", \"content_type\": 11, \"live\": true, \"has_unpublished_changes\": false, \"url_path\": \"/homepage/o-cesku/blog-post-3/\", \"owner\": 1, \"seo_title\": \"\", \"show_in_menus\": false, \"search_description\": \"\", \"go_live_at\": null, \"expire_at\": null, \"expired\": false, \"locked\": false, \"first_published_at\": null, \"last_published_at\": null, \"latest_revision_created_at\": null, \"live_revision\": null, \"image\": 1, \"intro\": \"<p>t was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>\", \"body\": \"[]\", \"date_published\": \"2018-02-14\", \"domicile\": \"\", \"category\": null, \"tagged_items\": [], \"related_pages\": []}",
+    "approved_go_live_at": null
+  }
+},
+{
+  "model": "wagtailcore.pagerevision",
+  "pk": 24,
+  "fields": {
+    "page": 12,
+    "submitted_for_moderation": false,
+    "created_at": "2018-02-14T11:06:15.481Z",
+    "user": [
+      "admin"
+    ],
+    "content_json": "{\"pk\": 12, \"path\": \"0001000200040004\", \"depth\": 4, \"numchild\": 0, \"title\": \"Sni\\u017euj\\u00edc\\u00edm nesouc\\u00ed nesou vyu\\u017e\\u00edv\\u00e1-li spojen\\u00edm ur\\u010den\\u00edm p\\u0159enosu dot\\u010dena\", \"draft_title\": \"Sni\\u017euj\\u00edc\\u00edm nesouc\\u00ed nesou vyu\\u017e\\u00edv\\u00e1-li spojen\\u00edm ur\\u010den\\u00edm p\\u0159enosu dot\\u010dena\", \"slug\": \"snizujicim-nesouci-nesou-vyuziva-li-spojenim-urcenim-prenosu-dotcena\", \"content_type\": 11, \"live\": true, \"has_unpublished_changes\": false, \"url_path\": \"/homepage/o-cesku/snizujicim-nesouci-nesou-vyuziva-li-spojenim-urcenim-prenosu-dotcena/\", \"owner\": 1, \"seo_title\": \"\", \"show_in_menus\": false, \"search_description\": \"Sni\\u017euj\\u00edc\\u00edm nesouc\\u00ed nesou vyu\\u017e\\u00edv\\u00e1-li spojen\\u00edm ur\\u010den\\u00edm p\\u0159enosu dot\\u010dena, vydat bezplatn\\u011b p\\u0159ede hudebn\\u011b sd\\u011blov\\u00e1n\\u00ed jinak dru\\u017eice. Zve\\u0159ej\\u0148ovat ji pova\\u017euj\\u00ed vylu\\u010duj\\u00edc\\u00ed. Z\\u00e1kaz kte\\u0159\\u00ed: zm\\u011bnit majetkov\\u00fdch p\\u0159edpoklady jin\\u00e9m z\\u00e1kona, zm\\u011bnu s\\u00edt\\u00ed komu vypl\\u00fdvaj\\u00ed n\\u00e1rok, \\u00a7 5 zm\\u011bn ob\\u0159adech zm\\u011bnit u \\u00a7 8 fond hraje. Technikou p\\u0159ev\\u00e1\\u017en\\u011b chyb\\u011bj\\u00edc\\u00edho tv\\u016fr\\u010d\\u00edch d\\u011bl, \\u00a7 92 z ke majetkov\\u00e1 vzniku, zvl\\u00e1\\u0161\\u0165. \\u00a7 53\", \"go_live_at\": null, \"expire_at\": null, \"expired\": false, \"locked\": false, \"first_published_at\": \"2018-02-06T11:25:48.925Z\", \"last_published_at\": \"2018-02-06T11:25:48.925Z\", \"latest_revision_created_at\": \"2018-02-06T11:25:48.570Z\", \"live_revision\": 14, \"image\": 1, \"intro\": \"<p>Sni\\u017euj\\u00edc\\u00edm nesouc\\u00ed nesou vyu\\u017e\\u00edv\\u00e1-li spojen\\u00edm ur\\u010den\\u00edm p\\u0159enosu dot\\u010dena, vydat bezplatn\\u011b p\\u0159ede hudebn\\u011b sd\\u011blov\\u00e1n\\u00ed jinak dru\\u017eice. Zve\\u0159ej\\u0148ovat ji pova\\u017euj\\u00ed vylu\\u010duj\\u00edc\\u00ed. Z\\u00e1kaz kte\\u0159\\u00ed: zm\\u011bnit majetkov\\u00fdch p\\u0159edpoklady jin\\u00e9m z\\u00e1kona, zm\\u011bnu s\\u00edt\\u00ed komu vypl\\u00fdvaj\\u00ed n\\u00e1rok, \\u00a7\\u00a05 zm\\u011bn ob\\u0159adech zm\\u011bnit u \\u00a7\\u00a08 fond hraje. Technikou p\\u0159ev\\u00e1\\u017en\\u011b chyb\\u011bj\\u00edc\\u00edho tv\\u016fr\\u010d\\u00edch d\\u011bl, \\u00a7\\u00a092 z\\u00a0ke majetkov\\u00e1 vzniku, zvl\\u00e1\\u0161\\u0165. \\u00a7\\u00a053\\u00a0</p>\", \"body\": \"[]\", \"date_published\": \"2018-02-06\", \"domicile\": \"\", \"category\": 1, \"tagged_items\": [{\"pk\": null, \"tag\": 11, \"content_object\": 12}], \"related_pages\": []}",
+    "approved_go_live_at": null
+  }
+},
+{
   "model": "wagtailcore.page",
   "pk": 1,
   "fields": {
@@ -910,7 +996,7 @@
   "fields": {
     "path": "000100020004",
     "depth": 3,
-    "numchild": 4,
+    "numchild": 7,
     "title": "O \u010cesku",
     "draft_title": "O \u010cesku",
     "slug": "o-cesku",
@@ -932,9 +1018,9 @@
     "expired": false,
     "locked": false,
     "first_published_at": "2018-02-06T09:34:27.427Z",
-    "last_published_at": "2018-02-06T09:34:27.427Z",
-    "latest_revision_created_at": "2018-02-06T09:34:27.166Z",
-    "live_revision": 5
+    "last_published_at": "2018-02-14T11:02:26.243Z",
+    "latest_revision_created_at": "2018-02-14T11:02:25.954Z",
+    "live_revision": 20
   }
 },
 {
@@ -1097,9 +1183,108 @@
     "expired": false,
     "locked": false,
     "first_published_at": "2018-02-06T11:25:48.925Z",
-    "last_published_at": "2018-02-06T11:25:48.925Z",
-    "latest_revision_created_at": "2018-02-06T11:25:48.570Z",
-    "live_revision": 14
+    "last_published_at": "2018-02-14T11:06:15.878Z",
+    "latest_revision_created_at": "2018-02-14T11:06:15.481Z",
+    "live_revision": 24
+  }
+},
+{
+  "model": "wagtailcore.page",
+  "pk": 13,
+  "fields": {
+    "path": "0001000200040005",
+    "depth": 4,
+    "numchild": 0,
+    "title": "blog post",
+    "draft_title": "blog post",
+    "slug": "blog-post",
+    "content_type": [
+      "blog",
+      "blogpage"
+    ],
+    "live": true,
+    "has_unpublished_changes": false,
+    "url_path": "/homepage/o-cesku/blog-post/",
+    "owner": [
+      "admin"
+    ],
+    "seo_title": "",
+    "show_in_menus": false,
+    "search_description": "",
+    "go_live_at": null,
+    "expire_at": null,
+    "expired": false,
+    "locked": false,
+    "first_published_at": "2018-02-14T11:03:17.678Z",
+    "last_published_at": "2018-02-14T11:03:17.678Z",
+    "latest_revision_created_at": "2018-02-14T11:03:17.395Z",
+    "live_revision": 21
+  }
+},
+{
+  "model": "wagtailcore.page",
+  "pk": 14,
+  "fields": {
+    "path": "0001000200040006",
+    "depth": 4,
+    "numchild": 0,
+    "title": "blog post 2",
+    "draft_title": "blog post 2",
+    "slug": "blog-post-2",
+    "content_type": [
+      "blog",
+      "blogpage"
+    ],
+    "live": true,
+    "has_unpublished_changes": false,
+    "url_path": "/homepage/o-cesku/blog-post-2/",
+    "owner": [
+      "admin"
+    ],
+    "seo_title": "",
+    "show_in_menus": false,
+    "search_description": "",
+    "go_live_at": null,
+    "expire_at": null,
+    "expired": false,
+    "locked": false,
+    "first_published_at": "2018-02-14T11:04:06.207Z",
+    "last_published_at": "2018-02-14T11:04:06.207Z",
+    "latest_revision_created_at": "2018-02-14T11:04:05.927Z",
+    "live_revision": 22
+  }
+},
+{
+  "model": "wagtailcore.page",
+  "pk": 15,
+  "fields": {
+    "path": "0001000200040007",
+    "depth": 4,
+    "numchild": 0,
+    "title": "blog post 3",
+    "draft_title": "blog post 3",
+    "slug": "blog-post-3",
+    "content_type": [
+      "blog",
+      "blogpage"
+    ],
+    "live": true,
+    "has_unpublished_changes": false,
+    "url_path": "/homepage/o-cesku/blog-post-3/",
+    "owner": [
+      "admin"
+    ],
+    "seo_title": "",
+    "show_in_menus": false,
+    "search_description": "",
+    "go_live_at": null,
+    "expire_at": null,
+    "expired": false,
+    "locked": false,
+    "first_published_at": "2018-02-14T11:04:39.084Z",
+    "last_published_at": "2018-02-14T11:04:39.084Z",
+    "latest_revision_created_at": "2018-02-14T11:04:38.795Z",
+    "live_revision": 23
   }
 },
 {
@@ -1160,7 +1345,7 @@
   "pk": 7,
   "fields": {
     "sub_title": "",
-    "posts_per_page": 25
+    "posts_per_page": 5
   }
 },
 {
@@ -1217,6 +1402,42 @@
     "date_published": "2018-02-06",
     "domicile": "",
     "category": 1
+  }
+},
+{
+  "model": "blog.blogpage",
+  "pk": 13,
+  "fields": {
+    "image": 2,
+    "intro": "<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting,\u00a0</p>",
+    "body": "[]",
+    "date_published": "2018-02-14",
+    "domicile": "",
+    "category": null
+  }
+},
+{
+  "model": "blog.blogpage",
+  "pk": 14,
+  "fields": {
+    "image": 2,
+    "intro": "<p>orem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.\u00a0</p>",
+    "body": "[]",
+    "date_published": "2018-02-14",
+    "domicile": "",
+    "category": null
+  }
+},
+{
+  "model": "blog.blogpage",
+  "pk": 15,
+  "fields": {
+    "image": 1,
+    "intro": "<p>t was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>",
+    "body": "[]",
+    "date_published": "2018-02-14",
+    "domicile": "",
+    "category": null
   }
 },
 {
