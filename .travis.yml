@@ -13,7 +13,7 @@ branches:
   - master
 deploy:
     provider: script
-    script: echo 'test'
+    script: bash echo 'test'
     on:
         branch: master
         python: 3.5
