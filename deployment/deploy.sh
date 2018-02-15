@@ -1,22 +1,24 @@
 #!/bin/sh
-echo 'Deployment started'
 
-set -v
-# this is based on https://github.com/pyvec/python.cz/blob/master/deployment/deploy.sh
-
-# This script should be executed on the CI machine.
-if [ -z "$CI" ]; then
+# This script should be executed remotely on the production machine.
+if [ "$USER" != "app" ]; then
     exit
 fi
 
+# clear existing source code
+rm -rf /srv/app
 
-# Decrypting private key
-openssl aes-256-cbc -K $encrypted_17b712f42c00_key -iv $encrypted_17b712f42c00_iv -in deployment/id_rsa_zpatkydoma_deployment.enc -out deployment/id_rsa_zpatkydoma_deployment -d
-chmod 600 deployment/id_rsa_zpatkydoma_deployment
+# get latest code
+git clone --progress --depth=1 --branch=master https://github.com/cerny-jan/zpatkydoma  /srv/app
 
-# Run the 'update.sh' script remotely.
-ssh 'app@node-14.rosti.cz' -p '14232' -o 'StrictHostKeyChecking no' -i 'deployment/id_rsa_zpatkydoma_deployment' '/srv/app/deployment/update.sh'
+# set permissions
+chmod 764 /srv/app/deployment/update.sh
 
+# install dependencies
+/srv/venv/bin/pip install -U pip
+/srv/venv/bin/pip install -r /srv/app/requirements.txt
 
-# Remove decrypted private key
-rm deployment/id_rsa_zpatkydoma_deployment
+# run django after deploy commands
+supervisorctl restart django-deploy:*
+# restart the app
+supervisorctl restart app
