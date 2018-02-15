@@ -2,7 +2,7 @@
 echo 'Deployment started'
 
 set -v
-# this is base on https://github.com/pyvec/python.cz/blob/master/deployment/deploy.sh
+# this is based on https://github.com/pyvec/python.cz/blob/master/deployment/deploy.sh
 
 # This script should be executed on the CI machine.
 if [ -z "$CI" ]; then
