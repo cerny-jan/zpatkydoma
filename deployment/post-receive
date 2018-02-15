@@ -1,0 +1,36 @@
+#!/bin/bash
+
+# create bare repo on server git init --bare ~/zpatkydoma.git
+# add this file to /hooks
+# once ssh keys are setup run this on your local repo git remote add server ssh://app@node-14.rosti.cz:14232/srv/zpatkydoma.git
+
+if ! [ -t 0 ]; then
+    read -a ref
+fi
+
+IFS='/' read -ra REF <<< "${ref[2]}"
+branch="${REF[2]}"
+
+# Deploy only master
+if [ "master" == "$branch" ];
+then
+    echo "Deploying master branch to production..."
+    git --work-tree=/srv/app checkout -f $branch
+    echo 'Changes pushed to production site'
+
+    # install dependencies
+    echo 'Installing dependencies'
+    /srv/venv/bin/pip install -U pip
+    /srv/venv/bin/pip install -r /srv/app/requirements.txt
+
+    # run django after deploy commands
+    echo 'Running Django after deploy commands'
+    supervisorctl restart django-deploy:*
+
+    # restart the app
+    echo 'Restarting app'
+    supervisorctl restart app
+    
+else
+      echo "$branch received.  Doing nothing: only the master branch may be deployed on this server."
+fi
