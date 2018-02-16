@@ -14,7 +14,6 @@ WAGTAILAPI_BASE_URL = 'https://zpatkydoma.cz'
 
 ALLOWED_HOSTS = ['zpatkydomacz-2726.rostiapp.cz', 'zpatkydoma.cz']
 
-WSGI_APPLICATION = 'zpatkydoma.app.application'
 
 # client-side JavaScript will not to be able to access the CSRF cookie.
 CSRF_COOKIE_HTTPONLY = True
