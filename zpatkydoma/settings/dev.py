@@ -7,7 +7,7 @@ DEBUG = True
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'krzgjv02(+gu(zg(qs$x+y6u3ouzdgp0%@gg@&@7y65x^e=k2u'
 
-INSTALLED_APPS += ['debug_toolbar', 'wagtail.contrib.wagtailstyleguide', ]
+INSTALLED_APPS += ['debug_toolbar', 'wagtail.contrib.styleguide', ]
 
 MIDDLEWARE += ['debug_toolbar.middleware.DebugToolbarMiddleware']
 

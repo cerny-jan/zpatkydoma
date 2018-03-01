@@ -1,7 +1,7 @@
 from wagtail.tests.utils import WagtailPageTests
 from zpatkydoma.blog.models import BlogPage, BlogListPage, BlogTagPage
 from zpatkydoma.base.models import StandardPage, HomePage
-from wagtail.wagtailcore.models import Page
+from wagtail.core.models import Page
 
 class HiearchyTest(WagtailPageTests):
 

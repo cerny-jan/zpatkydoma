@@ -1,6 +1,6 @@
-from wagtail.wagtailimages.blocks import ImageChooserBlock
-from wagtail.wagtailembeds.blocks import EmbedBlock
-from wagtail.wagtailcore.blocks import (
+from wagtail.images.blocks import ImageChooserBlock
+from wagtail.embeds.blocks import EmbedBlock
+from wagtail.core.blocks import (
     CharBlock,
     ChoiceBlock,
     RichTextBlock,
@@ -44,7 +44,7 @@ class QuoteBlock(StructBlock):
         blank=True, required=False, label='e.g. Mary Berry')
 
     class Meta:
-        icon = 'fa-quote-left'
+        icon = 'openquote'
         template = 'blocks/quote_block.html'
         label = 'Quote'
 
@@ -68,15 +68,15 @@ class HeadingBlock(StructBlock):
 class BaseStreamBlock(StreamBlock):
     heading_block = HeadingBlock()
     indented_paragraph_block = RichTextBlock(
-        icon="fa-paragraph",
-        template="blocks/indented_paragraph_block.html",
-        features=['ol', 'ul', 'bold', 'italic', 'hr', 'link'],
+        icon='pilcrow',
+        template='blocks/indented_paragraph_block.html',
+        features=['ol', 'ul', 'bold', 'italic', 'strikethrough', 'hr', 'link'],
         label='Indented Text'
     )
     paragraph_block = RichTextBlock(
-        icon="fa-paragraph",
-        template="blocks/paragraph_block.html",
-        features=['ol', 'ul', 'bold', 'italic', 'hr', 'link'],
+        icon='pilcrow',
+        template='blocks/paragraph_block.html',
+        features=['ol', 'ul', 'bold', 'italic', 'strikethrough', 'hr', 'link'],
         label='Text'
     )
     image_block = ImageBlock()
@@ -98,7 +98,7 @@ class BaseStreamBlock(StreamBlock):
     block_quote = QuoteBlock()
     embed_block = EmbedBlock(
         help_text='Insert an embed URL e.g https://www.youtube.com/embed/SGJFWirQ3ks',
-        icon='fa-s15',
+        icon='media',
         template='blocks/embed_block.html')
     raw_html = RawHTMLBlock(
         required=False,
@@ -134,7 +134,6 @@ class StandardPageImageBlock(StructBlock):
 
 class SeparatorLineStaticBlock(StaticBlock):
     class Meta:
-        icon = 'fa-minus '
         label = 'Separator Line'
         admin_text = 'Automaticaly inserts separator line into the template'
         template = 'blocks/separator_line_static_block.html'
@@ -143,7 +142,7 @@ class SeparatorLineStaticBlock(StaticBlock):
 class ColumnStreamBlock(StreamBlock):
     heading = StandardPageHeadingBlock()
     paragraph = RichTextBlock(
-        icon="fa-paragraph",
+        icon='pilcrow',
         features=['ol', 'ul', 'bold', 'italic', 'hr', 'link'],
         label='Text'
     )
@@ -157,7 +156,6 @@ class TwoColumnsBlock(StructBlock):
         icon='arrow-right', label='Right column content')
 
     class Meta:
-        icon = 'fa-columns'
         label = 'Two Columns Layout'
         template = 'blocks/two_columns_layout.html'
 
@@ -166,7 +164,6 @@ class OneColumnsBlock(StructBlock):
     column = ColumnStreamBlock()
 
     class Meta:
-        icon = 'fa-file-text-o'
         label = 'One Column Layout'
         template = 'blocks/one_column_layout.html'
 

@@ -10,9 +10,9 @@ from modelcluster.contrib.taggit import ClusterTaggableManager
 
 from taggit.models import TaggedItemBase, Tag
 
-from wagtail.wagtailcore.models import Page
-from wagtail.wagtailcore.fields import StreamField, RichTextField
-from wagtail.wagtailadmin.edit_handlers import (
+from wagtail.core.models import Page
+from wagtail.core.fields import StreamField, RichTextField
+from wagtail.admin.edit_handlers import (
     FieldPanel,
     InlinePanel,
     MultiFieldPanel,
@@ -21,9 +21,9 @@ from wagtail.wagtailadmin.edit_handlers import (
     TabbedInterface,
     ObjectList
 )
-from wagtail.wagtailimages.edit_handlers import ImageChooserPanel
+from wagtail.images.edit_handlers import ImageChooserPanel
 from wagtail.api import APIField
-from wagtail.wagtailsearch import index
+from wagtail.search import index
 
 from zpatkydoma.base.blocks import BaseStreamBlock
 

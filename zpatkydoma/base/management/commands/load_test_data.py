@@ -4,7 +4,7 @@ from django.conf import settings
 from django.core.management.base import BaseCommand
 from django.core.management import call_command
 
-from wagtail.wagtailcore.models import Site, Page
+from wagtail.core.models import Site, Page
 
 # command to generate the data
 # python manage.py dumpdata --natural-foreign --indent 2 -e auth.permission -e contenttypes -e wagtailcore.GroupCollectionPermission -e wagtailimages.rendition  -e sessions -e postgres_search.indexentry > tests/fixtures/test_data.json

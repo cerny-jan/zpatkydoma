@@ -1,6 +1,6 @@
 from django.core.management import call_command
 from django.test import TestCase
-from wagtail.wagtailcore.models import Page
+from wagtail.core.models import Page
 from zpatkydoma.blog.models import BlogPage, BlogTagPage, BlogListPage
 from zpatkydoma.base.models import HomePage
 

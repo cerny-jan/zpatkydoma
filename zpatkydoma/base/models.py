@@ -4,9 +4,9 @@ from django.db import models
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.core.validators import MinValueValidator, MaxValueValidator
 
-from wagtail.wagtailcore.models import Page
-from wagtail.wagtailcore.fields import StreamField
-from wagtail.wagtailadmin.edit_handlers import (
+from wagtail.core.models import Page
+from wagtail.core.fields import StreamField
+from wagtail.admin.edit_handlers import (
     StreamFieldPanel,
     PageChooserPanel,
     TabbedInterface,
@@ -14,7 +14,7 @@ from wagtail.wagtailadmin.edit_handlers import (
     FieldPanel
 )
 from wagtail.contrib.settings.models import BaseSetting, register_setting
-from wagtail.wagtailsnippets.models import register_snippet
+from wagtail.snippets.models import register_snippet
 
 from .blocks import BaseStreamBlock, StandardPageStreamBlock
 from zpatkydoma.blog.models import BlogPage
