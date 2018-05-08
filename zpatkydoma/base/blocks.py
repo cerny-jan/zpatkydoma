@@ -86,10 +86,10 @@ class BaseStreamBlock(StreamBlock):
                                        template='blocks/landscape_images_block.html',
                                        help_text='Add even number of images (it inserts 2 horizontal images on the line)')
     portrait_images_block = ListBlock(SimpleImageBlock(),
-                                       label='Portrait Images',
-                                       icon='image',
-                                       template='blocks/portrait_images_block.html',
-                                       help_text='Add 2 images (it inserts 2 vertical images on the line)')
+                                      label='Portrait Images',
+                                      icon='image',
+                                      template='blocks/portrait_images_block.html',
+                                      help_text='Add 2 images (it inserts 2 vertical images on the line)')
     image_slider_block = ListBlock(SliderImageBlock(),
                                    label='Image Slider',
                                    icon='image',
@@ -147,6 +147,11 @@ class ColumnStreamBlock(StreamBlock):
         label='Text'
     )
     image = StandardPageImageBlock()
+    raw_html = RawHTMLBlock(
+        required=False,
+        template='blocks/raw_html_block.html',
+        label='Raw HTML',
+        help_text='A text area for entering raw HTML which will be rendered unescaped')
 
 
 class TwoColumnsBlock(StructBlock):
