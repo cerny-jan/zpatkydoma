@@ -1293,7 +1293,7 @@
     .glyphs .box1 span { font-size: 30px; width: 40px;}
 }
 @media (max-width: 480px) {
-    .text-large-full-width .rich-text p { font-size:18px !important; font-weight: 100; line-height: 35px !important; text-indent: 20px}
+    .text-large-full-width .rich-text p { font-size:17px !important; font-weight: normal;text-indent: 20px}
 
     /*  navigation  */
     .navbar-fixed-top .navbar-collapse, .navbar-fixed-bottom .navbar-collapse { max-height: 394px; }
