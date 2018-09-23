@@ -7,7 +7,7 @@
 <meta property="og:url" content="{{page.full_url}}" />
 <meta property="og:title" content="{% if self.seo_title %}{{ self.seo_title }}{% else %}{{ self.title }}{% endif %}" />
 <meta property="og:description" content="{{page.search_description}}" />
-<meta property="og:image" content="" />
+<meta property="og:image" content="{% with latest_page=blogpages|first %}{% image latest_page.specific.image fill-1200x840 as tmp_image %}{{tmp_image.url}}{%endwith%}"/>
 <meta property="og:type" content="website" />
 <meta property="og:locale" content="cs_CZ" />
 <meta property="og:site_name" content="{{page.get_site.site_name}}" />

@@ -205,9 +205,9 @@ class BlogTagPage(Page):
     def get_context(self, request):
         tag = request.GET.get('tag')
         if tag:
-            blogpages = BlogPage.objects.filter(tags__slug=tag).live()
+            blogpages = BlogPage.objects.filter(tags__slug=tag).live().order_by('-date_published','-last_published_at')
         else:
-            blogpages = BlogPage.objects.all().live()
+            blogpages = BlogPage.objects.all().live().order_by('-date_published','-last_published_at')
         context = super(BlogTagPage, self).get_context(request)
         context['blogpages'] = blogpages
         context['searched_tag'] = Tag.objects.filter(slug=tag).first()
