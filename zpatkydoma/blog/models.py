@@ -163,7 +163,7 @@ class BlogListPage(Page):
     def get_context(self, request):
         # Update context to include only published posts, ordered by reverse-chron
         context = super(BlogListPage, self).get_context(request)
-        all_blogpages = self.get_children().live().order_by('-date_published', '-last_published_at')
+        all_blogpages = self.get_children().live().order_by('-date_published')
 
         paginator = Paginator(all_blogpages, self.posts_per_page)
         page = request.GET.get('page')
