@@ -217,13 +217,17 @@ LOGGING = {
         'console': {
             'class': 'logging.StreamHandler',
         },
+        'file': {
+            'class': 'logging.FileHandler',
+            'filename': '/srv/logs/django/debug.log',
+        },
         'mail_admins': {
             'class': 'django.utils.log.AdminEmailHandler',
         }
     },
     'loggers': {
         'django': {
-            'handlers': ['console'],
+            'handlers': ['console', 'file'],
             'level': os.getenv('DJANGO_LOG_LEVEL', 'INFO'),
         },
         'django.request': {
