@@ -68,12 +68,12 @@ class BlogPageModel(ModelAdmin):
     list_filter = ('category',)
     search_fields = ('title', 'intro', 'body')
     list_per_page = 30
-
+    
 
 class BlogCategoryModelAdmin(ModelAdmin):
     model = BlogCategory
     menu_label = 'Blog Categories'  # ditch this to use verbose_name_plural from model
-    menu_icon = 'radio-empty'  # change as required
+    menu_icon = 'fa-bookmark'  # change as required
     menu_order = 300  # will put in 3rd place (000 being 1st, 100 2nd)
     add_to_settings_menu = False  # or True to add your model to the Settings sub-menu
     # or True to exclude pages of this type from Wagtail's explorer view

@@ -18,7 +18,7 @@ urlpatterns = [
     url(r'^admin/', include(wagtailadmin_urls)),
     url(r'^documents/', include(wagtaildocs_urls)),
     url('^sitemap\.xml$', sitemap),
-    url(r'^api/v2/', api_router.urls),
+    # url(r'^api/v2/', api_router.urls),
 
 
     # For anything not caught by a more specific rule above, hand over to
