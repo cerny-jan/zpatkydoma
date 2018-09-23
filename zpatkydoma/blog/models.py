@@ -81,7 +81,7 @@ class BlogPage(Page):
     date_published = models.DateField(
         'Published date', default=datetime.date.today)
 
-    domicile =  models.CharField(blank=True, max_length=255)
+    domicile = models.CharField(blank=True, max_length=255)
 
     category = models.ForeignKey(
         'blog.BlogCategory',
@@ -99,6 +99,20 @@ class BlogPage(Page):
             return 6
         else:
             return None
+
+    def get_live_siblings(self):
+        parent_page = self.get_parent()
+        child_pages = parent_page.get_children().live().order_by('-blogpage__date_published', '-blogpage__last_published_at')
+        siblings = {}
+        for i, child_page in enumerate(child_pages):
+            if self.id == child_page.id:
+                # to prevent negative indexing 
+                siblings['previous'] = child_pages[i - 1] if i > 0 else None
+                try:
+                    siblings['next'] = child_pages[i + 1]
+                except IndexError:
+                    siblings['next'] = None
+        return siblings
 
     search_fields = Page.search_fields + [
         index.SearchField('intro'),
@@ -139,7 +153,6 @@ class BlogPage(Page):
         ], heading='Blog Page Configuration')
     ]
 
-
     edit_handler = TabbedInterface([
         ObjectList(content_panels, heading='Content'),
         ObjectList(cofiguration_panels, heading='Page Configuration'),
@@ -163,7 +176,7 @@ class BlogListPage(Page):
     def get_context(self, request):
         # Update context to include only published posts, ordered by reverse-chron
         context = super(BlogListPage, self).get_context(request)
-        all_blogpages = self.get_children().live().order_by('-blogpage__date_published','-blogpage__last_published_at')
+        all_blogpages = self.get_children().live().order_by('-blogpage__date_published', '-blogpage__last_published_at')
 
         paginator = Paginator(all_blogpages, self.posts_per_page)
         page = request.GET.get('page')
@@ -205,9 +218,9 @@ class BlogTagPage(Page):
     def get_context(self, request):
         tag = request.GET.get('tag')
         if tag:
-            blogpages = BlogPage.objects.filter(tags__slug=tag).live().order_by('-date_published','-last_published_at')
+            blogpages = BlogPage.objects.filter(tags__slug=tag).live().order_by('-date_published', '-last_published_at')
         else:
-            blogpages = BlogPage.objects.all().live().order_by('-date_published','-last_published_at')
+            blogpages = BlogPage.objects.all().live().order_by('-date_published', '-last_published_at')
         context = super(BlogTagPage, self).get_context(request)
         context['blogpages'] = blogpages
         context['searched_tag'] = Tag.objects.filter(slug=tag).first()
