@@ -63,7 +63,7 @@
                 <div class="blog-details">
                     <div class="blog-date">{{ blogpage.date_published }}</div>
                     <div class="blog-title"><a href="{% pageurl blogpage %}">{{ blogpage.title }}</a></div>
-                    <div class="blog-short-description">{{ blogpage.intro|truncatechars_html:250|richtext}}</div>
+                    <div class="blog-short-description">{% if blogpage.title|length > 31 %}{{ blogpage.intro|truncatechars_html:200|richtext }}{% else %}{{ blogpage.intro|truncatechars_html:250|richtext }}{% endif %}</div>
                     <div class="separator-line bg-black no-margin-lr"></div>
                 </div>
             </div>
