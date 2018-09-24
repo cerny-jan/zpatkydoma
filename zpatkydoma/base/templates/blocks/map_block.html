@@ -29,7 +29,8 @@ var xhr = new JAK.Request(JAK.Request.XML);
 xhr.setCallback(window, "response");
 xhr.send("{{self.map.url}}");
 
-var response = function(xmlDoc) {
+var response = function(r) {
+    var xmlDoc = JAK.XML.createDocument(xhr._xhr.response);
     var gpx = new SMap.Layer.GPX(xmlDoc, null, {colors:['blue']});
     m.addLayer(gpx);
     gpx.enable();
