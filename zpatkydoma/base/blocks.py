@@ -1,4 +1,5 @@
 from wagtail.images.blocks import ImageChooserBlock
+from wagtail.documents.blocks import DocumentChooserBlock
 from wagtail.embeds.blocks import EmbedBlock
 from wagtail.core.blocks import (
     CharBlock,
@@ -11,6 +12,14 @@ from wagtail.core.blocks import (
     ListBlock,
     StaticBlock
 )
+
+
+class MapBlock(StructBlock):
+    map = DocumentChooserBlock(required=False)
+
+    class Meta:
+        icon = 'fa-map'
+        template = 'blocks/map_block.html'
 
 
 class ImageBlock(StructBlock):
@@ -105,6 +114,7 @@ class BaseStreamBlock(StreamBlock):
         template='blocks/raw_html_block.html',
         label='Raw HTML',
         help_text='A text area for entering raw HTML which will be rendered unescaped')
+    map_block = MapBlock()
 
 
 class StandardPageHeadingBlock(StructBlock):

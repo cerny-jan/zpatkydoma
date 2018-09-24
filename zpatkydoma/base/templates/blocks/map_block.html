@@ -1,0 +1,38 @@
+{% load wagtailcore_tags %}
+<script type="text/javascript" src="https://api.mapy.cz/loader.js"></script>
+<script type="text/javascript">Loader.load();</script>
+
+
+<section class="wow fadeIn blog-details-text no-padding margin-four-top">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-10 col-sm-10 center-col text-left">
+        <div class="blog-image margin-four-bottom">
+
+            <div id="m" style="height:480px"></div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<script type="text/javascript">
+var center = SMap.Coords.fromWGS84(14.41790, 50.12655);
+var m = new SMap(JAK.gel("m"), center, 13);
+m.addControl(new SMap.Control.Sync());
+m.addDefaultLayer(SMap.DEF_TURIST).enable();
+m.addDefaultControls();
+
+var xhr = new JAK.Request(JAK.Request.XML);
+xhr.setCallback(window, "response");
+xhr.send("{{self.map.url}}");
+
+var response = function(xmlDoc) {
+    var gpx = new SMap.Layer.GPX(xmlDoc, null, {colors:['blue']});
+    m.addLayer(gpx);
+    gpx.enable();
+    gpx.fit();
+}
+</script>
