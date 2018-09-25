@@ -7,6 +7,7 @@ var hashfilter;
 
 $(document).ready(function () {
     lazyload();
+    $('a[href^="http"]').attr('target', '_blank');
 
     /*==============================================================*/
     //Smooth Scroll - START CODE

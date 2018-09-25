@@ -34,7 +34,7 @@ iframe { border: 0;}
 .sound iframe {width:100%}
 ul { list-style: none outside none; }
 ul, ol, dl {list-style-position: outside;}
-* { transition-timing-function: ease-in-out; -moz-transition-timing-function: ease-in-out; -webkit-transition-timing-function: ease-in-out; -o-transition-timing-function: ease-in-out; transition-duration: .2s; -moz-transition-duration: .2s; -webkit-transition-duration: .2s; -o-transition-duration: .2s; }
+/* * { transition-timing-function: ease-in-out; -moz-transition-timing-function: ease-in-out; -webkit-transition-timing-function: ease-in-out; -o-transition-timing-function: ease-in-out; transition-duration: .2s; -moz-transition-duration: .2s; -webkit-transition-duration: .2s; -o-transition-duration: .2s; } */
 ::selection { color: #000; background:#dcdcdc; }
 ::-moz-selection { color:#000; background:#dcdcdc; }
 ::-webkit-input-placeholder { color: #999; text-overflow: ellipsis; }
