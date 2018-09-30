@@ -23,7 +23,12 @@ var center = SMap.Coords.fromWGS84(14.41790, 50.12655);
 var m = new SMap(JAK.gel("m"), center, 13);
 m.addControl(new SMap.Control.Sync());
 m.addDefaultLayer(SMap.DEF_TURIST).enable();
-m.addDefaultControls();
+var mouse = new SMap.Control.Mouse(SMap.MOUSE_PAN | SMap.MOUSE_ZOOM);
+m.addControl(mouse);
+m.addControl(new SMap.Control.Compass(),{right:"8px", top:"50px"});
+m.addControl(new SMap.Control.Zoom(),{right:"8px", top:"12px"});
+m.addControl(new SMap.Control.Scale(),{left:"8px", bottom:"12px"});
+
 
 var xhr = new JAK.Request(JAK.Request.XML);
 xhr.setCallback(window, "response");
