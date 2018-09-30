@@ -557,7 +557,7 @@
     .about-author { padding: 30px;}
     .blog-grid-listing .blog-date { letter-spacing: 0; line-height: 16px; padding-top: 17px; }
     .blog-title a { letter-spacing: 1px; line-height: 18px; margin-top: 10px; }
-    .blog-grid-listing .blog-details .blog-title { min-height: 48px;}
+    .blog-grid-listing .blog-details .blog-title { min-height: 30px;}
 
     /* blog listing full */
     .blog-listing-full { margin-bottom:90px;}

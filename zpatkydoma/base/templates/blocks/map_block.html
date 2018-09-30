@@ -31,7 +31,7 @@ xhr.send("{{self.map.url}}");
 
 var response = function(r) {
     var xmlDoc = JAK.XML.createDocument(xhr._xhr.response);
-    var gpx = new SMap.Layer.GPX(xmlDoc, null, {colors:['blue']});
+    var gpx = new SMap.Layer.GPX(xmlDoc, null, {maxPoints:2000,colors:['blue']});
     m.addLayer(gpx);
     gpx.enable();
     gpx.fit();

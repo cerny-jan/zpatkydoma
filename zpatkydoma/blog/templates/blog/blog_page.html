@@ -70,9 +70,8 @@
 <!-- navigation-->
 {% include "includes/navigation.html" with nav_kind="nav-white nav-border-bottom" %}
 <!--end of navigation-->
-<section class="wow fadeIn blog-single-full-width-header fix-background parallax-fix">
-    {% image page.image fill-1920x1080 as parallax_image %}
-    <img class="parallax-background-img" src="{{parallax_image.url}}" alt="{{parallax_image.alt}}" />
+{% image page.image fill-1920x1080 as parallax_image %}
+<section class="wow fadeIn blog-single-full-width-header fix-background parallax-fix" style="background: url('{{parallax_image.url}}') 50% 0%; visibility: visible; animation-name: fadeIn;">
     <div class="opacity-light bg-black"></div>
     <div class="container">
         <div class="row">
