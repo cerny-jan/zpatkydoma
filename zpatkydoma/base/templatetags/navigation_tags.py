@@ -6,7 +6,7 @@ register = template.Library()
 # https://docs.djangoproject.com/en/1.9/howto/custom-template-tags/
 
 
-@register.assignment_tag(takes_context=True)
+@register.simple_tag(takes_context=True)
 def menu(context, calling_page=None):
     menuitems = context['request'].site.root_page.get_children(
     ).live().in_menu()
@@ -20,7 +20,7 @@ def menu(context, calling_page=None):
     }
 
 
-@register.assignment_tag(takes_context=True)
+@register.simple_tag(takes_context=True)
 def get_footer_text(context):
     footer_text = ""
     if FooterText.objects.first() is not None:
