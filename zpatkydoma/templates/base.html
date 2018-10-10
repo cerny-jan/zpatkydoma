@@ -6,7 +6,7 @@
                         {% if self.seo_title %}{{ self.seo_title }}{% else %}{{ self.title }}{% endif %} {% if request.GET.tag|length %} | {{ request.GET.tag }}{% endif %}
                   {% endblock %}
         </title>
-        <meta name="description" content="{% if self.search_description %}{{ self.search_description }}{% endif %}">
+        <meta name="description" content="{% if self.search_description %}{{ self.search_description|truncatechars_html:320 }}{% endif %}">
         <meta name="keywords" content="">
         <meta charset="utf-8">
         <meta name="author" content="zpatkydoma.cz">
