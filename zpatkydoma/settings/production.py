@@ -85,7 +85,7 @@ COMPRESS_OFFLINE = True
 # media files
 GS_BUCKET_NAME = 'zpatkydoma'
 GS_PROJECT_ID = os.getenv('GOOGLE_PROJECT_ID')
-GS_CACHE_CONTROL = 'public, max-age=604800'
+GS_CACHE_CONTROL = 'public, max-age=2592000'
 
 INSTALLED_APPS.append('storages')
 MEDIA_URL = 'https://storage.googleapis.com/{bucket_name}/'.format(

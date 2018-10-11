@@ -70,7 +70,6 @@
               <div class="blog-title"><a href="{% pageurl blogpage %}">{{ blogpage.title }}</a></div>
               <div class="blog-short-description">{% if blogpage.title|length > 31 %}{{ blogpage.intro|truncatechars_html:200|richtext }}{% else %}{{ blogpage.intro|truncatechars_html:250|richtext }}{% endif %}</div>
               <div class="separator-line bg-black no-margin-lr"></div>
-              <!-- <div><a href="#" class="blog-like"><i class="fa fa-heart-o"></i>Likes</a><a href="#" class="blog-share"><i class="fa fa-share-alt"></i>Share</a><a href="#" class="comment"><i class="fa fa-comment-o"></i>3 comment(s)</a></div> -->
             </div>
           </div>
           {% endwith %} {% empty %}
