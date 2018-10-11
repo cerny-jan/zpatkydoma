@@ -113,7 +113,7 @@
     .latest-blogs .blog-listing p {margin-bottom: 15px;}
 
     /*  blog home masonry  */
-    .blog-grid-listing .blog-details { padding: 0 15px 15px; }
+    .blog-grid-listing .blog-details { padding: 0 15px 15px; height: 300px;}
     .blog-title a { font-size: 13px; letter-spacing: 1px; }
     .blog-grid-listing .blog-date { letter-spacing: 0px; padding-top: 15px; }
 
@@ -287,6 +287,7 @@
     .agency-header span { margin-top: 15%; }
 }
 @media (max-width: 991px) {
+    .blog-grid-listing .blog-details { height: 270px;}
     /*  navigation panel  */
     nav .accordion-menu * { transition-duration: 0s; -moz-transition-duration: 0s; -webkit-transition-duration: 0s; -o-transition-duration: 0s; }
     .panel { position: relative; }
@@ -1614,6 +1615,7 @@
     .navbar-fixed-bottom .navbar-collapse { max-height: 275px !important; }
 }
 @media (max-width: 320px) {
+    .blog-grid-listing .blog-details { height: 290px;}
     .highlight-button-black-border {font-size: 18px;padding: 10px 20px;}
     .owl-title {font-size: 18px; line-height: 24px; margin-top: 5px;}
     h1 { font-size: 26px; line-height: 32px; }

@@ -738,7 +738,7 @@ footer ul.list-inline li:first-child {padding-left: 6px}
 
 /* blog - masonry */
 .blog-grid-listing { padding-top: 0; }
-.blog-grid-listing .blog-details { padding: 0 30px 30px; background-color:#fff}
+.blog-grid-listing .blog-details { padding: 0 30px 30px; background-color:#fff; height: 300px}
 .blog-grid-listing .blog-date { letter-spacing: 1px}
 .blog-grid-listing .blog-like, .blog-grid-listing .blog-share, .blog-grid-listing .comment { letter-spacing: 1px}
 .blog-grid-listing .blog-short-description { width: 95%}
