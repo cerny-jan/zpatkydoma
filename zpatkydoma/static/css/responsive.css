@@ -287,7 +287,7 @@
     .agency-header span { margin-top: 15%; }
 }
 @media (max-width: 991px) {
-    .blog-grid-listing .blog-details { height: 270px;}
+    .blog-grid-listing .blog-details { height: 260px;}
     /*  navigation panel  */
     nav .accordion-menu * { transition-duration: 0s; -moz-transition-duration: 0s; -webkit-transition-duration: 0s; -o-transition-duration: 0s; }
     .panel { position: relative; }
