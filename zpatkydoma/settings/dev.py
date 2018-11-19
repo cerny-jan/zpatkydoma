@@ -32,16 +32,6 @@ DEBUG_TOOLBAR_CONFIG = {
 
 INTERNAL_IPS = ['127.0.0.1']
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'zpatkydoma',
-        'USER': 'postgres',
-        'PASSWORD': '',
-        'HOST': '127.0.0.1',
-        'PORT': '5432',
-    }
-}
 
 try:
     from .local import *

@@ -43,6 +43,13 @@ SECURE_BROWSER_XSS_FILTER = True
 # Parse database configuration from $DATABASE_URL
 DATABASES['default'] = dj_database_url.config()
 
+WAGTAILSEARCH_BACKENDS = {
+    'default': {
+        'BACKEND': 'wagtail.contrib.postgres_search.backend',
+        'SEARCH_CONFIG': 'english',
+    },
+}
+
 CACHES = {
     'default': {
         'BACKEND': 'django_redis.cache.RedisCache',
@@ -91,7 +98,7 @@ GS_CREDENTIALS = service_account.Credentials.from_service_account_info(
     json.loads(GOOGLE_SERVICE_ACCOUNT_INFO))
 GS_CACHE_CONTROL = 'public, max-age=604800'
 
-INSTALLED_APPS.append('storages')
+INSTALLED_APPS += ['storages', 'wagtail.contrib.postgres_search']
 MEDIA_URL = 'https://storage.googleapis.com/{bucket_name}/'.format(
     bucket_name=GS_BUCKET_NAME)
 DEFAULT_FILE_STORAGE = 'storages.backends.gcloud.GoogleCloudStorage'

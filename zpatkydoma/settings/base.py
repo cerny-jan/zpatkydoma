@@ -43,7 +43,6 @@ INSTALLED_APPS = [
     'wagtail.core',
     'wagtail.contrib.settings',
     'wagtail.contrib.modeladmin',
-    'wagtail.contrib.postgres_search',
     # 'wagtail.api.v2',
 
     'wagtailfontawesome',
@@ -114,8 +113,7 @@ DATABASES = {
 
 WAGTAILSEARCH_BACKENDS = {
     'default': {
-        'BACKEND': 'wagtail.contrib.postgres_search.backend',
-        'SEARCH_CONFIG': 'english',
+        'BACKEND': 'wagtail.search.backends.db',
     },
 }
 

@@ -1204,8 +1204,8 @@
 @media (max-width: 640px) {
     /*  custom  */
     .section-title {padding: 0 0 50px 0;}
-    #blog-slider { padding-bottom: 30px; }
-    #blog-slider .owl-pagination { bottom: -10px; }
+    .owl-carousel { padding-bottom: 30px; }
+    .owl-carousel .owl-pagination { bottom: -10px; }
 
     /*  features    */
     #features .section-title { padding: 0 0 50px 0; }

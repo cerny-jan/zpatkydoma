@@ -1,11 +1,21 @@
 {% load wagtailimages_tags %}
 
-<section id="blog-slider-main" class="blog-slider wow fadeIn no-padding-top margin-four-top clearfix">
-    <div id="blog-slider" class="owl-carousel owl-theme dark-pagination">
+<section class="blog-slider wow fadeIn no-padding-top margin-four-top clearfix">
+    <div id="blog-slider-{{self.0.image|make_list|first}}" class="owl-carousel owl-theme dark-pagination">
        {% for item in self %}
        {% image item.image fill-750x500 as slider_image %}
        {% image item.image fill-30x20 as thumbnail %}
         <div class="item "><img class="lazyload" src="{{thumbnail.url}}" data-src="{{ slider_image.url }}" alt="{{ slider_image.alt }}"width="750" height="500"/></div>
         {% endfor %}
+
     </div>
 </section>
+<script>
+$("#blog-slider-{{self.0.image|make_list|first}}").owlCarousel({
+    navigation: false,
+    items: 3,
+    itemsDesktop: [1200, 3],
+    itemsTablet: [800, 2],
+    itemsMobile: [700, 1]
+});
+</script>
