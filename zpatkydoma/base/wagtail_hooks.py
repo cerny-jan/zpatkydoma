@@ -1,6 +1,6 @@
 from wagtail.contrib.modeladmin.options import ModelAdmin, modeladmin_register
 from zpatkydoma.blog.models import BlogCategory
-from django.contrib.staticfiles.templatetags.staticfiles import static
+from django.templatetags.static import static
 from django.utils.html import format_html
 from zpatkydoma.blog.models import BlogPage
 import wagtail.admin.rich_text.editors.draftail.features as draftail_features
@@ -43,12 +43,12 @@ def register_strikethrough_feature(features):
     features.register_converter_rule('contentstate', feature_name, db_conversion)
 
 
-@hooks.register('insert_editor_css')
-def editor_css():
-    return format_html(
-        '<link rel="stylesheet" href="{}">',
-        static('css/custom_admin_editor.css')
-    )
+# @hooks.register('insert_editor_css')
+# def editor_css():
+#     return format_html(
+#         '<link rel="stylesheet" href="{}">',
+#         static('css/custom_admin_editor.css')
+#     )
 
 
 class BlogPageModel(ModelAdmin):

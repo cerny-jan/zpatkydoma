@@ -5,5 +5,9 @@ __pycache__
 *.log
 *.swp
 *.retry
-.env
+*.env
 zpatkydoma/settings/local.py
+jan-cerny-bc0aff727658.json
+settings_from_rosti.txt
+zpatkydoma_backup
+.idea
