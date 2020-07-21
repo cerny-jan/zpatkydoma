@@ -1,5 +1,5 @@
 Django==3.0.3
-wagtail==2.8
+wagtail==2.9.3
 django-redis==4.11.0
 django-toolbelt==0.0.1
 git+https://github.com/cerny-jan/django-storages
