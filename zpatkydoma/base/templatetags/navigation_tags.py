@@ -1,14 +1,18 @@
 from django import template
+from wagtail.core.models import Site
+
 from zpatkydoma.base.models import FooterText
 
 
 register = template.Library()
 # https://docs.djangoproject.com/en/1.9/howto/custom-template-tags/
+# https://docs.djangoproject.com/en/3.1/howto/custom-template-tags/
 
 
 @register.simple_tag(takes_context=True)
 def menu(context, calling_page=None):
-    menuitems = context['request'].site.root_page.get_children(
+    site = Site.find_for_request(context['request'])
+    menuitems = site.root_page.get_children(
     ).live().in_menu()
     for menuitem in menuitems:
         menuitem.active = (calling_page.url.startswith(menuitem.url)

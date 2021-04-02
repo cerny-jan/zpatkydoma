@@ -22,7 +22,7 @@ from wagtail.admin.edit_handlers import (
     ObjectList
 )
 from wagtail.images.edit_handlers import ImageChooserPanel
-from wagtail.api import APIField
+# from wagtail.api import APIField
 from wagtail.search import index
 
 from zpatkydoma.base.blocks import BaseStreamBlock
@@ -106,7 +106,7 @@ class BlogPage(Page):
         siblings = {}
         for i, child_page in enumerate(child_pages):
             if self.id == child_page.id:
-                # to prevent negative indexing 
+                # to prevent negative indexing
                 siblings['previous'] = child_pages[i - 1] if i > 0 else None
                 try:
                     siblings['next'] = child_pages[i + 1]
@@ -126,15 +126,15 @@ class BlogPage(Page):
         ]),
     ]
 
-    api_fields = [
-        APIField('intro'),
-        APIField('body'),
-        APIField('date_published'),
-        APIField('domicile'),
-        APIField('category'),
-        APIField('tags'),
-        APIField('related_pages')
-    ]
+    # api_fields = [
+    #     APIField('intro'),
+    #     APIField('body'),
+    #     APIField('date_published'),
+    #     APIField('domicile'),
+    #     APIField('category'),
+    #     APIField('tags'),
+    #     APIField('related_pages')
+    # ]
 
     content_panels = Page.content_panels + [
         ImageChooserPanel('image'),

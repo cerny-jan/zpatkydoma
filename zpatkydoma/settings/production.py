@@ -10,7 +10,7 @@ SECRET_KEY = os.environ['DJANGO_SECRET_KEY']
 
 BASE_URL = 'https://zpatkydoma.cz'
 
-WAGTAILAPI_BASE_URL = 'https://zpatkydoma.cz'
+# WAGTAILAPI_BASE_URL = 'https://zpatkydoma.cz'
 
 ALLOWED_HOSTS = ['104.248.248.105', 'zpatkydoma.cz']
 
@@ -41,8 +41,6 @@ SECURE_BROWSER_XSS_FILTER = True
 
 # Parse database configuration from $DATABASE_URL
 DATABASES['default'] = dj_database_url.config()
-
-
 
 
 CACHES = {

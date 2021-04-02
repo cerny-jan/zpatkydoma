@@ -9,7 +9,7 @@ from wagtail.core import urls as wagtail_urls
 from wagtail.documents import urls as wagtaildocs_urls
 from wagtail.contrib.sitemaps.views import sitemap
 
-from .api import api_router
+# from .api import api_router
 
 
 urlpatterns = [

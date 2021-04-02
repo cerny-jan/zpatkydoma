@@ -3,7 +3,7 @@
 <html class="no-js" lang="cs">
     <head>
         <title> {% block title %}
-                        {% if self.seo_title %}{{ self.seo_title }}{% else %}{{ self.title }}{% endif %} {% if request.GET.tag|length %} | {{ request.GET.tag }}{% endif %}
+                        {% if self.seo_title %}{{ self.seo_title }}{% else %}{{ self.title }}{% endif %}
                   {% endblock %}
         </title>
         <meta name="description" content="{% if self.search_description %}{{ self.search_description|truncatechars_html:320 }}{% endif %}">

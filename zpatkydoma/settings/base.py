@@ -71,7 +71,6 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 
 
-    'wagtail.core.middleware.SiteMiddleware',
     'wagtail.contrib.redirects.middleware.RedirectMiddleware',
 
 ]
@@ -189,9 +188,9 @@ WAGTAIL_SITE_NAME = "zpatkydoma.cz"
 # e.g. in notification emails. Don't include '/admin' or a trailing slash
 BASE_URL = 'http://localhost:8000'
 
-WAGTAILAPI_BASE_URL = 'http://localhost:8000'
-
-WAGTAILAPI_SEARCH_ENABLED = False
+# WAGTAILAPI_BASE_URL = 'http://localhost:8000'
+#
+# WAGTAILAPI_SEARCH_ENABLED = False
 
 TAGGIT_CASE_INSENSITIVE = True
 
