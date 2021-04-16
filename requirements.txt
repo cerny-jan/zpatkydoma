@@ -8,5 +8,5 @@ whitenoise==5.0.1
 postgres==2.2.1
 google-cloud-storage==1.7.0
 django-compressor==2.4
-django-debug-toolbar==1.9.1
+django-debug-toolbar==1.11.1
 wagtailfontawesome==1.2.1
